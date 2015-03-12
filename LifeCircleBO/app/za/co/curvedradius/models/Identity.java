@@ -22,5 +22,8 @@ public class Identity implements Serializable {
     @Column(name = "identity_number", unique = true, nullable = false, length = 30)
     private String identityNumber;
 
+    @Constraints.Required
+    @ManyToOne
+    @JoinColumn(name="identity_type_id",referencedColumnName = "variable_id",nullable = false)
     private Variable identityType;
 }

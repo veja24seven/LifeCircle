@@ -19,6 +19,8 @@ public class Contact implements Serializable {
     @Column(name = "contact_id", nullable = false, updatable = false, length = 10)
     private long contactId;
 
+    @Constraints.Required
+    @Column(name = "contact_value", unique = false, nullable = false, length = 100)
     private String contactValue;
 
     @Constraints.Required

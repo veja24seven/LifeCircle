@@ -26,7 +26,18 @@ public class Address  implements Serializable {
     @Column(name = "street_name", unique = false, nullable = false, length = 100)
     private String streetName;
 
+    @Column(name = "suburb", unique = false, nullable = true, length = 100)
     private String suburb;
+
+    @Constraints.Required
+    @Column(name = "town", unique = false, nullable = false, length = 100)
     private String town;
+
+    @Constraints.Required
+    @Column(name = "province", unique = false, nullable = false, length = 100)
     private String province;
+
+    @Constraints.Required
+    @Column(name = "postal_code", unique = false, nullable = false, length = 4)
+    private int postalCode;
 }
