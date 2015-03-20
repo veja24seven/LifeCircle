@@ -6,9 +6,9 @@
 GET     /                           controllers.Application.index()
 
 #Variables App
-GET 		/lifecircle/variables/load_all						controllers.VariablesApp.loadAllVariables()
-POST 		/lifecircle/variables/create						controllers.VariablesApp.createVariable()
-POST 		/lifecircle/variables/update						controllers.VariablesApp.updateVariable()
+GET 		/lifecircle/variables/load_all						controllers.VariablesMan.loadAllVariables()
+POST 		/lifecircle/variables/create						controllers.VariablesMan.createVariable()
+POST 		/lifecircle/variables/update						controllers.VariablesMan.updateVariable()
 
 #LookUps
 GET         /lifecircle/lookup/load/:category                   controllers.LookUp.load(category:String)

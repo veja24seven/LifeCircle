@@ -18,10 +18,10 @@ public class VariablesManTest {
     public void createVariable() {
         Variable variable = Mockito.mock(Variable.class);
 
-        Result result = callAction(
+        /*Result result = callAction(
                 controllers.routes.ref.VariablesMan.createVariable(),
                 new FakeRequest(POST,"/lifecircle/variables/create").withJsonBody(Json.toJson(variable))
-        );
+        );*/
     }
 
     @Test

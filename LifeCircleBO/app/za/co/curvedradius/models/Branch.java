@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * Created by Mpokie on 2015-03-11.
  */
-@Data
 @Entity
 @Table(name="branches")
 public class Branch implements Serializable {
@@ -40,4 +39,52 @@ public class Branch implements Serializable {
     @ManyToMany
     @JoinColumn(name="contact_id")
     private List<Contact> contacts;
+
+    public long getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(long branchId) {
+        this.branchId = branchId;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
+    public String getBranchCode() {
+        return branchCode;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public Variable getBranchType() {
+        return branchType;
+    }
+
+    public void setBranchType(Variable branchType) {
+        this.branchType = branchType;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
 }

@@ -1,3 +1,5 @@
+import play.PlayJava
+
 name := """LifeCircleBO"""
 
 version := "1.0-SNAPSHOT"
@@ -13,3 +15,4 @@ libraryDependencies ++= Seq(
   cache,
   javaJpa
 )
+

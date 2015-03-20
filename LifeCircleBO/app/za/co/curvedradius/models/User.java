@@ -1,6 +1,5 @@
 package za.co.curvedradius.models;
 
-import lombok.Data;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 
@@ -15,7 +14,6 @@ import java.util.Date;
  * Time: 2:45 AM
  * To change this template use File | Settings | File Templates.
  */
-@Data
 @Entity
 @Table(name="users")
 public class User implements Serializable{
@@ -51,4 +49,116 @@ public class User implements Serializable{
     @ManyToOne
     @JoinColumn(name = "person_id",nullable = false)
     private Person person;
+
+    public User() {
+    }
+
+    public long getUserId() {
+        return this.userId;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public Role getRole() {
+        return this.role;
+    }
+
+    public boolean isActive() {
+        return this.isActive;
+    }
+
+    public Date getStatusDate() {
+        return this.statusDate;
+    }
+
+    public Person getPerson() {
+        return this.person;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public void setStatusDate(Date statusDate) {
+        this.statusDate = statusDate;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof User)) return false;
+        final User other = (User) o;
+        if (!other.canEqual((Object) this)) return false;
+        if (this.userId != other.userId) return false;
+        final Object this$username = this.username;
+        final Object other$username = other.username;
+        if (this$username == null ? other$username != null : !this$username.equals(other$username)) return false;
+        final Object this$password = this.password;
+        final Object other$password = other.password;
+        if (this$password == null ? other$password != null : !this$password.equals(other$password)) return false;
+        final Object this$role = this.role;
+        final Object other$role = other.role;
+        if (this$role == null ? other$role != null : !this$role.equals(other$role)) return false;
+        if (this.isActive != other.isActive) return false;
+        final Object this$statusDate = this.statusDate;
+        final Object other$statusDate = other.statusDate;
+        if (this$statusDate == null ? other$statusDate != null : !this$statusDate.equals(other$statusDate))
+            return false;
+        final Object this$person = this.person;
+        final Object other$person = other.person;
+        if (this$person == null ? other$person != null : !this$person.equals(other$person)) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final long $userId = this.userId;
+        result = result * PRIME + (int) ($userId >>> 32 ^ $userId);
+        final Object $username = this.username;
+        result = result * PRIME + ($username == null ? 0 : $username.hashCode());
+        final Object $password = this.password;
+        result = result * PRIME + ($password == null ? 0 : $password.hashCode());
+        final Object $role = this.role;
+        result = result * PRIME + ($role == null ? 0 : $role.hashCode());
+        result = result * PRIME + (this.isActive ? 79 : 97);
+        final Object $statusDate = this.statusDate;
+        result = result * PRIME + ($statusDate == null ? 0 : $statusDate.hashCode());
+        final Object $person = this.person;
+        result = result * PRIME + ($person == null ? 0 : $person.hashCode());
+        return result;
+    }
+
+    protected boolean canEqual(Object other) {
+        return other instanceof User;
+    }
+
+    public String toString() {
+        return "za.co.curvedradius.models.User(userId=" + this.userId + ", username=" + this.username + ", password=" + this.password + ", role=" + this.role + ", isActive=" + this.isActive + ", statusDate=" + this.statusDate + ", person=" + this.person + ")";
+    }
 }
