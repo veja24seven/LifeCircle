@@ -94,4 +94,9 @@ public class Role implements Serializable{
     public String toString() {
         return "za.co.curvedradius.models.Role(roleId=" + this.roleId + ", description=" + this.description + ", rights=" + this.rights + ")";
     }
+
+    public Role(String description, List<Right> rights) {
+        this.description = description;
+        this.rights = rights;
+    }
 }

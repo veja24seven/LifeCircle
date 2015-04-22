@@ -31,7 +31,6 @@ public class Person implements Serializable {
     @Column(name = "second_name", unique = false, nullable = false, length = 100)
     private String secondname;
 
-    @Constraints.Required
     @Column(name = "third_name", unique = false, nullable = true, length = 100)
     private String thirdname;
 

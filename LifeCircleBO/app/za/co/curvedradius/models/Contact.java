@@ -1,6 +1,5 @@
 package za.co.curvedradius.models;
 
-import org.hibernate.annotations.Entity;
 import play.data.validation.Constraints;
 
 import javax.persistence.*;

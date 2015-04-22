@@ -73,4 +73,9 @@ public class Right implements Serializable{
     public String toString() {
         return "za.co.curvedradius.models.Right(rightId=" + this.rightId + ", description=" + this.description + ")";
     }
+
+    public Right(String description) {
+        this.description = description;
+    }
+
 }

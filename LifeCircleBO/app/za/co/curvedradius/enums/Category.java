@@ -8,5 +8,5 @@ package za.co.curvedradius.enums;
  *
  */
 public enum Category {
-	CONTACT_TYPES, ADDRESS_TYPES, IDENTITY_TYPES;
+	CONTACT_TYPES, ADDRESS_TYPES, IDENTITY_TYPES, GENDER;
 }

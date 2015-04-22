@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
  */
 public class VariablesDaoTest {
     private Application fakeAppWithGlobal;
-    @Before
+    /*@Before
     public void onStart(){
         //export and update test DB schema
         ExportSchema.exportTest(true);
@@ -58,6 +58,6 @@ public class VariablesDaoTest {
         assertNotNull("Returned list is not suppose to be null",vars);
         assertEquals("Suppose to return an empty list",0,vars.size());
     }
-
+*/
 
 }

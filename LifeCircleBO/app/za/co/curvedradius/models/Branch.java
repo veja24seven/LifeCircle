@@ -33,7 +33,7 @@ public class Branch implements Serializable {
 
     @Constraints.Required
     @ManyToOne
-    @JoinColumn(name="address_id",referencedColumnName = "variable_id",nullable = false)
+    @JoinColumn(name="address_id",referencedColumnName = "address_id",nullable = false)
     private Address address;
 
     @ManyToMany
@@ -85,6 +85,17 @@ public class Branch implements Serializable {
     }
 
     public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public Branch() {
+    }
+
+    public Branch(String branchName, String branchCode, Variable branchType, Address address, List<Contact> contacts) {
+        this.branchName = branchName;
+        this.branchCode = branchCode;
+        this.branchType = branchType;
+        this.address = address;
         this.contacts = contacts;
     }
 }

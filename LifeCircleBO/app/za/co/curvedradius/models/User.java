@@ -50,6 +50,10 @@ public class User implements Serializable{
     @JoinColumn(name = "person_id",nullable = false)
     private Person person;
 
+    @ManyToOne
+    @JoinColumn(name = "branch_id",nullable = false)
+    private Branch branch;
+
     public User() {
     }
 
@@ -81,6 +85,10 @@ public class User implements Serializable{
         return this.person;
     }
 
+    public Branch getBranch() {
+        return this.branch;
+    }
+
     public void setUserId(long userId) {
         this.userId = userId;
     }
@@ -109,6 +117,10 @@ public class User implements Serializable{
         this.person = person;
     }
 
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof User)) return false;
@@ -132,6 +144,9 @@ public class User implements Serializable{
         final Object this$person = this.person;
         final Object other$person = other.person;
         if (this$person == null ? other$person != null : !this$person.equals(other$person)) return false;
+        final Object this$branch = this.branch;
+        final Object other$branch = other.branch;
+        if (this$branch == null ? other$branch != null : !this$branch.equals(other$branch)) return false;
         return true;
     }
 
@@ -151,6 +166,8 @@ public class User implements Serializable{
         result = result * PRIME + ($statusDate == null ? 0 : $statusDate.hashCode());
         final Object $person = this.person;
         result = result * PRIME + ($person == null ? 0 : $person.hashCode());
+        final Object $branch = this.branch;
+        result = result * PRIME + ($branch == null ? 0 : $branch.hashCode());
         return result;
     }
 
@@ -159,6 +176,17 @@ public class User implements Serializable{
     }
 
     public String toString() {
-        return "za.co.curvedradius.models.User(userId=" + this.userId + ", username=" + this.username + ", password=" + this.password + ", role=" + this.role + ", isActive=" + this.isActive + ", statusDate=" + this.statusDate + ", person=" + this.person + ")";
+        return "za.co.curvedradius.models.User(userId=" + this.userId + ", username=" + this.username + ", password=" + this.password + ", role=" + this.role + ", isActive=" + this.isActive + ", statusDate=" + this.statusDate + ", person=" + this.person + ", branch=" + this.branch + ")";
     }
+
+    public User(Branch branch, String username, String password, Role role, Person person, boolean isActive, Date statusDate) {
+        this.branch = branch;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.person = person;
+        this.isActive = isActive;
+        this.statusDate = statusDate;
+    }
+
 }

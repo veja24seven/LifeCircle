@@ -1,7 +1,9 @@
 package za.co.curvedradius.daos;
 import play.db.jpa.JPA;
+import za.co.curvedradius.exceptions.LoginException;
 import za.co.curvedradius.models.Role;
 import za.co.curvedradius.models.User;
+import za.co.curvedradius.utils.ErrorCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ public class UserDao {
 	public static User findById(int userId){
 		return JPA.em().find(User.class, userId);
 	}
-	
+
 	public static List<User> findAll() {
 		List<User> users = JPA.em().createQuery("select u from User u",User.class)
 				.getResultList();
@@ -25,11 +27,14 @@ public class UserDao {
 		return users!=null? users:new ArrayList<User>();
 	} 
 	
-	public static User authenticate(String username,String password) throws Exception{
+	public static User authenticate(String username,String password) throws LoginException{
         User user = JPA.em()
                 .createQuery("select u from User u where u.username='" + username + "'", User.class).getSingleResult();
         if(!user.getPassword().equals(password)){
-            throw new Exception("Incorrect Password");
+            throw new LoginException(
+                    ErrorCode.INCORRECT_PASSWORD.getCode(),
+                    ErrorCode.INCORRECT_PASSWORD.getMessage()
+            );
         }
         return user;
     }

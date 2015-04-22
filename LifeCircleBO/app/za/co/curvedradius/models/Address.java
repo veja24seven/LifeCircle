@@ -95,4 +95,16 @@ public class Address  implements Serializable {
     public void setProvince(String province) {
         this.province = province;
     }
+
+    public Address(String streetNumber, String streetName, String suburb, String town, String province, int postalCode) {
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.suburb = suburb;
+        this.town = town;
+        this.province = province;
+        this.postalCode = postalCode;
+    }
+
+    public Address() {
+    }
 }
