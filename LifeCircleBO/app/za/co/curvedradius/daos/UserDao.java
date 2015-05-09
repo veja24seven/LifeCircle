@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserDao {
 	
-	public static User findById(int userId){
+	public static User findById(long userId){
 		return JPA.em().find(User.class, userId);
 	}
 
@@ -25,7 +25,22 @@ public class UserDao {
 				.setParameter(1, "%"+username.toUpperCase()+"%")
 				.getResultList();
 		return users!=null? users:new ArrayList<User>();
-	} 
+	}
+
+    public static List<User> findAllByBranchIdAndUsername(long branchId,String criteria){
+        List<User> users = JPA.em().createQuery("select u from User u where upper(u.username) like ?1 and u.branch.branchId=?2 ", User.class)
+                .setParameter(1, "%" + criteria.toUpperCase() + "%")
+                .setParameter(2, branchId)
+                .getResultList();
+        return users!=null? users:new ArrayList<User>();
+    }
+
+    public static List<User> findAllByBranchId(long branchId){
+        List<User> users = JPA.em().createQuery("select u from User u where u.branch.branchId=?1 ", User.class)
+                .setParameter(1, branchId)
+                .getResultList();
+        return users!=null? users:new ArrayList<User>();
+    }
 	
 	public static User authenticate(String username,String password) throws LoginException{
         User user = JPA.em()

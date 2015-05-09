@@ -1,0 +1,66 @@
+	<script type="text/x-kendo-template" id="vesselsTemplate">
+        <div class="toolbar">
+            <label for="vesselSearch">Search</label>
+            <input id="vesselSearch" type="text" class="k-search">
+            <a id="searchVesselsBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+            <!--<a class="k-button"><span class="k-icon k-edit"></span>Edit</a>
+            <a class="k-button"><span class="k-icon k-delete"></span>Delete</a>-->
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="outwardClearanceTemplate">
+        <div class="toolbar">
+            <a id="clearanceAddBtn" class="k-button"><span class="k-icon k-add"></span>Add Outward Clearance</a>
+			<a id="clearanceEditBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Outward Clearance</a>
+			<a id="clearanceConfirmBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Confirm</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="crewListToolBarTemplate">
+		<div class="toolbar">
+			<a class="addCrewBtn k-button" style="display:none;"><span class="k-icon k-add"></span>Add Crew</a>
+			<a class="editCrewBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Crew</a>
+        </div>
+	</script>
+	
+	<script type="text/x-kendo-template" id="certificatesToolBarTemplate">
+		<div class="toolbar">
+			<a class="addCertificateBtn k-button" style="display:none;"><span class="k-icon k-add"></span>Add Certificate</a>
+			<a class="editCertificateBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Certificate</a>
+        </div>
+	</script>
+    
+    <script type="text/x-kendo-template" id="inspectionDetailTemplate">
+		<div class='inspectionDeficienciesGrid'></div>
+	</script>
+	
+	<script type="text/x-kendo-template" id="outwardClearanceDetailTemplate">
+		<div class="outwardClearanceDetailTabStrip">
+	    	<ul>
+	       		<li class="k-state-active">Outward Clearance Detail</li>
+	       		<li>Crew List</li>
+	       		<li>Certificates</li>
+	       	</ul>
+	       	<div class='notice-details'>
+	       		<ul>
+	            	<li><label>Vessel Owner:</label>#= vesselOwner.name1 #, #= vesselOwner.identityNumber #</li>
+	               	<li><label>Vessel Name:</label>#= vessel.vesselName #</li>
+	               	<li><label>Arrival Date:</label>#= kendo.toString(new Date(arrivalDate),'yyyy-MM-dd HH:mm') #</li>
+	               	<li><label>Entry Date:</label>#= entryDate #</li>
+	               	<li><label>Clearance Date:</label>#= clearanceDate #</li>
+	               	<li><label>Depart Date:</label>#= kendo.toString(new Date(departDate),'yyyy-MM-dd HH:mm') #</li>
+	               	<li><label>Depart Port:</label>#= departPort.description #</li>
+	               	<li><label>Next Port:</label>#= nextPort #</li>
+	               	<li><label>Clearance Ref No:</label>#= clearanceRefNo #</li>
+	               	<li><label>Cleared By:</label>#= clearedBy #</li>
+	               	<li><label>Confirmed:</label>#= confirmed? 'YES':'NO' #</li>
+	               	<li><label>Confirmed By:</label>#= confirmedBy!=null?confirmedBy:'Not Confirmed' #</li>
+	               	<li><label>Confirmed Date:</label>#= confirmedDate!=null? confirmedDate:'No Confirmed' #</li>
+	            </ul>
+	       	</div>
+	       	<div class="crewListGrid"></div>
+	       	<div class="certificatesGrid"></div>
+	    </div>
+	</script>
+    
+	    

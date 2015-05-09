@@ -1,0 +1,220 @@
+<!-- This is a Customer Form for Company Type -->
+<div id="addNewCompanyCustomer" style="display: none;width: 410px;height: 300px;">
+    <div class="k-edit-form-container">
+        <form id="addNewCompanyCustomerForm" class="k-edit-form">
+            <div class="k-edit-label">
+                <label for="companyName">Company Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="companyName" name="companyName" class="k-input k-textbox" required
+                data-required-msg="Company Name is required">
+            </div>
+            <div class="k-edit-label">
+                <label for="companyRegNo">Company Reg No.</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="companyRegNo" name="companyRegNo" class="k-input k-textbox" required maxlength="100"
+                data-required-msg="Company Reg No. is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="companyRegDate">Registration Date</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="companyRegDate" name="companyRegDate" required style="width: 200px;"
+                data-required-msg="Registration Date is required. Please select."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="countryRegistered">Country Registered</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="countryRegistered" name="countryRegistered" required style="width: 200px;"
+                data-required-msg="Nationality is required. Please select."
+                />
+            </div>
+            <div class="k-edit-label">
+                <label for="contactPerson">Contact Person</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="contactPerson" name="contactPerson" class="k-input k-textbox" required maxlength="50"
+                pattern="[a-zA-Z0-9\- ]+"
+                data-required-msg="Contact Person is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="companyIsActive">Status</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="companyIsActive" name="companyIsActive" type="text" style="width: 200px;" required
+                />
+            </div>
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewCompanyCustomer" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- This is a Customer Form for Person Type -->
+<div id="addNewPersonCustomer" style="display: none;width: 410px;height: 340px;">
+    <div class="k-edit-form-container">
+        <form id="addNewPersonCustomerForm" class="k-edit-form">
+            <div class="k-edit-label">
+                <label for="firstname">First Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="firstname" name="firstname" class="k-input k-textbox" required maxlength="30"
+                pattern="[a-zA-Z ]+"
+                data-required-msg="First Name is required"
+                title="First Name must constist of letters and spaces only.">
+            </div>
+            <div class="k-edit-label">
+                <label for="lastname">Surname</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="lastname" name="lastname" class="k-input k-textbox" required maxlength="30"
+                pattern="[a-zA-Z ]+"
+                data-required-msg="Surname is required"
+                title="Surname must constist of letters and spaces only.">
+            </div>
+            <div class="k-edit-label">
+                <label for="idNumber">ID No.</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="idNumber" name="idNumber" class="k-input k-textbox" required maxlength="13"
+                pattern="\d{5,13}" title="ID No. must consist of only numbers."
+                data-required-msg="Company Reg No. is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="idNumberType">Identification Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="idNumberType" name="idNumberType"  required style="width: 200px;">
+            </div>
+            <div class="k-edit-label">
+                <label for="dob">Date of Birth</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="dob" name="dob" required data-required-msg="Date of Birth is required" 
+                 style="width: 160px;"/>
+            </div>
+            <div class="k-edit-label">
+                <label for="nationality">Nationality</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="nationality" name="nationality" required style="width: 200px;"
+                data-required-msg="Nationality is required. Please select."
+                />
+            </div>
+            <div class="k-edit-label">
+                <label for="gender">Gender</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="gender" name="gender" required style="width: 200px;"
+                data-required-msg="Gender is required. Please select."
+                />
+            </div>
+            <div class="k-edit-label">
+                <label for="personIsActive">Status</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="personIsActive" name="personIsActive" type="text" style="width: 200px;" required
+                />
+            </div>
+            <div class="k-edit-buttons k-state-default">
+            	<button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewPersonCustomer" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Contact Input Form -->
+<div id="addCustomerContactContainer" style="display: none;width: 410px;height: 140px;">
+    <div class="k-edit-form-container">
+        <form id="addCustomerContactForm" class="k-edit-form">
+            <input id="contactCustomer" name="customer" hidden>
+            <div class="k-edit-label">
+                <label for="contactType">Contact Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="contactType" name="contactType" required
+                data-required-msg="Contact Type is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="contactDetail">Contact Detail</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="contactDetail" name="contactDetail" type="text" class="k-input k-textbox" required
+               	data-required-msg="Contact Detail is required."/>
+            </div>
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddCustomerContact" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Customer Relation Form -->
+<div id="addCustomerRelationContainer" style="display: none;width: 410px;height: 220px;">
+    <div class="k-edit-form-container">
+        <form id="addCustomerRelationForm" class="k-edit-form">
+            <input id="relationCustomer" name="customer" hidden>
+            <div class="k-edit-label">
+                <label for="relationType">Relation Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="relationType" name="relationType" required
+                data-required-msg="Relation Type is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="relative">Relative Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="relative" name="relative" required
+                data-required-msg="Relative is required."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="relationDetail">Relation Detail</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="relationDetail" name="relationDetail" type="text" class="k-input k-textbox" required
+                data-required-msg="Relation Detail is required."
+                />
+            </div>
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddCustomerRelation" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

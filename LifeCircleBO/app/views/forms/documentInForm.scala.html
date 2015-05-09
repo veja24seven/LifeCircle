@@ -1,0 +1,49 @@
+
+<!-- Document Input Form -->
+<div id="addDocumentContainer" style="display: none;width: 410px;height: 200px;">
+    <div class="k-edit-form-container">
+        <form id="addDocumentForm" class="k-edit-form">
+            <input id="entity" name="entity" hidden>
+            <div class="k-edit-label">
+                <label for="documentUrl">Document Url/Path</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="documentUrl" name="documentUrl" type="file" class="k-input k-textbox" required
+                data-required-msg="Document File Url is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="documentType">Document Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="documentType" name="documentType" required style="width: 200px;"
+                data-required-msg="Document Type is required. Please select."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="documentRefNo">Document Ref No.</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="documentRefNo" name="documentRefNo" class="k-input k-textbox" required
+                data-required-msg="Document Ref No is required."
+                />
+            </div>
+            <div class="k-edit-label">
+                <label for="documentDate">Document Date</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="documentDate" name="documentDate" required data-required-msg="Document Date is required" 
+                 />
+            </div>
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddCustomerDoc" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

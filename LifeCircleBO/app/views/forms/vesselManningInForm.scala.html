@@ -1,0 +1,91 @@
+<script id="vessel-manning-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-manning-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vesselId'/>
+		<input hidden data-bind='value:manning.manningId' name='manningId'/>
+		<div class='k-edit-label'>
+            <label for='position'>Position</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='position' name='position' 
+            	data-role='dropdownlist' data-text-field='positionDescription' data-value-field='positionListId' data-source='positionsDS' data-option-label='-Please Select-' 
+            	data-bind='value:manning.position.positionListId' required='required' style='width: 200px;' data-required-msg='Position is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='coc'>COC</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='coc' name='coc' 
+            	data-role='dropdownlist' data-text-field='positionCocDescription' data-value-field='positionCocId' data-source='cocsDS' data-option-label='-Please Select-' 
+            	data-bind='value:manning.positionCoc.positionCocId' required='required' style='width: 200px;' data-required-msg='COC is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='minHeadCount'>Minimum Head Count</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='minHeadCount' name='minHeadCount' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:manning.minHeadCount' required='required' style='width: 200px;' 
+            	data-required-msg='Minimum Head Count is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="vessel-transire-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-transire-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselManningId' name='manningId'/>
+		<input hidden data-bind='value:transire.transireId' name='transireId'/>
+		<div class='k-edit-label'>
+            <label for='seafarer'>Seafarer</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='seafarer' name='seafarer' 
+            	data-role='autocomplete' data-text-field='name1' data-source='seafarerAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:seafarer' required='required' style='width: 200px;' data-required-msg='Seafarer is required.'>
+        </div>
+			
+		<div class='k-edit-label'>
+            <label for='cocRefNo'>COC Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocRefNo' name='cocRefNo' 
+            data-bind='value:transire.cocRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='50'
+            data-required-msg='COC Ref No. is required'>
+        </div>	
+        
+        <div class='k-edit-label'>
+            <label for='cocIssueDate'>COC Issue Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocIssueDate' name='cocIssueDate' 
+            	data-role='datepicker' data-bind='value:transire.cocIssueDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='COC Issue Date is required.'/>
+        </div>
+		
+        <div class='k-edit-label'>
+            <label for='cocDuration'>COC Duration</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocDuration' name='cocDuration' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:transire.cocDuration' required='required' style='width: 200px;' 
+            	data-required-msg='COC Duration is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>

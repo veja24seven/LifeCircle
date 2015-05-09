@@ -1,0 +1,220 @@
+<script id="facility-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='facility-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:facility.facilityId' name='facilityId'/>
+		
+		<div class='k-edit-label'>
+            <label for='owner'>Owner</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='owner' name='owner' 
+            	data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:owner' required='required' style='width: 200px;' data-required-msg='Owner is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='facilityName'>Facility Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='facilityName' name='facilityName' class='k-input k-textbox' 
+            data-bind='value:facility.facilityName' maxlength='150'
+            data-required-msg='Facility Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='regNumber'>Reg Number</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='regNumber' name='regNumber' class='k-input k-textbox' 
+            data-bind='value:facility.regNo' maxlength='150'
+            data-required-msg='Reg Number is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='regDate'>Reg Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='regDate' name='regDate' 
+            	data-role='datepicker' data-bind='value:facility.regDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Reg Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='facilityType'>Facility Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='facilityType' name='facilityType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='facilityTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:facility.facilityType.variableId' required='required' style='width: 200px;' data-required-msg='Facility Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='serviceType'>Service Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='serviceType' name='serviceType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='serviceTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:facility.serviceType.variableId' required='required' style='width: 200px;' data-required-msg='Service Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='townName'>Town Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='townName' name='townName' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='townNamesDS' data-option-label='-Please Select-' 
+            	data-bind='value:facility.townName.variableId' required='required' style='width: 200px;' data-required-msg='Service Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='location'>Location</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='location' name='location' class='k-input k-textbox' 
+            data-bind='value:facility.location' maxlength='150'
+            data-required-msg='Location is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionTerm'>Inspection Term</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionTerm' name='inspectionTerm' 
+            	data-role='numerictextbox' min='0'
+            	data-bind='value:facility.inspectionTerm' required='required' style='width: 200px;' 
+            	data-required-msg='Inspection Term is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='lastInspection'>Last Inspection</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='lastInspection' name='lastInspection' 
+            	data-role='datepicker' data-bind='value:facility.lastInspection' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Last Inspection is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='nextInspection'>Next Inspection</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='nextInspection' name='nextInspection' 
+            	data-role='datepicker' data-bind='value:facility.nextInspection' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Next Inspection is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="facility-inspection-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='facility-inspection-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:inspection.inspectionId' name='inspectionId'/>
+		
+        <div class='k-edit-label'>
+            <label for='inspectionType'>Inspection Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionType' name='inspectionType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='inspectionTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:inspection.inspectionType.variableId' required='required' style='width: 200px;' data-required-msg='Inspection Type is required.'>
+        </div>
+		
+        <div class='k-edit-label'>
+            <label for='inspectionRefNo'>Inspection Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionRefNo' name='inspectionRefNo' class='k-input k-textbox' 
+            data-bind='value:inspection.inspectionRefNo' maxlength='150'
+            data-required-msg='Inspection Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionDate'>Inspection Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionDate' name='inspectionDate' 
+            	data-role='datepicker' data-bind='value:inspection.inspectionDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Inspection Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionOutcome'>Inspection Outcome</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='inspectionOutcome' name='inspectionOutcome' 
+				data-bind='value:inspection.inspectionOutcome' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Inspection Outcome is required'></textarea>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="facility-certificate-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='facility-certificate-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:certificate.certificateId' name='certificateId'>
+		
+		<div class='k-edit-label'>
+            <label for='certificateType'>Certificate Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='certificateType' name='certificateType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='certificateTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:certificate.certificateType.variableId' required='required' style='width: 200px;' data-required-msg='Certificate Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='certificateRefNo'>Certificate Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='certificateRefNo' name='certificateRefNo' class='k-input k-textbox' 
+            data-bind='value:certificate.certificateRefNo' maxlength='150'
+            data-required-msg='Certificate Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='issueDate'>Issue Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='issueDate' name='issueDate' 
+            	data-role='datepicker' data-bind='value:certificate.issueDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Issue Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='validPeriod'>Valid Period</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='validPeriod' name='validPeriod' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:certificate.validPeriod' required='required' style='width: 200px;' 
+            	data-required-msg='Valid Period is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='applicationDate'>Application Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='applicationDate' name='applicationDate' 
+            	data-role='datepicker' data-bind='value:certificate.applicationDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Application Date is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>

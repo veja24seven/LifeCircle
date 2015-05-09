@@ -1,0 +1,175 @@
+<div id="addNewUserContainer" style="display: none;width: 410px;height: 240px;">
+    <div class="k-edit-form-container">
+        <form id="addNewUserForm" class="k-edit-form">
+        	<div class="k-edit-label">
+                <label for="username">User Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="username" name="username" class="k-input k-textbox" required maxlength="30"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="password">Password</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="password" name="password" class="k-input k-textbox" type="password" required maxlength="30"
+                >
+            </div>
+
+            <div class="k-edit-label">
+                <label for="person">Person</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="person" name="person" required style="width: 200px;"
+                        >
+            </div>
+
+            <div class="k-edit-label">
+                <label for="branch">Branch</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="branch" name="branch" required style="width: 200px;"
+                        >
+            </div>
+
+            <div class="k-edit-label">
+                <label for="role">Role</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="role" name="role" required style="width: 200px;"
+                >
+            </div>
+
+            <div class="k-edit-buttons k-state-default">
+            	<button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewUser" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="editUserContainer" style="display: none;width: 410px;height: 240px;">
+    <div class="k-edit-form-container">
+        <form id="editUserForm" class="k-edit-form">
+        	<input id="userId" name="userId" type="text" hidden>
+        	<div class="k-edit-label">
+                <label for="usernameEdit">User Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="usernameEdit" name="username" class="k-input k-textbox" required maxlength="30"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="passwordEdit">Password</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="passwordEdit" name="password" class="k-input k-textbox" type="password" required maxlength="30"
+                >
+            </div>
+
+            <div class="k-edit-label">
+                <label for="personEdit">Role</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="personEdit" name="person" required style="width: 200px;"
+                        >
+            </div>
+
+            <div class="k-edit-label">
+                <label for="branchEdit">Role</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="branchEdit" name="branch" required style="width: 200px;"
+                        >
+            </div>
+
+            <div class="k-edit-label">
+                <label for="roleEdit">Role</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="roleEdit" name="role" required style="width: 200px;"
+                >
+            </div>
+
+            <div class="k-edit-buttons k-state-default">
+            	<button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelEditUser" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="addNewRoleContainer" style=" display: none;width: 410px;height: 600px;">
+    <div class="k-edit-form-container">
+        <form id="addNewRoleForm" class="k-edit-form">
+        	<div class="k-edit-label">
+                <label for="roleName">Role Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="roleName" name="roleName" class="k-input k-textbox" required maxlength="30"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label>Applied Rights</label>
+            </div>
+            <div class="k-edit-field">
+                <div id="rightsTreeView"></div>
+            </div>
+            
+            <div class="k-edit-buttons k-state-default">
+            	<button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewRole" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="editRoleContainer" style="display: none;width: 410px;height: 600px;">
+    <div class="k-edit-form-container">
+        <form id="editRoleForm" class="k-edit-form">
+        	<input id="roleId" name="roleId" type="text" hidden>
+        	<div class="k-edit-label">
+                <label for="roleNameEdit">Role Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="roleNameEdit" name="roleName" class="k-input k-textbox" required maxlength="30"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label>Applied Rights</label>
+            </div>
+            <div class="k-edit-field">
+                <div id="rightsTreeViewEdit"></div>
+            </div>
+            
+            <div class="k-edit-buttons k-state-default">
+            	<button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelEditRole" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

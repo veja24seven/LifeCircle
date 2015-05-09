@@ -1,0 +1,71 @@
+<script type="text/x-kendo-template" id="surveys-inspections-toolbar-template">
+<div id='survey-inspections-toolbar' class='toolbar'>
+	<label for='fromDate'>From:</label>
+	<input id='fromDate' data-role='datepicker' name='fromDate' data-format='yyyy-MM-dd'>
+	<label for='toDate'> To:</label>
+	<input id='toDate' data-role='datepicker' name='toDate' data-format='yyyy-MM-dd'>
+	<button id='loadSurveyStatsReportBtn' class='k-button'><span class='k-icon k-search'></span>Load Report</button>
+</div>	
+</script>
+
+<script type="text/x-kendo-template" id="port-state-inspections-toolbar-template">
+<div id='port-state-inspections-toolbar' class='toolbar'>
+	<label for='yearSelectionDropDown'>Select Year:</label>
+	<input id='yearSelectionDropDown' data-role='dropdownlist' data-source='portStateInspectionsYearFilterDS' data-option-label='-Please Select-'>
+	<button id='loadInspectionStatsReportBtn' class='k-button'><span class='k-icon k-search'></span>Load Report</button>
+</div>	
+</script>
+
+<script type="text/x-kendo-template" id="vessel-imo-report-toolbar-template">
+<div class='toolbar'>
+	<button id='exportFileBtn' class='k-button'><span class='k-icon k-search'></span>Export EXCEL/CSV</button>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="vessels-listing-report-toolbar-template">
+<div id='vessels-listing-report-toolbar' class='toolbar'>
+	<form id='vessels-listing-toolbar-form'>
+		<label for='regType'>Reg Type:</label>
+		<input id='regType' name='regType' data-role='dropdownlist' data-text-field='value' data-value-field='variableId' 
+			data-source='vesselRegTypesDS' data-index='0'>
+			
+		<label for='regPort'>Reg Port:</label>
+		<input id='regPort' name='regPort' data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId'
+			 data-source='registryPortsDS' data-option-label='All'>
+		
+		<label for='vesselType'>Vessel Type:</label>
+		<input id='vesselType' name='vesselType' data-role='dropdownlist' data-text-field='value' data-value-field='variableId'
+			 data-source='vesselTypesDS' data-option-label='All'>
+		
+		<label for='operationType'>Operation Type:</label>
+		<input id='operationType' name='operationType' data-role='dropdownlist' data-text-field='value' data-value-field='variableId'
+			 data-source='operationTypesDS' data-option-label='All'>
+			 
+		<label for='licenseType'>License Type:</label>
+		<input id='licenseType' name='licenseType' data-role='dropdownlist' data-text-field='value' data-value-field='variableId'
+			 data-source='licenceTypesDS' data-option-label='All'>
+		
+		<label for='vesselStatus'>Vessel Status:</label>
+		<input id='vesselStatus' name='vesselStatus' data-role='dropdownlist' data-text-field='value' data-value-field='variableId'
+			 data-source='vesselStatusesDS' data-option-label='All'>
+		
+		<label for='approvalStatus'>Approval Status:</label>
+		<input id='approvalStatus' name='approvalStatus' data-role='dropdownlist'
+			 data-source='["PENDING","APPROVED"]' data-option-label='All'>
+			 
+		<label for='isUnder25gt'>Under 25 GT:</label>
+		<input id='isUnder25gt' name='isUnder25gt' data-role='dropdownlist'
+			 data-source='["YES","NO"]' data-option-label='All'>
+			 
+		<button id='loadVesselsBtn' class='k-button'>Load Vessels</button>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="vessel-ownership-report-toolbar-template">
+<div class='toolbar'>
+	<label for='customerSearchField'>Select By ID or Name:</label>
+	<input id="customerSearchField" type="text" class="k-search"/>
+    <a id="searchCustomersBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>	
+</div>
+</script>

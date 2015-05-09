@@ -1,0 +1,50 @@
+
+<script id="vessel-deletion-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-deletion-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vessel'/>
+		<input hidden data-bind='value:deletion.deletionId' name='deletionId'/>
+		
+        <div class='k-edit-label'>
+            <label for='deletionCondition'>Deletion Condition</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='deletionCondition' name='deletionCondition' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='deletionConditionsDS' data-option-label='-Please Select-' 
+            	data-bind='value:deletion.deletionCondition.variableId' required='required' style='width: 200px;' data-required-msg='Deletion Condition is required.'>
+        </div>
+
+		<div class='k-edit-label'>
+            <label for='deletionDate'>Deletion Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='deletionDate' name='deletionDate' 
+            	data-role='datepicker' data-bind='value:deletion.deletionDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Deletion Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='deletionComment'>Deletion Comment</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='deletionComment' name='deletionComment' 
+				data-bind='value:deletion.deletionComment' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Deletion Comment is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='deletionPlace'>Deletion Place</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='deletionPlace' name='deletionPlace' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='value' data-source='territoriesDS' data-option-label='-Please Select-' 
+            	data-bind='value:deletion.deletionPlace' required='required' style='width: 200px;' data-required-msg='Deletion Place is required.'>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>

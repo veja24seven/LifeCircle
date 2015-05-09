@@ -1,0 +1,268 @@
+<script type="text/x-kendo-template" id="programs-grid-toolbar-template">
+<div class='toolbar'>
+	<label for='programSearchField'>Search:</label>
+	<input id='programSearchField' type='text' class='k-search'>
+	<a id='searchProgramsBtn' class='k-button'><span class='k-icon k-search'></span>Search</a>
+	<a id='programAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Program</a>
+	<a id='programEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Program</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="program-objectives-grid-toolbar-template">
+	<a class='objectiveAddBtn k-button'><span class='k-icon k-add'></span>Add Program Objective</a>
+	<a class='objectiveEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Program Objective</a>
+</script>
+
+<script type="text/x-kendo-template" id="program-activities-grid-toolbar-template">
+	<a id='activityAddBtn' class='k-button' style='display:none;'><span class='k-icon k-add'></span>Add Program Activity</a>
+	<a id='activityEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Program Activity</a>
+</script>
+
+<script type="text/x-kendo-template" id="activity-documents-grid-toolbar-template">
+	<a class='documentAddBtn k-button'><span class='k-icon k-add'></span>Add Activity Document</a>
+	<a class='documentEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Activity Document</a>
+</script>
+
+<script type="text/x-kendo-template" id="programs-grid-detail-template">
+	<div class='programObjectivesGrid'></div>
+</script>
+
+<script type="text/x-kendo-template" id="program-activities-grid-detail-template">
+	<div class='activityDocumentsGrid'></div>
+</script>
+
+<!-- FORMS -->
+<script type="text/x-kendo-template" id="program-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='program-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.programId' name='programId'>
+		
+		<div class='k-edit-label'>
+            <label for='programName'>Program Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='programName' name='programName' 
+            	data-bind='value:dataItem.programName'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            	data-required-msg='Program Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='programRegNo'>Program Reg No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='programRegNo' name='programRegNo' 
+            	data-bind='value:dataItem.programRegNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            	data-required-msg='Program Reg No. is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='programType'>Program Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='programType' name='programType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='programTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.programType.variableId' required='required' style='width: 200px;' data-required-msg='Program Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='startDate'>Start Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='startDate' name='startDate' 
+            	data-role='datepicker' data-bind='value:dataItem.startDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Start Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='duration'>Duration</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='duration' name='duration' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:dataItem.duration' required='required' style='width: 200px;' 
+            	data-required-msg='Duration is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='programStatus'>Program Status</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='programType' name='programStatus' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='programStatusesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.programStatus.variableId' required='required' style='width: 200px;' data-required-msg='Program Status is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='programDetails'>Program Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='programDetails' name='programDetails' 
+				data-bind='value:dataItem.programDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Program Details are required'></textarea>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+<script type="text/x-kendo-template" id="program-activity-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='program-activity-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.activityId' name='activityId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='activityType'>Activity Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='activityType' name='activityType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='activityTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.activityType.variableId' required='required' style='width: 200px;' data-required-msg='Activity Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='activityRefNo'>Activity Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='activityRefNo' name='activityRefNo' 
+            	data-bind='value:dataItem.activityRefNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Activity Ref No. is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='activityStartDate'>Start Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='activityStartDate' name='activityStartDate' 
+            	data-role='datepicker' data-bind='value:dataItem.activityStartDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Start Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='activityDuration'>Duration</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='activityDuration' name='activityDuration' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:dataItem.activityDuration' required='required' style='width: 200px;' 
+            	data-required-msg='Duration is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='activityOwner'>Activity Owner</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='activityOwner' name='activityOwner' 
+            	data-bind='value:dataItem.activityOwner'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            	data-required-msg='Activity Owner is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='activityScore'>Activity Score</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='activityScore' name='activityScore' 
+            	data-role='numerictextbox' min='0'
+            	data-bind='value:dataItem.activityScore' required='required' style='width: 200px;' 
+            	data-required-msg='Activity Score is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='activityPort'>Activity Port</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='activityPort' name='activityPort' 
+	        	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='activityPortsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.activityPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Activity Port is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='activityStatus'>Activity Status</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='activityStatus' name='activityStatus' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='activityStatusesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.activityStatus.variableId' required='required' style='width: 200px;' data-required-msg='Activity Status is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='activityDetails'>Activity Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='activityDetails' name='activityDetails' 
+				data-bind='value:dataItem.activityDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Activity Details are required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='activityOutcome'>Activity Outcome</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='activityOutcome' name='activityOutcome' 
+				data-bind='value:dataItem.activityOutcome' class='k-textbox' rows='4'  maxlength='500' style='width: 200px;'
+				data-required-msg='Activity Outcome are required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="activity-document-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='activity-document-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:document.documentId' name='documentId'/>
+		
+        <div class='k-edit-label'>
+            <label for='documentType'>Document Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='documentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='documentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:document.documentType.variableId' required='required' style='width: 200px;' data-required-msg='Document Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentRefNo'>Document Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentRefNo' name='documentRefNo' 
+            data-bind='value:document.documentRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='50'
+            data-required-msg='Document Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentDate'>Document Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentDate' name='documentDate' 
+            	data-role='datepicker' data-bind='value:document.documentDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Document Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentUrl'>Document Url/Path</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentUrl' name='documentUrl' type='file' style='width: 200px;' 
+				data-required-msg='Document Url/Path is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>

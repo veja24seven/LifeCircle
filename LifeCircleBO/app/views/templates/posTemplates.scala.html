@@ -1,0 +1,61 @@
+	<script type="text/x-kendo-template" id="accountsTemplate">
+        <div class="toolbar">
+            <label for="accountSearchBy">Search By:</label>
+			<input id="accountSearchBy" data-role="dropdownlist" data-text-field='label' data-value-field='type'  
+				data-source='[{label:"Account No",type:"accountNo"},{label:"Owner ID",type:"ownerId"}]'/>
+            <input id="accountSearchVal" type="text" class="k-search">
+            <a id="searchAccountsBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+			<a id="addAccountBtn" class="k-button"><span class="k-icon k-add"></span>Add Account</a>
+			<a id="editAccountBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Account</a>
+            <a id="statusAccountBtn" class="k-button" style="display: none;"><span class="k-icon k-edit"></span>Update Status</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="sessionsTemplate">
+        <div class="toolbar">
+			<a id="addSessionBtn" class="k-button"><span class="k-icon k-add"></span>Start Session</a>
+			<a id="stopSessionBtn" class="k-button" style="display:none;"><span class="k-icon k-add"></span>Stop Session</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="invoicesTemplate">
+        <div class="toolbar">
+			<label for="invoicesSearchFld">Account No.:</label>
+            <input id="invoicesSearchFld" type="text" class="k-search">
+            <a id="invoicesSearchBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+			<a id="addInvoiceBtn" class="k-button"><span class="k-icon k-add"></span>Add Invoice</a>
+			<a id="editInvoiceBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Invoice</a>
+			<a id="statusInvoiceBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Update Status</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="invoiceItemsTemplate">
+        <div class="toolbar">
+			<a class="addInvoiceItemBtn k-button"><span class="k-icon k-add"></span>Add Invoice Item</a>
+			<a class="editInvoiceItemBtn k-button" style="display:none;"><span class="k-icon k-add"></span>Edit Invoice Item</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="receiptsTemplate">
+        <div class="toolbar">
+			<a id="addReceiptBtn" class="k-button"><span class="k-icon k-add"></span>Add Receipt</a>
+			<a id="editReceiptBtn" class="k-button"><span class="k-icon k-add"></span>Edit Receipt</a>
+			<a id="confirmReceiptBtn" class="k-button"><span class="k-icon k-add"></span>Confirm</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="invoicesGridTemplate">
+	<div class='invoicesGridDetailTabstrip'>
+		<ul>
+			<li class='k-state-active'>Invoice Items</li>
+		</ul>
+		<div>
+			<div class='invoiceItemsGrid'></div>
+		</div>
+	</div>
+	</script>
+	
+	<script type="text/x-kendo-template" id="receiptsGridTemplate">
+	<div>
+		<div class='receiptMopsGrid'></div>
+	</div>
+	</script>

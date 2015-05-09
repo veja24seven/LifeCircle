@@ -1,0 +1,105 @@
+<!-- Action Tool Bar Templates -->
+	<script type="text/x-kendo-template" id="customerTemplate">
+        <div id="customerGridTool" class="toolbar">
+			<label for="accountSearchBy">Search By:</label>
+			<input id="accountSearchBy" data-role="dropdownlist" data-source="['Name','ID or Reg Number']">
+			<input id="customerSearchField" type="text" class="k-search"/>
+            <a id="searchCustomersBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+			<a id="addNewCustomerPersonBtn" class="k-button"><span class="k-icon k-add"></span>Add Person</a>
+			<a id="editCustomerBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Person</a>
+			<a id="activateCustomerBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Activate</a>
+			<a id="deactivateCustomerBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>De-Activate</a>
+
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="contactsTemplate">
+        <div class="toolbar">
+            <a class="addNewContactBtn k-button"><span class="k-icon k-add"></span>Add Contact</a>
+            <a class="editContactBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Contact</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="documentsTemplate">
+        <div class="toolbar">
+            <a class="addNewDocumentBtn k-button"><span class="k-icon k-add"></span>Add Document</a>
+            <a class="editCustomerDocBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Document</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="relationsTemplate">
+        <div class="toolbar">
+            <a class="addNewRelationBtn k-button"><span class="k-icon k-add"></span>Add Relation</a>
+            <a class="editRelationBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Relation</a>
+        </div>
+    </script>
+
+
+<!-- Grid Datail Templates -->
+<script type="text/x-kendo-template" id="customerDetailTemplate">
+	<div class='customerDetailTabstrip'>
+		<ul>
+			<li class='k-state-active'>Contacts</li>
+			<li>Documents</li>
+			<li>Relations</li>
+		</ul>
+		<div>
+			<div class='contactsGrid'></div>
+		</div>
+		<div>
+			<div class='documentsGrid'></div>
+		</div>
+		<div>
+			<div class='relationsGrid'></div>
+		</div>
+	</div>
+</script>
+
+<script id="document-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='document-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:document.documentId' name='documentId'/>
+		
+        <div class='k-edit-label'>
+            <label for='documentType'>Document Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='documentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='documentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:document.documentType.variableId' required='required' style='width: 200px;' data-required-msg='Document Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentRefNo'>Document Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentRefNo' name='documentRefNo' 
+            data-bind='value:document.documentRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='50'
+            data-required-msg='Document Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentDate'>Document Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentDate' name='documentDate' 
+            	data-role='datepicker' data-bind='value:document.documentDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Document Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentUrl'>Document Url/Path</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentUrl' name='documentUrl' type='file' style='width: 200px;' 
+				data-required-msg='Document Url/Path is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+
+    

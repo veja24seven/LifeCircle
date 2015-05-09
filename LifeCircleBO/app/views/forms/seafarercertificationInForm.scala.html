@@ -1,0 +1,106 @@
+<script id="seafarer-certificate-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='seafarer-certificate-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:seafarerId' name='seafarer'/>
+		<input hidden data-bind='value:certificate.certificateId' name='certificate'>
+		
+		<div class='k-edit-label'>
+	    	<label for='certificateType'>Certificate Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='certificateType' name='certificateType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='certificateTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:certificate.certificateType.variableId' required='required' style='width: 200px;' data-required-msg='Certificate Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='certificateRefNo'>Certificate Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='certificateRefNo' name='certificateRefNo' 
+            	data-bind='value:certificate.certificateRefNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='150'
+            	data-required-msg='Certificate Ref No. No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='application'>Application</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='application' name='application' 
+            	data-role='dropdownlist' data-text-field='applicationType' data-value-field='applicationId' data-source='cocApplicationsDS' data-option-label='-Please Select-' 
+            	data-bind='value:certificate.application.applicationId' required='required' style='width: 200px;' data-required-msg='Application is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='capacityType'>Capacity Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='capacityType' name='capacityType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='capacityTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:certificate.capacityType.variableId' required='required' style='width: 200px;' data-required-msg='Capacity Type is required.'/>
+        </div>
+        
+	    <div class='k-edit-label'>
+            <label for='issueDate'>Issue Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='issueDate' name='issueDate' 
+            	data-role='datepicker' data-bind='value:certificate.issueDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Issue Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='duration'>Duration</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='duration' name='duration' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:certificate.duration' required='required' style='width: 200px;' 
+            	data-required-msg='Duration is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='receiptNo'>Receipt No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='receiptNo' name='receiptNo' class='k-input k-textbox' 
+            data-bind='value:certificate.receiptNo' maxlength='150'
+            data-required-msg='Receipt No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='receiptDate'>Receipt Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='receiptDate' name='receiptDate' 
+            	data-role='datepicker' data-bind='value:certificate.receiptDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Receipt Date is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+<script id="seafarer-certificate-approval-form-template" type="text/x-kendo-template">
+	<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='seafarer-certificate-approval-form' class='k-edit-form' style='width:100%;'>
+		<div class='k-edit-label'>
+            <label for='approvalRemarks'>Approval Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='approvalRemarks' name='approvalRemarks' 
+				class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Approval Remarks is required'></textarea>
+        </div>
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Approve</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+

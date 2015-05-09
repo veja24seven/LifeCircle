@@ -14,7 +14,7 @@ public class RoleDao {
 		return roles!=null? roles:new ArrayList<Role>();
 	} 
 	
-	public static Role findById (int roleId){
+	public static Role findById (long roleId){
 		return JPA.em().find(Role.class, roleId);
 	}
 	

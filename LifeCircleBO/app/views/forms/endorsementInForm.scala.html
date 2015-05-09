@@ -1,0 +1,121 @@
+<script id="vessel-endorsement-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-endorsement-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vessel'/>
+		<input hidden data-bind='value:endorsement.vesselEndorsementId' name='endorsementId'/>
+		
+        <div class='k-edit-label'>
+            <label for='transactionType'>Transaction Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='transactionType' name='transactionType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='transactionTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:endorsement.transactionType.variableId' required='required' style='width: 200px;' data-required-msg='Transaction Type is required.'>
+        </div>
+
+		<div class='k-edit-label'>
+            <label for='transactionDate'>Transaction Date &amp; Time</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='transactionDate' name='transactionDate' 
+            	data-role='datetimepicker' data-bind='value:endorsementDate' data-format="yyyy-MM-dd HH:mm"
+            	required='required' style='width: 200px;' data-required-msg='Transaction Date & Time is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='transactionDescription'>Transaction Description</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='transactionDescription' name='transactionDescription' 
+				data-bind='value:endorsement.transactionDescription' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Transaction Description is required'></textarea>
+        </div>
+        
+        <div id='newValueInputLabel' class='k-edit-label'  style='display:none;'>
+            <label for='newValue'>New Value</label>
+        </div>
+        <div id='newValueInputContainer' class='k-edit-field' style='display:none;'>
+            
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='transactionSymbol'>Transaction Symbol</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='transactionSymbol' name='transactionSymbol' 
+            	data-role='dropdownlist' data-source='["A","B","C","D","E","F"]' data-option-label='-Please Select-' 
+            	data-bind='value:endorsement.transactionSymbol' 
+            	required='required' style='width: 200px;' data-required-msg='Transaction Symbol is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='interestAffected'>Interest Affected</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='interestAffected' name='interestAffected' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='interestAffectedDS' data-option-label='-Please Select-' 
+            	data-bind='value:endorsement.interestAffected.variableId' required='required' style='width: 200px;' data-required-msg='Interest Affected is required.'>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+<script id="endorsement-attribute-form-template" type="text/x-kendo-template">
+<form id='endorsement-attribute-form' class='k-edit-form' style='width:100%;'>
+	<input hidden data-bind='value:attribute.attributeId' name='attribute'>
+	
+    <div class='k-edit-label'>
+        <label for='attributeType'>Information Type</label>
+    </div>
+    <div class='k-edit-field'>
+        <input id='attributeType' name='attributeType' 
+        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='attributeTypesDS' data-option-label='-Please Select-' 
+        	data-bind='value:attribute.attributeType.variableId' required='required' style='width: 200px;' data-required-msg='Information Type is required.'>
+    </div>
+    
+    <div class='k-edit-label'>
+        <label for='attributeValue'>Information Value</label>
+    </div>
+    <div class='k-edit-field'>
+        <input id='attributeValue' name='attributeValue' 
+        data-bind='value:attribute.attributeValue'
+        class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='150'
+        data-required-msg='Attribute Value No is required'>
+    </div>
+    
+    <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+</form>
+</script>
+
+<script id="endorsement-vesselname-field-template" type="text/x-kendo-template">
+	<input id='newValue' name='newValue' 
+    	data-bind='value:endorsement.newValue' 
+    	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='150'
+    	data-required-msg='New Value is required'>
+</script>
+
+<script id="endorsement-vesseltype-field-template" type="text/x-kendo-template">
+	<input id='newValue' name='newValue' 
+		data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='vesselTypesDS' data-option-label='-Please Select-'
+		data-bind='value:endorsement.newValue' required='required' style='width: 200px;' data-required-msg='New Value is required.'/>
+</script>
+
+<script id="endorsement-operationtype-field-template" type="text/x-kendo-template">
+	<input id='newValue' name='newValue' 
+		data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='operationTypesDS' data-option-label='-Please Select-'
+		data-bind='value:endorsement.newValue' required='required' style='width: 200px;' data-required-msg='New Value is required.'/>
+</script>
+
+<script id="endorsement-vesselowner-field-template" type="text/x-kendo-template">
+	<input id='newValue' name='newValue' 
+		data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+		data-bind='value:endorsement.newValue' required='required' style='width: 200px;' data-required-msg='New Value is required.'>
+</script>

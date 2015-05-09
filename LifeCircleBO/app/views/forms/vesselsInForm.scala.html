@@ -1,0 +1,454 @@
+<div id="addNewVessel" style="display: none;width: 1020px;height: 520px;">
+    <div class="k-edit-form-container" style="width: 100%;">
+        <form id="addNewVesselForm" class="k-edit-form" style="width:100%;">
+        	<table style="width:1000px;vertical-align: top;">
+        		<tbody>
+        			<tr style="vertical-align: top;">
+        				<td><div>
+        					<div class="k-edit-label">
+				                <label for="owner">Owner Name</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="owner" name="owner" required style="width: 200px;"
+				                data-required-msg="Relative is required."/>
+				            </div>
+		       				<div class="k-edit-label">
+				                <label for="vesselName">Vessel Name</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselName" name="vesselName" class="k-input k-textbox" required pattern="[a-zA-Z\- ]+" maxlength="100"
+				                data-required-msg="Vessel Name is required" validationMessage="Vessel Name is invalid.">
+				            </div>
+			            	<div class="k-edit-label">
+				                <label for="vesselRegNo">Vessel Reg No.</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselRegNo" name="vesselRegNo" class="k-input k-textbox" required pattern="[a-zA-Z0-9\- ]+" maxlength="50"
+				                data-required-msg="Vessel Reg No is required"
+				                validationMessage="Vessel Reg No is invalid.">
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselRegDate">Reg Date</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselRegDate" name="vesselRegDate" required style="width: 200px;"
+				                data-required-msg="Reg Date is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselRegType">Reg Type</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselRegType" name="vesselRegType" required style="width: 200px;"
+				                data-required-msg="Vessel Reg Type is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselType">Vessel Type</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselType" name="vesselType" required style="width: 200px;"
+				                data-required-msg="Vessel Type is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselFlagState">Flag State</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselFlagState" name="vesselFlagState" required style="width: 200px;"
+				                data-required-msg="Flag State is required. Please select."
+				                />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="registryPort">Registry Port</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="registryPort" name="registryPort" required style="width: 200px;"
+				                data-required-msg="Registry Port is required. Please select."
+				                />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="licenceType">Licence Type</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="licenceType" name="licenceType" required style="width: 200px;"
+				                data-required-msg="Licence Type is required. Please select."/>
+				            </div>
+				            
+				            <div class="k-edit-label">
+				                <label for="vesselLength">Vessel Length</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselLength" name="vesselLength" type="number" required style="width: 200px;" min="0"
+				                data-required-msg="Vessel Length is required" validationMessage="Vessel Length amount is invalid."
+				                />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselWidth">Vessel Width</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselWidth" name="vesselWidth" type="number" required style="width: 200px;"  min="0"
+				                data-required-msg="Vessel Width is required" validationMessage="Vessel Width amount is invalid."
+				                />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselDepth">Vessel Depth</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselDepth" name="vesselDepth" type="number" required style="width: 200px;" min="0"
+				                data-required-msg="Vessel Depth is required" validationMessage="Vessel Depth amount is invalid."
+				                />
+				            </div>
+        				</div></td>
+        				
+        				<td><div>
+        					<div class="k-edit-label">
+				                <label for="callSign">Call Sign</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="callSign" name="callSign" class="k-input k-textbox" required  required pattern="[A-Z0-9]{2,5}" maxlength="5"
+				                data-required-msg="Call Sign is required"
+				                validationMessage="Call Sign is invalid.">
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="imoNo">IMO No.</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="imoNo" name="imoNo" class="k-input k-textbox" required  required pattern="[a-zA-Z0-9\- ]+" maxlength="50"
+				                data-required-msg="International Maritime Organization Number is required"
+				                validationMessage="International Maritime Organization Number is invalid.">
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="yearBuild">Year Build.</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="yearBuild" name="yearBuild" class="k-input k-textbox" required  required pattern="\d{4}" maxlength="4"
+				                placeholder="e.g 2010"
+				                data-required-msg="Year Build is required"
+				                validationMessage="Year Build is invalid.">
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="builderName">Builder Name</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="builderName" name="builderName" required style="width: 200px;"
+				                data-required-msg="Builder Name is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="countryBuild">Country Build</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="countryBuild" name="countryBuild" required style="width: 200px;"
+				                data-required-msg="Country Build is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="placeBuild">Place Build</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="placeBuild" name="placeBuild" class="k-input k-textbox" required  required pattern="[a-zA-Z0-9\- ]+" maxlength="100"
+				                data-required-msg="Place Build is required"
+				                validationMessage="Place Build is invalid.">
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="materialType">Material Type</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="materialType" name="materialType" required style="width: 200px;"
+				                data-required-msg="Material Type is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselMake">Vessel Make</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselMake" name="vesselMake" required style="width: 200px;"
+				                data-required-msg="Vessel Make is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="vesselModel">Model</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="vesselModel" name="vesselModel" class="k-input k-textbox" required pattern="[a-zA-Z0-9\- ]+" maxlength="50"
+				                data-required-msg="Vessel Model is required"
+				                validationMessage="Vessel Model is invalid.">
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="operationType">Operation Type</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="operationType" name="operationType" required style="width: 200px;"
+				                data-required-msg="Operation Type is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="propellMethod">Propel Method</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="propellMethod" name="propellMethod" required style="width: 200px;"
+				                data-required-msg="Propel Method is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="noOfDecks">No. of Decks</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="noOfDecks" name="noOfDecks" type="number" value="1" min="0" max="100" step="1" />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="noOfBulkHeads">No. of Bulk Heads</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="noOfBulkHeads" name="noOfBulkHeads" type="number" value="1" min="0" max="100" step="1" />
+				            </div>
+        				</div></td>
+        				<td><div>
+				            <div class="k-edit-label">
+				                <label for="tonnageType">Tonnage Type</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="tonnageType" name="tonnageType" required style="width: 200px;"
+				                data-required-msg="Tonnage Type is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="grossTonnage">Gross Tonnage</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="grossTonnage" name="grossTonnage" type="number" style="width: 200px;" required 
+				                data-required-msg="Gross Tonnage is required"
+				                />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="netTonnage">Net Tonnage</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="netTonnage" name="netTonnage"  type="number" style="width: 200px;" required 
+				                	data-required-msg="Net Tonnage is required"
+				                />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="driveType">Drive</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="driveType" name="driveType" required class="k-input k-textbox" maxlength="30"
+				                data-required-msg="Drive is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="boreAndStroke">Bore &amp; Stroke</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="boreAndStroke" name="boreAndStroke" type="text" required class="k-input k-textbox" maxlength="50" 
+				                data-required-msg="Bore &amp; Stroke is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="noOfEngines">No. of Engines</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="noOfEngines" name="noOfEngines" type="number" value="1" min="0" max="100" step="1" />
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="cylinderPerEngine">Cylinder/Engine</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="cylinderPerEngine" name="cylinderPerEngine" type="number" value="1" min="0" max="100" step="1" />
+				            </div>
+				            <!-- <div class="k-edit-label">
+				                <label for="approvalStatus">Approval Status</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="approvalStatus" name="approvalStatus" required style="width: 200px;"
+				                data-required-msg="Approval Status is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="approvalDate">Approval Date</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="approvalDate" name="approvalDate" required style="width: 200px;"
+				                data-required-msg="Approval Date is required. Please select."/>
+				            </div>
+				            <div class="k-edit-label">
+				                <label for="properOfficer">Proper Officer</label>
+				            </div>
+				            <div class="k-edit-field">
+				                <input id="properOfficer" name="properOfficer" required class="k-input k-textbox" 
+				                data-required-msg="Proper Officer is required. Please select."/>
+				            </div> -->
+				            
+        				</div></td>
+        			</tr>
+        			
+        		</tbody>
+        	</table>
+            <div class="k-edit-buttons k-state-default" style="width:990px;">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewVessel" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="addNewAttribute" style="display: none;width: 410px;height: 160px;">
+    <div class="k-edit-form-container">
+        <form id="addNewAttributeForm" class="k-edit-form">
+            <input id="attributeVessel" name="vessel" hidden>
+            
+            <div class="k-edit-label">
+                <label for="vesselAttributeType">Attribute Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="vesselAttributeType" name="attributeType" required style="width: 200px;"
+                data-required-msg="Attribute Type is required. Please select."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="attributeName">Attribute Value</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="attributeName" name="attributeName" type="text" class="k-input k-textbox" required
+                pattern="[a-zA-Z0-9\- ]+" maxlength="50" data-required-msg="Attribute Name is required">
+            </div>
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewAttribute" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="addNewVesselDoc" style="display: none;width: 410px;height: 320px;">
+    <div class="k-edit-form-container">
+        <form id="addNewVesselDocForm" class="k-edit-form">
+            <input id="documentVessel" name="vessel" hidden>
+            
+            <div class="k-edit-label">
+                <label for="documentType">Document Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="documentType" name="documentType" required style="width: 238px;"
+                data-required-msg="Vessel Type is required. Please select."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="documentRefNo">Document Ref No.</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="documentRefNo" name="documentRefNo" class="k-input k-textbox" required style="width: 238px;"
+                data-required-msg="Document Ref No is required."
+                />
+            </div>
+            <div class="k-edit-label">
+                <label for="documentUrl">Document Url/Path</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="documentUrl" name="documentUrl" type="file"
+                data-required-msg="Document File Url is required"
+                >
+            </div>
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewVesselDoc" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="addNewOperator" style="display: none;width: 410px;height: 230px;">
+    <div class="k-edit-form-container">
+        <form id="addNewOperatorForm" class="k-edit-form">
+            <input id="operatorVessel" name="vessel" hidden>
+            <div class="k-edit-label">
+                <label for="agent">Agent Name</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="agent" name="agent" required style="width: 200px;"
+                data-required-msg="Agent is required."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="agentDescr">Description</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="agentDescr" name="agentDescr" type="text" class="k-input k-textbox" required
+                data-required-msg="Agent Description is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="agentType">Agent Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="agentType" name="agentType" required style="width: 200px;"
+                data-required-msg="Agent Type is required. Please select."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="startDate">Start Date</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="startDate" name="startDate"  required style="width: 200px;"
+                data-required-msg="Start Date is required."
+                />
+            </div>
+            <div class="k-edit-label">
+                <label for="endDate">End Date</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="endDate" name="endDate"  required style="width: 200px;"
+                data-required-msg="End Date is required."
+                />
+            </div>
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewOperator" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="addNewCertificate" style="display: none;width: 410px;height: 130px;">
+    <div class="k-edit-form-container">
+        <form id="addNewCertificateForm" class="k-edit-form">
+            <input id="certificateVessel" name="vessel" hidden>
+            <div class="k-edit-label">
+                <label for="certificateType">Certificate Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="certificateType" name="certificateType" required style="width: 200px;"
+                data-required-msg="Certificate Type is required."/>
+            </div>
+            
+            <div class="k-edit-label">
+                <label for="mandatory">Is Mandatory</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="mandatory" name="mandatory" required style="width: 200px;"
+                />
+            </div>
+            
+            <div class="k-edit-buttons k-state-default">
+                <button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewCertificate" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

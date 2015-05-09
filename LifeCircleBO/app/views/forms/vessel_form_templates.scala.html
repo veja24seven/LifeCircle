@@ -1,0 +1,605 @@
+<script id="vessel-header-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-header-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vessel.vesselId' name='vesselId'/>
+		<table style='width:1000px;vertical-align: top;'>
+			<tbody>
+				<tr style='vertical-align: top;'>
+        			<td>
+        				<div>
+        					<div class='k-edit-label'>
+				                <label for='owner'>Owner Name</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='owner' name='owner' 
+				                	data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+				                	data-bind='value:owner' required='required' style='width: 200px;' data-required-msg='Vessel Owner is required.'>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselName'>Vessel Name</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselName' name='vesselName' class='k-input k-textbox' 
+				                data-bind='value:vessel.vesselName' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+				                data-required-msg='Vessel Name is required'>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselSizeType'>Vessel Size Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselSizeType' name='vesselSizeType' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='vesselSizeTypesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.vesselSizeType.variableId' required='required' style='width: 200px;' data-required-msg='Vessel Size Type is required.'>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='yearBuild'>Year Build</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='yearBuild' name='yearBuild' class='k-input k-textbox' required='required' pattern='[0-9]{4}' maxlength='4'
+				                data-bind='value:vessel.yearBuild' placeholder='e.g 2010' data-required-msg='Year Build is required'
+				                >
+				            </div>
+
+							<div class='k-edit-label'>
+				                <label for='vesselRegType'>Vessel Reg Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselRegType' name='vesselRegType' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='vesselRegTypesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.regType.variableId' required='required' style='width: 200px;' data-required-msg='Vessel Reg Type is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselRegNo'>Vessel Reg No.</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselRegNo' name='vesselRegNo' 
+				                data-bind='value:vessel.regNo'
+				                class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='50'
+				                data-required-msg='Vessel Reg No is required'>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselRegDate'>Vessel Reg Date</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselRegDate' name='vesselRegDate' 
+				                	data-role='datepicker' data-bind='value:vessel.regDate' data-format="yyyy-MM-dd"
+				                	required='required' style='width: 200px;' data-required-msg='Vessel Reg Date is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselType'>Vessel Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselType' name='vesselType' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='vesselTypesDS' data-option-label='-Please Select-'
+				                	data-bind='value:vessel.vesselType.variableId' required='required' style='width: 200px;' data-required-msg='Vessel Type is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='operationType'>Operation Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='operationType' name='operationType' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='operationTypesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.operationType.variableId' required='required' style='width: 200px;' data-required-msg='Operation Type is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselFlagState'>Flag State</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselFlagState' name='vesselFlagState' 
+				                	data-role='dropdownlist' data-text-field='name' data-value-field='countryId' data-source='countriesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.flagState.countryId' required='required' style='width: 200px;' data-required-msg='Flag State is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='licenceType'>License Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='licenceType' name='licenceType' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='licenceTypesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.licenceType.variableId' required='required' style='width: 200px;' data-required-msg='License Type is required.'/>
+				            </div>
+        				</div>
+        			</td>
+        			
+        			<td>
+        				<div>
+        					<div class='k-edit-label'>
+				                <label for='registryPort'>Registry Port</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='registryPort' name='registryPort' 
+				                	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='registryPortsDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.regPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Registry Port is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='grossTonnage'>Gross Tonnage</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='grossTonnage' name='grossTonnage' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vessel.grossTonnage' required='required' style='width: 200px;' 
+				                	data-required-msg='Gross Tonnage is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='netTonnage'>Net Tonnage</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='netTonnage' name='netTonnage' 
+				                	data-role='numerictextbox'
+				                	data-bind='value:vessel.netTonnage' required='required' style='width: 200px;' 
+				                	data-required-msg='Net Tonnage is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselLength'>Vessel Length</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselLength' name='vesselLength' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vessel.length' required='required' style='width: 200px;' 
+				                	data-required-msg='Vessel Length is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselMake'>Vessel Make</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselMake' name='vesselMake' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='vesselMakesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.make.variableId' required='required' style='width: 200px;' data-required-msg='Vessel Make is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselModel'>Model</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselModel' name='vesselModel' class='k-input k-textbox' required='required' pattern='[A-Za-z0-9\- ]+' maxlength='100'
+				                data-bind='value:vessel.model' data-required-msg='Model is required'
+				                >
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='callSign'>Call Sign</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='callSign' name='callSign' class='k-input k-textbox' required='required' pattern='[A-Za-z0-9\- ]+' maxlength='50'
+				                data-bind='value:vessel.callSign' data-required-msg='Call Sign is required'
+				                >
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='imoNo'>IMO No.</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='imoNo' name='imoNo' class='k-input k-textbox' required='required' pattern='[A-Za-z0-9\- ]+' maxlength='50'
+				                data-bind='value:vessel.imoNo' data-required-msg='IMO No is required'
+				                >
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='properOfficer'>Proper Officer</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='properOfficer' name='properOfficer' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='properOfficersDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.properOffice.variableId' required='required' style='width: 200px;' data-required-msg='Proper Officer is required.'/>
+				            </div>
+
+							<div class='k-edit-label'>
+				                <label for='vesselUnder25gt'>Vessel Under 25GT</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselUnder25gt' name='vesselUnder25gt' 
+				                	data-role='dropdownlist' data-source='["YES","NO"]'
+									data-option-label='-Please Select-' 
+				                	data-bind='value:vessel.vesselUnder25gt' required='required' style='width: 200px;' 
+									data-required-msg='Vessel Under 25gt is required.'/>
+				            </div>
+        				</div>
+        			</td>
+        		</tr>	
+        		
+			</tbody>
+		</table>
+		<div class='k-edit-buttons k-state-default' style='width:990px;'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="vessel-detail-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-detail-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' id='vesselId' name='vesselId'/>
+		<table style='width:1000px;vertical-align: top;'>
+			<tbody>
+				<tr style='vertical-align: top;'>
+        			<td>
+        				<div>
+        					<div class='k-edit-label'>
+				                <label for='builderName'>Builder Name</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='builderName' name='builderName' 
+				                	data-role='autocomplete' data-text-field='builderName' data-source='builderNamesDS'  data-ignore-case='true' 
+				                	data-bind='value:vesselDetail.builderName' required='required' style='width: 200px;' data-required-msg='Builder Name is required.'
+									>
+				            </div>
+				            
+				            
+				            <div class='k-edit-label'>
+				                <label for='countryBuild'>Country Build</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='countryBuild' name='countryBuild' 
+				                	data-role='dropdownlist' data-text-field='name' data-value-field='countryId' data-source='countriesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vesselDetail.countryBuild.countryId' required='required' style='width: 200px;' data-required-msg='Country Build is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='placeBuild'>Place Build</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='placeBuild' name='placeBuild' class='k-input k-textbox' 
+				                data-bind='value:vesselDetail.placeBuild' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+				                data-required-msg='Place Build is required'>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='materialType'>Material Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='materialType' name='materialType' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='materialTypesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vesselDetail.materialType.variableId' required='required' style='width: 200px;' data-required-msg='Material Type is required.'>
+				            </div>
+
+							<div class='k-edit-label'>
+				                <label for='propellMethod'>Propell Method</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='propellMethod' name='propellMethod' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='propellMethodsDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vesselDetail.propellMethod.variableId' required='required' style='width: 200px;' data-required-msg='Propell Method is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='tonnageType'>Tonnage Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='tonnageType' name='tonnageType' 
+				                	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='tonnageTypesDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vesselDetail.tonnageType.variableId' required='required' style='width: 200px;' data-required-msg='Tonnage Type is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='driveType'>Drive Type</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='driveType' name='driveType' class='k-input k-textbox' required='required' pattern='[A-Za-z0-9\- ]+' maxlength='100'
+				                data-bind='value:vesselDetail.driveType' data-required-msg='Drive Type is required'
+				                >
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselWidth'>Vessel Width</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselWidth' name='vesselWidth' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vesselDetail.width' required='required' style='width: 200px;' 
+				                	data-required-msg='Vessel Width is required.'/>
+				            </div>
+				            
+				            
+				            <div class='k-edit-label'>
+				                <label for='vesselDepth'>Vessel Depth</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='vesselDepth' name='vesselDepth' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vesselDetail.depth' required='required' style='width: 200px;' 
+				                	data-required-msg='Vessel Depth is required.'/>
+				            </div>
+				            
+				            
+        				</div>
+        			</td>
+        			
+        			<td>
+        				<div>
+							<div class='k-edit-label'>
+				                <label for='noOfDecks'>No. of Decks</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='noOfDecks' name='noOfDecks' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vesselDetail.noOfDecks' required='required' style='width: 200px;' 
+				                	data-required-msg='No. of Decks is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='noOfBulkHeads'>No. of Bulk Heads</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='noOfBulkHeads' name='noOfBulkHeads' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vesselDetail.noOfBulkHeads' required='required' style='width: 200px;' 
+				                	data-required-msg='No. of Bulk Heads is required.'/>
+				            </div>
+				            
+				            
+				            <div class='k-edit-label'>
+				                <label for='boreAndStroke'>Bore &amp; Stroke</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='boreAndStroke' name='boreAndStroke' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vesselDetail.boreAndStroke' required='required' style='width: 200px;' 
+				                	data-required-msg='Bore & Stroke is required.'/>
+				            </div>
+							
+        					<div class='k-edit-label'>
+				                <label for='noOfEngines'>No. of Engines</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='noOfEngines' name='noOfEngines' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vesselDetail.noOfEngines' required='required' style='width: 200px;' 
+				                	data-required-msg='No. of Engines is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='cylinderPerEngine'>Cylinder per Engine</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='cylinderPerEngine' name='cylinderPerEngine' 
+				                	data-role='numerictextbox' min='0'
+				                	data-bind='value:vesselDetail.cylinderPerEngine' required='required' style='width: 200px;' 
+				                	data-required-msg='Cylinder per Engine is required.'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='prevRegNo'>Prev Reg No.</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='prevRegNo' name='prevRegNo' 
+				                data-bind='value:vesselDetail.prevRegNo'
+				                class='k-input k-textbox' pattern='[a-zA-Z0-9\- ]+' maxlength='50'
+				                data-required-msg='Prev Reg No. is required'>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='prevRegPort'>Prev Registry Port</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='prevRegPort' name='prevRegPort' 
+				                	data-role='dropdownlist' data-text-field='description' data-value-field='description' data-source='registryPortsDS' data-option-label='-Please Select-' 
+				                	data-bind='value:vesselDetail.prevRegPort' style='width: 200px;' data-required-msg='Prev Registry Port is required.'/>
+				            </div>
+
+							<div class='k-edit-label'>
+				                <label for='prevRegCancelDate'>Prev Reg Cancel Date</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='prevRegCancelDate' name='prevRegCancelDate' 
+				                	data-role='datepicker' data-bind='value:vesselDetail.prevRegCancelDate' data-format="yyyy-MM-dd"
+				                	style='width: 200px;'/>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='prevVesselName'>Prev Vessel Name</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='prevVesselName' name='prevVesselName' class='k-input k-textbox' 
+				                data-bind='value:vesselDetail.prevVesselName' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+				                data-required-msg='Prev Vessel Name is required'>
+				            </div>
+				            
+				            <div class='k-edit-label'>
+				                <label for='prevOwnerName'>Prev Owner Name</label>
+				            </div>
+				            <div class='k-edit-field'>
+				                <input id='prevOwnerName' name='prevOwnerName' class='k-input k-textbox' 
+				                data-bind='value:vesselDetail.prevOwnerName' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+				                data-required-msg='Prev Owner Name is required'>
+				            </div>
+        				</div>
+        			</td>
+        		</tr>	
+        		
+			</tbody>
+		</table>
+		<div class='k-edit-buttons k-state-default' style='width:990px;'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="vessel-attribute-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-attribute-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vesselId'/>
+		<input hidden data-bind='value:attribute.attributeId' name='attributeId'/>
+		<div class='k-edit-label'>
+            <label for='vesselAttributeType'>Information Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='vesselAttributeType' name='vesselAttributeType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='attributeTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:attribute.attributeType.variableId' required='required' style='width: 200px;' data-required-msg='Information Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='attributeName'>Information Value</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='attributeName' name='attributeName' class='k-input k-textbox' 
+            data-bind='value:attribute.attributeName' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            data-required-msg='Information Value is required'>
+        </div>
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="vessel-operator-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-operator-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vesselId'/>
+		<input hidden data-bind='value:operator.entryId' name='operatorId'/>
+		
+		<div class='k-edit-label'>
+            <label for='agent'>Agent Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='agent' name='agent' 
+            	data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:operatorAgentName' required='required' style='width: 200px;' data-required-msg='Agent Name is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='agentType'>Agent Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='agentType' name='agentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='agentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:operator.agentType.variableId' required='required' style='width: 200px;' data-required-msg='Agent Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='startDate'>Start Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='startDate' name='startDate' 
+            	data-role='datepicker' data-bind='value:operator.startDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Start Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='duration'>Duration</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='duration' name='duration' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:operator.duration' required='required' style='width: 200px;' 
+            	data-required-msg='Duration is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='agentDescr'>Description</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='agentDescr' name='agentDescr' class='k-input k-textbox' 
+            data-bind='value:operator.agentDescr' required='required' maxlength='500'
+            data-required-msg='Description is required'>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="vessel-certificate-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-certificate-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vesselId'/>
+		<input hidden data-bind='value:certificate.vesselCertificateId' name='certificateId'/>
+		
+        <div class='k-edit-label'>
+            <label for='certificateType'>Certificate Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='certificateType' name='certificateType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='certificateTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:certificate.certificateType.variableId' required='required' style='width: 200px;' data-required-msg='Certificate Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='mandatory'>Is Mandatory</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='mandatory' name='mandatory' 
+            	data-role='dropdownlist' data-source='["YES","NO"]'
+				data-option-label='-Please Select-'
+            	data-bind='value:isMandatory' required='required' style='width: 200px;' 
+				data-required-msg='Is Mandory is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+<script id="vessel-document-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-document-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vesselId'/>
+		<input hidden data-bind='value:document.documentId' name='documentId'/>
+		
+        <div class='k-edit-label'>
+            <label for='documentType'>Document Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='documentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='documentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:document.documentType.variableId' required='required' style='width: 200px;' data-required-msg='Document Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentRefNo'>Document Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentRefNo' name='documentRefNo' 
+            data-bind='value:document.documentRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='50'
+            data-required-msg='Document Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentDate'>Document Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentDate' name='documentDate' 
+            	data-role='datepicker' data-bind='value:document.documentDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Document Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentUrl'>Document Url/Path</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentUrl' name='documentUrl' type='file' style='width: 200px;' 
+				data-required-msg='Document Url/Path is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>

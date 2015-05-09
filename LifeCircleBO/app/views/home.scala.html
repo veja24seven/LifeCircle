@@ -1,0 +1,36 @@
+@(message: String)
+
+@main("Home","home") {
+    <div class="grid_12" style="height: 1000px;">
+    	<div class="home">
+
+            <div class="category bottom-border">
+                <a href="/members">
+                    <img alt="MEMBERS" src="@routes.Assets.at("images/user.png")">
+                    <span class="title">MEMBERS</span>
+                </a>
+            </div>
+
+            <div class="category bottom-border">
+                <a href="/admin">
+                    <img alt="Admin" src="@routes.Assets.at("images/user.png")">
+                    <span class="title">Admin</span>
+                </a>
+            </div>
+
+            <div class="category bottom-border">
+                <a href="/vars_app">
+                    <img alt="Variables App" src="@routes.Assets.at("images/user.png")">
+                    <span class="title">Variables App</span>
+                </a>
+            </div>
+
+            <div class="category bottom-border">
+                <a href="/dashboard">
+                    <img alt="Dash Board" src="@routes.Assets.at("images/certificates.png")">
+                    <span class="title">Dash Board</span>
+                </a>
+            </div>
+    	</div>
+    </div>
+}

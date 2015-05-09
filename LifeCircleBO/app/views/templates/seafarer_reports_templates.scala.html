@@ -1,0 +1,129 @@
+<script type="text/x-kendo-template" id="seafarer-toolbar-template">
+<div class="toolbar">
+    <label for="seafarerSearchField">Search By Name/Identity:</label>
+    <input id="seafarerSearchField" type="text" class="k-search">
+    <a id="searchSeafarersBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+	<a id="exportPdfSeafarersBtn" class="k-button" style="display:none;"><span class="k-icon k-search"></span>Export PDF</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="seafarer-coc-details-toolbar-template">
+<div class="toolbar">
+    <label for="seafarerCocDetailSearchField">Search By Name/Identity:</label>
+    <input id="seafarerCocDetailSearchField" type="text" class="k-search">
+    <a id="searchSeafarerCocDetailsBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+</div>	
+</script>
+<script type="text/x-kendo-template" id="seafarer-listing-toolbar-template">
+<div id='seafarer-listing-toolbar' class='toolbar'>
+	<form id='seafarer-listing-toolbar-form'>
+		<label for='seafarerType'>Seafarer Type:</label>
+		<input id='seafarerType' name='seafarerType' data-role='dropdownlist' data-text-field='value' data-value-field='variableId'
+			 data-source='seafarerTypesDS' data-option-label='All'>
+        
+        <label for='nationality'>Nationality:</label>
+		<input id='nationality' name='nationality' data-role='dropdownlist' data-text-field='name' data-value-field='countryId'
+			 data-source='nationalitiesDS' data-option-label='All'>
+			 
+		<label for='seafarerStatus'>Seafarer Status:</label>
+		<input id='seafarerStatus' name='seafarerStatus' data-role='dropdownlist' data-text-field='value' data-value-field='variableId'
+			 data-source='seafarerStatusesDS' data-option-label='All'>
+        
+        <label for='employer'>Employer:</label>
+        <input id="employer" name="employer" class="k-input k-textbox">
+        
+		<button class='k-button' type='submit'>Load Report</button>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="seafarer-demographic-detail-template">
+<div>
+	<h2 class="underlined-header">Seafarer Details</h2>
+	<div class='vessel-details'>
+         <ul>
+         	<li><img src='data:image/png;charset=utf-8;base64, #= seafarer.passportPhoto #' alt='image' width='100' height='100'/></li>
+         	<li><label>Full Name:</label>#= seafarer.customer.name1 #, #= seafarer.customer.name2 #</li>
+            <li><label>Date of Birth:</label>#= seafarer.customer.regDate #</li>
+            <li><label>Identity Type:</label>#= seafarer.customer.identityType.value #</li>
+            <li><label>Identity Number:</label>#= seafarer.customer.identityNumber #</li>
+			<li><label>Nationality:</label>#= seafarer.customer.nationality.name #</li>
+         </ul>
+  	</div>
+  	<h2 class="underlined-header">COC Details</h2>
+	<div class='vessel-details'>
+         <ul>
+         	<li><label>COC Type:</label>#= cocDetail.cocType.value #</li>
+            <li><label>Certificate No:</label>#= cocDetail.certificateNo #</li>
+            <li><label>Exam Date:</label>#= cocDetail.cocExamDate #</li>
+            <li><label>Exam Place:</label>#= cocDetail.cocExamPlace #</li>
+			<li><label>Issue Date:</label>#= cocDetail.cocIssueDate #</li>
+			<li><label>COC Convention:</label>#= cocDetail.cocConvention #</li>
+			<li><label>COC Regulation:</label>#= cocDetail.cocRegulation #</li>
+			<li><label>Expire Date:</label>#= cocDetail.cocExpireDate #</li>
+         </ul>
+  	</div>
+  	
+</div>
+<br/>	
+<h2 class='underlined-header'>COC Functions</h2>
+<br/>
+<div data-role='grid'
+	 data-columns='[
+	 	{ field: "funct", title:"Function"},
+	    { field: "level", title:"Level"},
+	    { field: "limitation", title:"Limitation(If any)" }
+	 ]'
+	 data-bind='source: cocFunctions'>
+</div>
+<br/>
+<h2 class='underlined-header'>COC Capacities</h2>
+<br/>
+<div  data-role='grid'
+	 data-columns='[
+	 	{ field: "capacity", title:"Capacity"},
+	    { field: "limitation", title:"Limitation(If any)" }
+	 ]'
+	 data-bind='source: cocCapacities'>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="seafarer-detail-template">
+<div>
+	<h2 class="underlined-header">Seafarer Details</h2>
+	<div class='vessel-details'>
+         <ul>
+         	<li><img src='data:image/png;charset=utf-8;base64, #= seafarer.passportPhoto #' alt='image' width='100' height='100'/></li>
+         	<li><label>Full Name:</label>#= seafarer.customer.name1 #, #= seafarer.customer.name2 #</li>
+            <li><label>Date of Birth:</label>#= seafarer.customer.regDate #</li>
+            <li><label>Identity Type:</label>#= seafarer.customer.identityType.value #</li>
+            <li><label>Identity Number:</label>#= seafarer.customer.identityNumber #</li>
+			<li><label>Nationality:</label>#= seafarer.customer.nationality.name #</li>
+         </ul>
+  	</div>
+</div>
+<br/>	
+<h2 class='underlined-header'>Seafarer Contacts</h2>
+<br/>
+<div data-role='grid'
+	 data-columns='[
+	 	{ field: "contactType.value", title:"Contact Type"},
+	    { field: "contactDetail", title:"Contact"}
+	 ]'
+	 data-bind='source: seafarer.customer.contacts'>
+</div>
+<br/>
+<h2 class='underlined-header'>Seafarer Certificates</h2>
+<br/>
+<div  data-role='grid'
+	 data-columns='[
+	 	{ field: "certificateType.value", title:"Certificate Type"},
+	    { field: "certificateRefNo", title:"Certificate Ref No" },
+	 	{ field: "capacityType.value", title:"Capacity Type"},
+		{ field: "issueDate", title:"Issue Date"},
+		{ field: "expireDate", title:"Expire Date"},
+		{ field: "approvalStatus.value", title:"Status"}
+	 ]'
+	 data-bind='source: certificates'>
+</div>
+</script>

@@ -28,7 +28,7 @@ public class VariableDao {
      * Get Variable by Id
      * @return
      */
-    public static Variable findById(int variableId){
+    public static Variable findById(long variableId){
     	Logger.info("Find Variable By Its ID :"+variableId);
         Variable type = null;
         try {

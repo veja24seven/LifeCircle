@@ -1,0 +1,169 @@
+body, p, input, button, select, textarea{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+}
+
+header{
+}
+
+.login {
+    width: 350px;
+    height: 250px;
+    margin: 200px auto 15px auto;
+    padding: 10px;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.07) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.01)), color-stop(100%,rgba(0,0,0,0.07)));
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: -o-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: -ms-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+}
+
+.header_sub_title{
+    height: 50px;
+    display: block;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.07) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.01)), color-stop(100%,rgba(0,0,0,0.07)));
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: -o-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: -ms-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+}
+
+.login input{
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 263px;
+}
+
+.login button{
+    float: right;
+}
+
+
+#modal {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.k-edit-field input{
+    width: 200px;
+}
+
+.k-edit-field input {
+    width: 200px;
+}
+
+.k-edit-field input[type=checkbox] {
+    width: 20px;
+}
+
+.k-item option{
+    display: inline-block;
+    width: 200px;
+}
+
+.vessel-details ul
+{
+    list-style:none;
+    font-style:italic;
+    margin: 15px;
+    padding: 0;
+}
+.vessel-details ul li
+{
+	display: inline-block;
+    margin: 0;
+    line-height: 1.7em;
+    width: 350px;
+}
+
+.vessel-details label
+{
+    display:inline-block;
+    width:120px;
+    padding-right: 10px;
+    text-align: right;
+    font-style:normal;
+    font-weight:bold;
+}
+
+.notice-details ul li
+{
+	display: inline-block;
+    margin: 0;
+    line-height: 1.7em;
+    width: 350px;
+}
+
+.notice-details label
+{
+    display:inline-block;
+    width:150px;
+    padding-right: 10px;
+    text-align: right;
+    font-style:normal;
+    font-weight:bold;
+}
+#sidebar {
+	padding : 5px;
+    border:1.5px solid black;
+    position:absolute;
+    top:0;
+    left:0;
+    width:500px;
+    height:100%;
+    background-color:red;
+    layer-background-color:#F2F2F2;
+}	
+
+.detail-table > tbody > tr > th {
+    border-bottom: 2px solid rgb(110, 167, 209);
+    color: rgb(120, 120, 120);
+    font-size: 1.4em;
+    font-weight: lighter;
+    padding: 0px 1em 0px 0px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.detail-table > tbody > tr > td {
+    padding-bottom: 0;
+    padding-top:0;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #787878;
+    border-bottom: 1px solid #e1e1e1;
+    width: 200px;
+}
+
+#vessels-listing-report-toolbar label{
+	display : inline-block;
+	width: 150px;
+}
+
+.underlined-header {
+	margin-left: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border-bottom: 2px solid rgb(110, 167, 209);
+}

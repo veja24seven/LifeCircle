@@ -1,0 +1,114 @@
+<script id="vessel-equipment-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-equipment-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vesselId' name='vessel'/>
+		<input hidden data-bind='value:equipment.vesselEquipmentHeaderId' name='equipmentId'/>
+		<div class='k-edit-label'>
+            <label for='equipment'>Equipment</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='equipment' name='equipment' 
+            	data-role='dropdownlist' data-text-field='equipmentName' data-value-field='equipmentId' data-source='equipmentsDS' data-option-label='-Please Select-' 
+            	data-bind='value:equipment.equipmentHeader.equipmentId' required='required' style='width: 200px;' data-required-msg='Equipment is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='isMandatory'>Is Mandatory</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='isMandatory' name='isMandatory' 
+            	data-role='dropdownlist' data-source='["YES","NO"]' data-option-label='-Please Select-' 
+            	data-bind='value:mandatory' required='required' style='width: 200px;' data-required-msg='Is Mandatory is required.'>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="equipment-checklist-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='equipment-checklist-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:checklist.checkListId' name='checklistId'/>
+		<div class='k-edit-label'>
+            <label for='listName'>List Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='listName' name='listName' 
+            data-bind='value:checklist.listName'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            data-required-msg='List Name No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='listDate'>List Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='listDate' name='listDate' 
+            	data-role='datepicker' data-bind='value:checklist.listDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='List Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='validPeriod'>Valid Period</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='validPeriod' name='validPeriod' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:checklist.validPeriod' required='required' style='width: 200px;' 
+            	data-required-msg='Valid Period is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='surveyor'>Surveyor</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='surveyor' name='surveyor' 
+            	data-role='autocomplete' data-text-field='name1' data-source='surveyorAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:surveyor' required='required' style='width: 200px;' data-required-msg='Surveyor is required.'>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+
+<script id="equipment-component-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='equipment-component-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:equipmentId' name='equipment'/>
+		<input hidden data-bind='value:equipmentComponent' name='equipmentComponent'/>
+		
+		<div class='k-edit-label'>
+            <label for='component'>Equipment Component</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='component' name='component' 
+            	data-role='dropdownlist' data-text-field='componentName' data-value-field='componentId' data-source='equipmentComponentsDS' data-option-label='-Please Select-' 
+            	data-bind='value:component.componentId' required='required' style='width: 200px;' data-required-msg='Equipment Component is required.'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='requiredQuantity'>Required Quantity</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='requiredQuantity' name='requiredQuantity' 
+            	data-role='numerictextbox' min='1' max='1000'
+            	data-bind='value:requiredQuantity' required='required' style='width: 200px;' 
+            	data-required-msg='Required Quantity is required.'/>
+        </div>
+		
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>

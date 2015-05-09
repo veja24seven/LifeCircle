@@ -1,0 +1,258 @@
+<script type="text/x-kendo-template" id="applications-grid-toolbar-template">
+<div class='toolbar'>
+	<label for='searchField'>Search:</label>
+	<input id='searchField' type='text' class='k-search'>
+	<a id='searchBtn' class='k-button'><span class='k-icon k-search'></span>Search</a>
+	<a id='applicationAddBtn' class='k-button'><span class='k-icon k-add'></span>Add WMP Application</a>
+	<a id='applicationEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit WMP Application</a>
+	<a id='applicationApprovalBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Approval</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="applications-grid-detail-template">
+<div class='applications-grid-detail-tabstrip'>
+	<ul>
+		<li class='k-state-active'>Application Details</li>
+		<li>Application Trackings</li>
+		<li>Application Documents</li>
+	</ul>
+	<div class='notice-details'>
+   		<ul>
+           	<li><label>Vessel Name:</label>#= vessel.vesselName #, #= vessel.regNo #</li>
+        	<li><label>Owner:</label>#= owner.name1 #, #= owner.identityNumber #</li>
+           	<li><label>Application No.:</label>#= applicationNo #</li>
+           	<li><label>Application Date:</label>#= applicationDate #</li>
+           	<li><label>WMP Type:</label>#= wmpType.value #</li>
+           	<li><label>Received Date:</label>#= receivedDate #</li>
+           	<li><label>Received By:</label>#= receivedBy #</li>
+           	<li><label>Received Office:</label>#= receivedOffice.value #</li>
+           	<li><label>Receipt No.:</label>#= receiptNo #</li>
+           	<li><label>Receipt Date:</label>#= receiptDate #</li>
+           	<li><label>Approval Status:</label>#= approvalStatus.value #</li>
+           	<li><label>Approved Date:</label>#= approvedDate!=null?approvedDate:'Pending' #</li>
+           	<li><label>Owner Contacts:</label>#= ownerContacts #</li>
+           	<li><label>Approval Remarks:</label>#= approvalRemarks!=null? approvalRemarks:'Pending' #</li>
+        </ul>
+   	</div>
+	<div class='trackingsGrid'></div>
+	<div class='documentsGrid'></div>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="application-documents-grid-toolbar-template">
+	<a class='documentAddBtn k-button'><span class='k-icon k-add'></span>Add Application Document</a>
+	<a class='documentDeleteBtn k-button' style='display:none;'><span class='k-icon k-delete'></span>Delete</a>
+</script>
+
+<script type="text/x-kendo-template" id="application-trackings-grid-toolbar-template">
+	<a class='trackingAddBtn k-button'><span class='k-icon k-add'></span>Add Application Tracking</a>
+	<a class='trackingEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Application Tracking</a>
+</script>
+
+<!-- FORMS -->
+<script type="text/x-kendo-template" id="application-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='application-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.applicationId' name='applicationId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='vessel'>Vessel</label>
+	    </div>
+	    <div class='k-edit-field'>
+            <input id='vessel' name='vessel' 
+            	data-role='autocomplete' data-text-field='vesselName' data-source='vesselAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:vessel' required='required' style='width: 250px;' data-required-msg='Vessel is required.'>
+        </div>
+
+		<div class='k-edit-label'>
+            <label for='applicationNo'>Application No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='applicationNo' name='applicationNo' 
+            	data-bind='value:dataItem.applicationNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Application No. is required'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='applicationDate'>Application Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='applicationDate' name='applicationDate' 
+            	data-role='datepicker' data-bind='value:dataItem.applicationDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Application Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='wmpType'>WMP Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='wmpType' name='wmpType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='wmpTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.wmpType.variableId' required='required' style='width: 250px;' data-required-msg='WMP Type is required.'>
+	    </div>
+		
+		<div class='k-edit-label'>
+            <label for='receiptNo'>Receipt No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='receiptNo' name='receiptNo' 
+            	data-bind='value:dataItem.receiptNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Receipt No. is required'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='receiptDate'>Receipt Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='receiptDate' name='receiptDate' 
+            	data-role='datepicker' data-bind='value:dataItem.receiptDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Receipt Date is required.'/>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='ownerContacts'>Owner Contacts</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='ownerContacts' name='ownerContacts' 
+				data-bind='value:dataItem.ownerContacts' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Owner Contacts are required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="application-approval-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='application-approval-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.applicationId' name='applicationId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='approvalStatus'>Approval Status</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='approvalStatus' name='approvalStatus' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='approvalStatusesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.approvalStatus.variableId' required='required' style='width: 200px;' data-required-msg='Approval Status is required.'>
+	    </div>
+		
+		<div class='k-edit-label'>
+            <label for='approvalRemarks'>Approval Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='approvalRemarks' name='approvalRemarks' 
+				data-bind='value:dataItem.approvalRemarks' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Approval Remarks are required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Update</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="application-tracking-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='application-tracking-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.trackingId' name='trackingId'>
+		
+		<div class='k-edit-label'>
+            <label for='trackingDate'>Tracking Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='trackingDate' name='trackingDate' 
+            	data-role='datepicker' data-bind='value:dataItem.trackingDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Tracking Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='trackingAction'>Tracking Action</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='trackingAction' name='trackingAction' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='trackingActionsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.trackingAction.variableId' required='required' style='width: 200px;' data-required-msg='Tracking Action is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='actionDate'>Action Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='actionDate' name='actionDate' 
+            	data-role='datepicker' data-bind='value:dataItem.actionDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Action Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='actionRemarks'>Action Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='actionRemarks' name='actionRemarks' 
+				data-bind='value:dataItem.actionRemarks' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Action Remarks are required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="application-document-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='application-document-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:document.documentId' name='documentId'/>
+		
+        <div class='k-edit-label'>
+            <label for='documentType'>Document Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='documentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='documentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:document.documentType.variableId' required='required' style='width: 200px;' data-required-msg='Document Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentRefNo'>Document Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentRefNo' name='documentRefNo' 
+            data-bind='value:document.documentRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='50'
+            data-required-msg='Document Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentDate'>Document Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentDate' name='documentDate' 
+            	data-role='datepicker' data-bind='value:document.documentDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Document Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentUrl'>Document Url/Path</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentUrl' name='documentUrl' type='file' style='width: 200px;' 
+				data-required-msg='Document Url/Path is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>

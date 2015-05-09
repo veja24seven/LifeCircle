@@ -1,0 +1,28 @@
+@(message: String)
+
+@main("Admin","admin") {
+<div class="grid_12" style="height: 1000px;">
+    <div class="home">
+        <div class="category bottom-border">
+            <a href="/persons">
+                <img alt="PEOPLE" src="@routes.Assets.at("images/user.png")">
+                <span class="title">PEOPLE</span>
+            </a>
+        </div>
+
+        <div class="category bottom-border">
+            <a href="/branches">
+                <img alt="BRANCHES" src="@routes.Assets.at("images/user.png")">
+                <span class="title">BRANCHES</span>
+            </a>
+        </div>
+
+        <div class="category bottom-border">
+            <a href="/useradmin">
+                <img alt="Admin" src="@routes.Assets.at("images/user.png")">
+                <span class="title">User Admin</span>
+            </a>
+        </div>
+    </div>
+</div>
+}

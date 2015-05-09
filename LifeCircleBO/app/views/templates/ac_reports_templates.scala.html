@@ -1,0 +1,77 @@
+<script type="text/x-kendo-template" id="arrival-notice-listing-toolbar-template">
+<div id='arrival-notice-listing-toolbar' class='toolbar'>
+	<form id='arrival-notice-listing-toolbar-form'>
+		<label for='fromDate0'>From:</label>
+		<input id='fromDate0' name='fromDate' 
+           	data-role='datepicker' data-format="yyyy-MM-dd"
+           	required='required'/>
+        
+        <label for='toDate0'>To:</label>
+		<input id='toDate0' name='toDate' 
+           	data-role='datepicker' data-format="yyyy-MM-dd"
+           	required='required'/>
+			
+		<label for='regPort'>Arrival Port:</label>
+		<input id='regPort' name='regPort' data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId'
+			 data-source='registryPortsDS' data-option-label='All'>
+		
+		<label for='arrivalStatus'>Arrival Status:</label>
+		<input id='arrivalStatus' name='arrivalStatus' data-role='dropdownlist' data-text-field='value' data-value-field='variableId'
+			 data-source='arrivalStatusesDS' data-option-label='All'>
+		
+		<button class='k-button' type='submit'>Load Report</button>
+	</form>
+</div>
+</script>
+
+
+<script type="text/x-kendo-template" id="outward-clearance-listing-toolbar-template">
+<div id='outward-clearance-listing-toolbar' class='toolbar'>
+	<form id='outward-clearance-listing-toolbar-form'>
+		<label for='fromDate1'>From:</label>
+		<input id='fromDate1' name='fromDate' 
+           	data-role='datepicker' data-format="yyyy-MM-dd"
+           	required='required'/>
+        
+        <label for='toDate1'>To:</label>
+		<input id='toDate1' name='toDate' 
+           	data-role='datepicker' data-format="yyyy-MM-dd"
+           	required='required'/>
+			
+		<label for='departPort'>Depart Port:</label>
+		<input id='departPort' name='departPort' data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId'
+			 data-source='registryPortsDS' data-option-label='All'>
+		
+		<button class='k-button' type='submit'>Load Report</button>
+	</form>
+</div>	
+</script>
+
+<script type="text/x-kendo-template" id="outward-clearance-crew-template">
+<div data-role='grid'
+	data-bind='source: crewListDS'
+	data-columns='[
+			{title:"Seafarer", field:"seafarer.seafarerName"},
+		    {field:"position.positionDescription",title:"Position"},
+		    {field:"nationality.name",title:"Nationality"},
+		    {field:"safetyCertificateNo",title:"Safety Certificate No"},
+		    {field:"safetyCertificateDate",title:"Safety Certificate Date"},
+		    {field:"healthCertificateNo",title:"Health Certificate No"},
+		    {field:"healthCertificateDate",title:"Health Certificate Date"}
+	]'>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="outward-clearance-certificates-template">
+<div data-role='grid'
+	data-bind='source: certificatesDS'
+	data-columns='[
+			{field:"certificateType.value",title:"Certificate Type"},
+		    {field:"certificateRefNo",title:"Certificate Ref No"},
+		    {field:"expiryDate",title:"Expire Date"},
+		    {field:"extensionDate",title:"Extension Date"}
+	]'>
+</div>
+</script>
+
+

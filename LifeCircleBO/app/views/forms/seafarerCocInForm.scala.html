@@ -1,0 +1,162 @@
+<script id="dma-certificate-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='dma-certificate-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:certificate.certificateId' name='certificate'/>
+		
+		<div class='k-edit-label'>
+	    	<label for='operationArea'>Operation Area</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='operationArea' name='operationArea' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='value' data-source='operationAreasDS' data-option-label='-Please Select-' 
+	          	data-bind='value:certificate.operationArea' required='required' style='width: 200px;' data-required-msg='Operation Area is required.'>
+	    </div>
+	    
+        <div class='k-edit-label'>
+            <label for='certificateCode'>Certificate Code</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='certificateCode' name='certificateCode' 
+            	data-bind='value:certificate.certificateCode'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='150'
+            	data-required-msg='Certificate Code is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='className'>Class Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='className' name='className' 
+            	data-bind='value:certificate.className'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            	data-required-msg='Class Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='classRank'>Class Rank</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='classRank' name='classRank' 
+            	data-bind='value:certificate.classRank'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            	data-required-msg='Class Rank is required'>
+        </div>
+        
+        
+        <div class='k-edit-label'>
+            <label for='gradeName'>Grade Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='gradeName' name='gradeName' 
+            	data-bind='value:certificate.gradeName'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            	data-required-msg='Grade Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='gradeRank'>Grade Rank</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='gradeRank' name='gradeRank' 
+            	data-bind='value:certificate.gradeRank'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            	data-required-msg='Grade Rank is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='certificateAvailable'>Is Available</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='certificateAvailable' name='available' 
+	        	data-role='dropdownlist' data-source='["YES","NO"]' data-option-label='-Please Select-' 
+	          	data-bind='value:certificate.available' required='required' style='width: 200px;' data-required-msg='Is Available is required.'>
+	    </div>
+	    
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="foreign-conversion-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='foreign-conversion-form' class='k-edit-form' style='width:100%;'>
+		
+		<input hidden data-bind='value:conversion.conversionId' name='conversionId'/>
+
+		<div class='k-edit-label'>
+	    	<label for='certificate'>DMA Certificate</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='certificate' name='certificate' 
+	        	data-role='dropdownlist' data-text-field='certificateCode' data-value-field='certificateId' data-source='dmaCertificatesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:conversion.certificate.certificateId' required='required' style='width: 200px;' data-required-msg='DMA Certificate is required.'>
+	    </div>
+	    
+        <div class='k-edit-label'>
+            <label for='foreignCode'>Foreign Code</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='foreignCode' name='foreignCode' 
+            	data-bind='value:conversion.foreignCode'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            	data-required-msg='Foreign Code is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='foreignName'>Foreign Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='foreignName' name='foreignName' 
+            	data-bind='value:conversion.foreignName'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            	data-required-msg='Foreign Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='foreignRank'>Foreign Rank</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='foreignRank' name='foreignRank' 
+            	data-bind='value:conversion.foreignRank'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_ ]+' maxlength='150'
+            	data-required-msg='Foreign Rank is required'>
+        </div>
+        
+		<div class='k-edit-label'>
+	    	<label for='issueCountry'>Issue Country</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='issueCountry' name='issueCountry' 
+	        	data-role='dropdownlist' data-text-field='name' data-value-field='name' data-source='issueCountriesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:conversion.issueCountry' required='required' style='width: 200px;' data-required-msg='Issue Country is required.'>
+	    </div>
+	    
+	    
+		<div class='k-edit-label'>
+	    	<label for='issueAuthority'>Issue Authority</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='issueAuthority' name='issueAuthority' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='value' data-source='issueAuthoritiesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:conversion.issueAuthority' required='required' style='width: 200px;' data-required-msg='Issue Authorities is required.'>
+	    </div>
+	    
+        <div class='k-edit-label'>
+	    	<label for='conversionAvailable'>Is Available</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='conversionAvailable' name='available' 
+	        	data-role='dropdownlist' data-source='["YES","NO"]' data-option-label='-Please Select-' 
+	          	data-bind='value:conversion.available' required='required' style='width: 200px;' data-required-msg='Is Available is required.'>
+	    </div>
+	    
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>

@@ -1,0 +1,115 @@
+<script type="text/x-kendo-template" id="branches-grid-toolbar-template">
+    <div class='toolbar'>
+        <a id='branchAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Branch</a>
+        <a id='branchEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Branch</a>
+    </div>
+</script>
+
+<!-- FORMS -->
+<script type="text/x-kendo-template" id="branch-form-template">
+    <div class='k-edit-form-container' style='width: 100%;'>
+        <form id='branch-form' class='k-edit-form' style='width:100%;'>
+            <input hidden data-bind='value:dataItem.branchId' name='branchId'>
+
+            <div class='k-edit-label'>
+                <label for='branchCode'>Branch Code</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='branchCode' name='branchCode'
+                       data-bind='value:dataItem.branchCode'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='5'
+                       data-required-msg='Branch Code is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='branchName'>Branch Name</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='branchName' name='branchName'
+                       data-bind='value:dataItem.branchName'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       data-required-msg='Branch Name is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='branchType'>Branch Type</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id="branchType" name='branchType'
+                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='branchTypesDS' data-option-label='-Please Select-'
+                       data-bind='value:dataItem.branchType.variableId' required='required' style='width: 200px;' data-required-msg='Branch Type is required.'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='streetNumber'>Street Number</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='streetNumber' name='streetNumber'
+                       data-bind='value:dataItem.address.streetNumber'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                       placeholder="e.g No. 10"
+                       data-required-msg='Branch Street Number is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='streetName'>Street Name</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='streetName' name='streetName'
+                       data-bind='value:dataItem.address.streetName'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g Long Str"
+                       data-required-msg='Branch Street Name is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='suburb'>Suburb</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='suburb' name='suburb'
+                       data-bind='value:dataItem.address.suburb'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g City Centre"
+                       data-required-msg='Branch Suburb is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='town'>Town</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='town' name='town'
+                       data-bind='value:dataItem.address.town'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g Cape Town"
+                       data-required-msg='Branch Town is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='province'>Province</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='province' name='province'
+                       data-bind='value:dataItem.address.province'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g Western Cape"
+                       data-required-msg='Branch Province is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='postalCode'>Postal Code</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='postalCode' name='postalCode'
+                       data-bind='value:dataItem.address.postalCode'
+                       class='k-input k-textbox' required='required' pattern='[0-9]{4}' maxlength='4'
+                       placeholder="e.g 4009"
+                       data-required-msg='Branch Postal Code is required'>
+            </div>
+
+            <div class='k-edit-buttons k-state-default'>
+                <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+                <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+            </div>
+        </form>
+    </div>
+</script>

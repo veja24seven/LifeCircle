@@ -1,0 +1,46 @@
+	<script type="text/x-kendo-template" id="vesselsTemplate">
+        <div class="toolbar">
+            <label for="vesselSearch">Search</label>
+            <input id="vesselSearch" type="text" class="k-search">
+            <a id="searchVesselsBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+            <!--<a class="k-button"><span class="k-icon k-edit"></span>Edit</a>
+            <a class="k-button"><span class="k-icon k-delete"></span>Delete</a>-->
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="arrivalNoticesTemplate">
+        <div class="toolbar">
+            <a id="arrivalNoticeAddBtn" class="k-button"><span class="k-icon k-add"></span>Add Arrival Notice</a>
+			<a id="arrivalNoticeEditBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Arrival Notice</a>
+			<a id="arrivalNoticeStatusBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Update Status</a>
+        </div>
+    </script>
+    
+	
+<!-- Grid Datail Templates -->
+<script type="text/x-kendo-template" id="arrivalNoticeDetailTemplate">
+	<div class='notice-details'>
+                 <ul>
+                 	<li><label>Owner:</label>#= owner.name1 #, #= owner.identityNumber #</li>
+                    <li><label>Vessel Name:</label>#= vessel.vesselName #</li>
+                    <li><label>Vessel Type:</label>#= vessel.vesselType.value #</li>
+                    <li><label>Entry Date:</label>#= entryDate #</li>
+                    <li><label>Notice Date:</label>#= noticeDate #</li>
+                    <li><label>Arrival Date:</label>#= kendo.toString(new Date(arrivalDate),'yyyy-MM-dd HH:mm') #</li>
+                    <li><label>Arrival Port:</label>#= arrivalPort.description #</li>
+                    <li><label>Visit Duration:</label>#= visitDuration #</li>
+                    <li><label>Planned Operation:</label>#= plannedOperation #</li>
+                    <li><label>Previous Port:</label>#= previousPort #</li>
+                    <li><label>Next Port:</label>#= nextPort #</li>
+                    <li><label>Hull Configuration:</label>#= hullConfiguration #</li>
+                    <li><label>Tank Condition:</label>#= tankCondition #</li>
+                    <li><label>Ballast Condition:</label>#= ballastCondition #</li>
+                    <li><label>Planned Surveys:</label>#= plannedSurveys #</li>
+                    <li><label>Ship Master Name:</label>#= shipMasterName #</li>
+                    <li><label>Ship Master Contacts:</label>#= shipMasterContacts #</li>
+                    <li><label>Arrival Status:</label>#= arrivalStatus.value #</li>
+					<li><label>Status Date:</label>#= statusDate!=null?statusDate:'N/A' #</li>
+                    <li><label>Confirmed By:</label>#= statusConfirmedBy!=null?statusConfirmedBy:'N/A' #</li>
+                 </ul>
+          	</div>
+</script>

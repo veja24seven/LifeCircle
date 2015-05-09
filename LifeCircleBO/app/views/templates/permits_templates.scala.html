@@ -1,0 +1,292 @@
+<script type="text/x-kendo-template" id="applications-grid-toolbar-template">
+<div class='toolbar'>
+	<label for='searchField'>Search:</label>
+	<input id='searchField' type='text' class='k-search'>
+	<a id='searchBtn' class='k-button'><span class='k-icon k-search'></span>Search</a>
+	<a id='applicationAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Permit Application</a>
+	<a id='applicationEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Permit Application</a>
+	<a id='applicationApprovalBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Approve Permit Application</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="permits-grid-toolbar-template">
+	<a class='permitAddBtn k-button'><span class='k-icon k-add'></span>Add Permit Detail</a>
+	<a class='permitEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Permit Detail</a>
+</script>
+
+<script type="text/x-kendo-template" id="documents-grid-toolbar-template">
+	<a class='documentAddBtn k-button'><span class='k-icon k-add'></span>Add Event Document</a>
+	<a class='documentDeleteBtn k-button' style='display:none;'><span class='k-icon k-delete'></span>Delete</a>
+</script>
+
+<script type="text/x-kendo-template" id="permit-templates-grid-toolbar-template">
+	<a class='templateAddBtn k-button'><span class='k-icon k-add'></span>Add Permit Template</a>
+	<a class='templateEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Permit Template</a>
+</script>
+
+<script type="text/x-kendo-template" id="applications-grid-detail-template">
+<div class='applications-grid-detail-tabstrip'>
+	<ul>
+		<li class='k-state-active'>Permit Application Details</li>
+		<li>Permit Details</li>
+		<li>Permit Documents</li>
+	</ul>
+	<div class='notice-details'>
+   		<ul>
+           	<li><label>Customer:</label>#= customer.name1 # #= customer.name2 #</li>
+        	<li><label>Agent:</label>#= agent.name1 # #= agent.name2 #</li>
+           	<li><label>Permit Type:</label>#= permitType.permitName #</li>
+           	<li><label>Application Date:</label>#= applicationDate #</li>
+           	<li><label>Application No:</label>#= applicationNo #</li>
+           	<li><label>Request Reason:</label>#= requestReason #</li>
+           	<li><label>Port Code:</label>#= portCode.description #</li>
+           	<li><label>Permit Details:</label><code>#= permitDetails #</code></li>
+        </ul>
+   	</div>
+	<div class='permitsGrid'></div>
+	<div class='documentsGrid'></div>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="permit-types-grid-toolbar-template">
+	<div class='templatesGrid'></div>
+</script>
+
+<script type="text/x-kendo-template" id="application-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='application-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.applicationId' name='applicationId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='customer'>Customer</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='customer' name='customer' 
+				data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+				data-bind='value:customer' required='required' style='width: 200px;' data-required-msg='Customer is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='agent'>Agent</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='agent' name='agent' 
+				data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+				data-bind='value:agent' required='required' style='width: 200px;' data-required-msg='Agent is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='permitType'>Permit Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='permitType' name='permitType' 
+	        	data-role='dropdownlist' data-text-field='permitName' data-value-field='permitTypeId' data-source='permitTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.permitType.permitTypeId' required='required' style='width: 200px;' data-required-msg='Permit Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='permitDetails'>Permit Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='permitDetails' name='permitDetails' data-role='editor'
+            	data-tools='["bold","italic","underline","justifyLeft","justifyCenter","justifyRight","justifyFull"]'
+				data-bind='value:dataItem.permitDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Permit Details is required'></textarea>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='applicationDate'>Application Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='applicationDate' name='applicationDate' 
+            	data-role='datepicker' data-bind='value:dataItem.applicationDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Application Date is required.'/>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='applicationNo'>Application No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='applicationNo' name='applicationNo' 
+            	data-bind='value:dataItem.applicationNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Application No. is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='requestReason'>Request Reason</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='requestReason' name='requestReason' 
+				data-bind='value:dataItem.requestReason' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Request Reason is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='portCode'>Port Code</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='portCode' name='portCode' 
+	        	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='namibianPortsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.portCode.registryPortId' required='required' style='width: 200px;' data-required-msg='Port Code is required.'>
+	    </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="permit-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='permit-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.permitId' name='permitId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='permitType'>Permit Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='permitType' name='permitType' 
+	        	data-role='dropdownlist' data-text-field='permitName' data-value-field='permitTypeId' data-source='permitTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.permitType.permitTypeId' required='required' style='width: 200px;' data-required-msg='Permit Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='permitRefNo'>Permit Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='permitRefNo' name='permitRefNo' 
+            	data-bind='value:dataItem.permitRefNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Permit Ref No. is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='issueDate'>Issue Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='issueDate' name='issueDate' 
+            	data-role='datepicker' data-bind='value:dataItem.issueDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Issue Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='validPeriod'>Valid Period</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='validPeriod' name='validPeriod' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:dataItem.validPeriod' required='required' style='width: 200px;' 
+            	data-required-msg='Valid Period is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='receiptNo'>Receipt No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='receiptNo' name='receiptNo' 
+            	data-bind='value:dataItem.receiptNo'
+            	class='k-input k-textbox' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='receiptDate'>Receipt Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='receiptDate' name='receiptDate' 
+            	data-role='datepicker' data-bind='value:dataItem.receiptDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;'/>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="permit-document-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='permit-document-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:document.documentId' name='documentId'/>
+		
+        <div class='k-edit-label'>
+            <label for='documentType'>Document Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='documentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='documentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:document.documentType.variableId' required='required' style='width: 200px;' data-required-msg='Document Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentRefNo'>Document Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentRefNo' name='documentRefNo' 
+            data-bind='value:document.documentRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='50'
+            data-required-msg='Document Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentDate'>Document Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentDate' name='documentDate' 
+            	data-role='datepicker' data-bind='value:document.documentDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Document Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentUrl'>Document Url/Path</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentUrl' name='documentUrl' type='file' style='width: 200px;' 
+				data-required-msg='Document Url/Path is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+<script id="permit-template-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='permit-template-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.templateId' name='templateId'/>
+		
+		<div class='k-edit-label'>
+            <label for='templateFile'>Template File</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='templateFile' name='templateFile' 
+            	data-bind='value:dataItem.templateFile'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Template File is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='templateText'>Template Text</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='templateText' name='templateText' data-role='editor'
+            	data-tools='["bold","italic","underline","justifyLeft","justifyCenter","justifyRight","justifyFull"]'
+				data-bind='value:dataItem.templateText' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Template Text is required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>

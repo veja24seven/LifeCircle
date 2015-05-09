@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vessel IMO Report" pageWidth="1053" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1053" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="01d40954-cb5b-4a12-938c-107dfd716895">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="303"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATE_OF_REPORT" class="java.lang.String"/>
+	<parameter name="REPORT_PORT" class="java.lang.String"/>
+	<parameter name="CURRENT_PATH" class="java.lang.String"/>
+	<queryString language="json">
+		<![CDATA[]]>
+	</queryString>
+	<field name="vesselName" class="java.lang.String"/>
+	<field name="yearBuild" class="java.lang.String"/>
+	<field name="regPort" class="java.lang.String"/>
+	<field name="regNo" class="java.lang.String"/>
+	<field name="callSign" class="java.lang.String"/>
+	<field name="length" class="java.lang.String"/>
+	<field name="grossTonnage" class="java.lang.String"/>
+	<field name="vesselOwner" class="java.lang.String"/>
+	<field name="registeredYear" class="java.lang.String"/>
+	<field name="lastInspectionDate" class="java.lang.String"/>
+	<title>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e2c4ee63-1c26-4bdf-86c3-82b0b2c1b940" x="0" y="52" width="1053" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIC OF NAMIBIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44098107-9586-4b46-9f33-1f5b0f140117" x="0" y="73" width="1053" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTRY OF WORKS, TRANSPORT AND COMMUNICATION]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="820c01bd-8f27-4cc2-abe5-3076218459b7" x="0" y="93" width="1053" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="6f6f9ff8-362e-431d-9061-25204ae042c8" x="0" y="94" width="1053" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT OF TRANSPORT : DIRECTORATE MARITIME AFFAIRS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="376f995f-184a-4fb0-b841-c472aa2f34cc" x="1" y="114" width="1053" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Merchant shipping Act, 1951 (Act 57 of 1951), as amended]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90689ec7-6f57-482b-9769-9604b39cfe48" x="0" y="134" width="1053" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VESSEL IMO REPORT]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement uuid="d50628b0-9695-4144-9b65-b0c60d4a3a57" x="0" y="1" width="1053" height="49"/>
+				<imageExpression><![CDATA[$P{CURRENT_PATH}+"/public/reports/armsnew.bmp"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="aabf489f-73a8-4e7a-8ec1-9e96ca70788f" x="1" y="73" width="1053" height="1"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="60">
+			<staticText>
+				<reportElement uuid="576b8757-5d66-4aa4-93e8-7f9306bd2e98" x="1" y="0" width="141" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vessel Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc727f38-4e54-47f0-a431-7ed41ebd39c8" x="142" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Year Build]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98f52a7e-6a22-4a0f-9eca-3c29cd3cdc5e" x="242" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Call Sign]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="db1e7930-a204-4fb9-98eb-b6839ca961c2" x="342" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Length]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="634a0e3d-e118-43be-8f92-4da883d0b299" x="442" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross Tonnage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="85aae2bd-0159-4e21-aebf-5a946bfbedbb" x="542" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vessel Owner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="78a24f31-9d82-4ea8-a50d-d991d5dcb1dc" x="642" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Registered Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="88f73d1f-21c9-4132-b56d-9ec6eb116227" x="742" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reg No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0be47aae-c7f4-4256-8843-b16a95f4bbe9" x="842" y="0" width="100" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reg Port]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8cd1d928-400e-4b22-8c1c-7c83497538ee" x="942" y="0" width="112" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Last Inspection Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aaeec78a-e1cb-45c4-96ea-9822976cc22b" x="1" y="30" width="141" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{vesselName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06f8e663-e7e5-4e85-8f79-75dfd120ece8" x="142" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{yearBuild}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6bbe75c9-1357-4232-ba53-0b2e7e38a7a6" x="242" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{callSign}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1860cfd0-f7a2-4c0f-a2af-a68618851b3e" x="342" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{length}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4e5b5805-8eb5-4e6f-8ee4-af865169d879" x="442" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{grossTonnage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9182e9ef-a7d9-4b49-b81f-51d862f20974" x="542" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{vesselOwner}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="597161f6-aaf0-416f-a158-43088f1c15a1" x="642" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{registeredYear}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8bb656ee-1151-4693-a1b8-57e129f8af8a" x="742" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{regNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f98144b1-9479-4860-8fa0-1846d2ada017" x="842" y="30" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{regPort}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="be1919f7-a4c8-49c9-b1a3-5f9bf1ce7c0a" x="942" y="30" width="112" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{lastInspectionDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

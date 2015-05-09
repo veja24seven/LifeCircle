@@ -21,4 +21,9 @@ public class LookUp extends Controller {
                 )
         );
     }
+
+    @Transactional
+    public static Result variableCategories(){
+        return ok(Json.toJson(Category.values()));
+    }
 }

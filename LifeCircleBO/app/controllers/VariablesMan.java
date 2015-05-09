@@ -45,7 +45,7 @@ public class VariablesMan extends Controller {
 		try {
 			JsonNode json = request().body().asJson();
 			
-			Variable variable = VariableDao.findById(json.get("variableId").asInt());
+			Variable variable = VariableDao.findById(json.get("variableId").asLong());
 			variable.setCategory(Category.valueOf(Category.class, json.get("category").textValue()));
 			variable.setValue(json.get("value").textValue());
 			variable.setStatus(json.get("status").textValue());

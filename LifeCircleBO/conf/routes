@@ -5,14 +5,45 @@
 # Home page
 GET         /                                                   controllers.Application.index()
 POST        /login                                              controllers.Application.login()
+GET         /logout                                             controllers.Application.logout()
+POST        /change_password                                    controllers.Application.changeUserPassword()
+
+GET         /persons                                            controllers.Application.personsApp()
+GET         /branches                                            controllers.Application.branchesApp()
+GET         /admin                                              controllers.Application.admin()
+GET         /useradmin                                          controllers.Application.userAdmin()
+GET         /vars_app                                           controllers.Application.variablesApp()
+
+# Detail Views
+GET         /person/display/:personId                          controllers.Application.personDisplay(personId:String)
+
+# Admin
+GET        /lifecircle/admin/load_persons                       controllers.Admin.loadPersons()
+GET        /lifecircle/admin/load_branches                       controllers.Admin.loadBranches()
+GET        /lifecircle/admin/load_person/:personId              controllers.Admin.loadPersonDetail(personId:String)
+POST       /lifecircle/admin/search_persons                     controllers.Admin.searchPersons()
+POST       /lifecircle/admin/create_branch                      controllers.Admin.createBranch()
+POST       /lifecircle/admin/update_branch                      controllers.Admin.updateBranch()
 
 #Variables App
 GET 		/lifecircle/variables/load_all						controllers.VariablesMan.loadAllVariables()
 POST 		/lifecircle/variables/create						controllers.VariablesMan.createVariable()
 POST 		/lifecircle/variables/update						controllers.VariablesMan.updateVariable()
 
+#User Admin
+GET 		/lifecircle/users/load								controllers.Admin.loadAllUsers()
+GET			/lifecircle/users/search/:criteria					controllers.Admin.searchUsersByUsername(criteria:String)
+GET 		/lifecircle/users/load_roles						controllers.Admin.loadAllRoles()
+GET			/lifecircle/users/load_rights						controllers.Admin.loadAllRights()
+POST		/lifecircle/users/create							controllers.Admin.createUser()
+POST		/lifecircle/users/update_user						controllers.Admin.updateUser()
+POST		/lifecircle/users/create_role						controllers.Admin.createRole()
+POST		/lifecircle/users/update_role						controllers.Admin.updateRole()
+POST		/lifecircle/users/toggleActive/:id					controllers.Admin.toggleActiveStatus(id:String)
+
 #LookUps
 GET         /lifecircle/lookup/load/:category                   controllers.LookUp.load(category:String)
+GET			/lifecircle/lookup/variableCategories		                    controllers.LookUp.variableCategories()
 
 #Mocks
 GET         /mock_user                                          controllers.Mock.mockAdminUser()

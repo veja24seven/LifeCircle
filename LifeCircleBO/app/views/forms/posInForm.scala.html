@@ -1,0 +1,248 @@
+<script type="text/x-kendo-template" id="account-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='account-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.accountId' name='accountId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='owner'>Account Owner</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='owner' name='owner' 
+				data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+				data-bind='value:owner' required='required' style='width: 200px;' data-required-msg='Account Owner is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='ownerType'>Owner Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='ownerType' name='ownerType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='ownerTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.ownerType.variableId' required='required' style='width: 200px;' data-required-msg='Owner Type is required.'>
+	    </div>
+		
+		<div class='k-edit-label'>
+            <label for='accountNo'>Account No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='accountNo' name='accountNo' 
+            	data-bind='value:dataItem.accountNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Account No. is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='startDate'>Start Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='startDate' name='startDate' 
+            	data-role='datepicker' data-bind='value:dataItem.startDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Start Date is required.'/>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="account-status-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='account-status-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.accountId' name='accountId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='accountStatus'>Account Status</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='accountStatus' name='accountStatus' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='accountStatusesDS' data-option-label='-Please Select-' 
+	          	required='required' style='width: 200px;' data-required-msg='Account Status is required.'>
+	    </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Change Status</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="session-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='session-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.sessionId' name='sessionId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='till'>Till Name</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='till' name='till' 
+	        	data-role='dropdownlist' data-text-field='tillName' data-value-field='tillNo' data-source='tillsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.till.tillNo' required='required' style='width: 200px;' data-required-msg='Till Name is required.'>
+	    </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="invoice-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='invoice-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.invoiceId' name='invoiceId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='accountNo'>Account No.</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='accountNo' name='accountNo' 
+				data-role='autocomplete' data-text-field='accountNo' data-source='accountsAutocompleteDS' data-ignore-case='true'
+				data-bind='value:account' required='required' style='width: 200px;' data-required-msg='Account No. is required.'>
+	    </div>
+		
+		<div class='k-edit-label'>
+            <label for='invoiceNo'>Invoice No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='invoiceNo' name='invoiceNo' 
+            	data-bind='value:dataItem.invoiceNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Invoice No. is required'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='invoiceDate'>Invoice Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='invoiceDate' name='invoiceDate' 
+            	data-role='datepicker' data-bind='value:dataItem.invoiceDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Invoice Date is required.'/>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="invoice-status-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='invoice-status-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.invoiceId' name='invoiceId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='invoiceStatus'>Invoice Status</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='invoiceStatus' name='invoiceStatus' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='invoiceStatusesDS' data-option-label='-Please Select-' 
+	          	required='required' style='width: 200px;' data-required-msg='Invoice Status is required.'>
+	    </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Change Status</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="invoice-item-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='invoice-item-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.invoiceLineId' name='invoiceLineId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='item'>Item</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='item' name='item' 
+	        	data-role='dropdownlist' data-text-field='itemName' data-value-field='itemId' data-source='itemsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.item.itemId' required='required' style='width: 200px;' data-required-msg='Item is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='itemDescription'>Item Description</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='itemDescription' name='itemDescription' 
+            	data-bind='value:dataItem.itemDescription'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            	data-required-msg='Item Description is required'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='quantity'>Quantity</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='quantity' name='quantity' 
+            	data-role='numerictextbox' min='0'
+            	data-bind='value:dataItem.quantity' required='required' style='width: 200px;' 
+            	data-required-msg='Quantity is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='unitCost'>Unit Cost</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='unitCost' name='unitCost' 
+            	data-role='numerictextbox' min='0'
+            	data-bind='value:dataItem.unitCost' required='required' style='width: 200px;' 
+            	data-required-msg='Unit Cost is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='vatType'>Vat Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='vatType' name='vatType' 
+	        	data-role='dropdownlist' data-text-field='vatCode' data-value-field='vatTypeId' data-source='vatTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.vatType.vatTypeId' required='required' style='width: 200px;' data-required-msg='Vat Type is required.'>
+	    </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="receipt-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='receipt-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.receiptId' name='receiptId'>
+
+		<div class='k-edit-label'>
+	    	<label for='receiptNo'>Receipt No.</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='receiptNo' name='receiptNo' 
+	        	data-role='dropdownlist' data-text-field='receiptNo' data-value-field='receiptNo' data-source='receiptsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.receiptNo' required='required' style='width: 200px;' data-required-msg='Receipt No is required.'>
+	    </div>
+		
+		<div class='k-edit-label'>
+            <label for='effectiveDate'>Effective Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='effectiveDate' name='effectiveDate' 
+            	data-role='datepicker' data-bind='value:dataItem.effectiveDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Effective Date is required.'/>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>

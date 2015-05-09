@@ -1,0 +1,697 @@
+<script type="text/x-kendo-template" id="vessels-grid-toolbar-template">
+<div class='toolbar'>
+	<label for='searchField'>Search:</label>
+	<input id='searchField' type='text' class='k-search'>
+	<a id='searchBtn' class='k-button'><span class='k-icon k-search'></span>Search</a>
+	<a id='vesselAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Offender Vessel</a>
+	<a id='vesselEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Offender Vessel</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="voyages-grid-toolbar-template">
+	<a class='voyageAddBtn k-button'><span class='k-icon k-add'></span>Add Vessel Voyage</a>
+	<a class='voyageEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Vessel Voyage</a>
+</script>
+
+<script type="text/x-kendo-template" id="offences-grid-toolbar-template">
+<div class='toolbar'>
+	<a id='offenceAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Offence Details</a>
+	<a id='offenceEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Offence Details</a>
+	<a id='offenceCloseBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Close Offence</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="fines-grid-toolbar-template">
+	<a class='fineAddBtn k-button'><span class='k-icon k-add'></span>Add Offence Fine</a>
+	<a class='fineEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Offence Fine</a>
+</script>
+
+<script type="text/x-kendo-template" id="documents-grid-toolbar-template">
+	<a class='documentAddBtn k-button'><span class='k-icon k-add'></span>Add Event Document</a>
+	<a class='documentDeleteBtn k-button' style='display:none;'><span class='k-icon k-delete'></span>Delete</a>
+</script>
+
+<script type="text/x-kendo-template" id="detentions-grid-toolbar-template">
+<div class='toolbar'>
+	<a id='detentionAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Vessel Detention</a>
+	<a id='detentionEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Vessel Detention</a>
+	<a id='detentionReleaseBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Release Detention</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="vessels-grid-detail-template">
+<div class='vessels-grid-detail-tabstrip'>
+	<ul>
+		<li class='k-state-active'>Affected Vessel Details</li>
+		<li>Vessel Voyages</li>
+	</ul>
+	<div class='notice-details'>
+   		<ul>
+           	<li><label>Vessel Name:</label>#= vesselName #</li>
+        	<li><label>Vessel Reg No:</label>#= vesselRegNo #</li>
+           	<li><label>Vessel Type:</label>#= vesselType.value #</li>
+           	<li><label>Registry Port:</label>#= registryPort.description #</li>
+           	<li><label>Registry Country:</label>#= registryCountry.name #</li>
+           	<li><label>Control Type:</label>#= controlType.value #</li>
+           	<li><label>Propel Method:</label>#= propellMethod.value #</li>
+           	<li><label>Gross Tonnage:</label>#= grossTonnage #</li>
+           	<li><label>Net Tonnage:</label>#= netTonnage #</li>
+           	<li><label>Owner Name:</label>#= ownerName #</li>
+           	<li><label>Owner Nationality:</label>#= ownerNationality.name #</li>
+           	<li><label>Owner Address:</label>#= ownerAddress #</li>
+           	<li><label>Owner Contacts:</label>#= ownerContacts #</li>
+        </ul>
+   	</div>
+	<div class='voyagesGrid'></div>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="offences-grid-detail-template">
+<div class='offences-grid-detail-tabstrip'>
+	<ul>
+		<li class='k-state-active'>Offence Details</li>
+		<li>Offence Fines</li>
+		<li>Offence Documents</li>
+	</ul>
+	<div class='notice-details'>
+   		<ul>
+           	<li><label>Vessel Name:</label>#= voyage.vessel.vesselName #</li>
+        	<li><label>Vessel Reg No:</label>#= voyage.vessel.vesselRegNo #</li>
+           	<li><label>Master Name:</label>#= voyage.masterName #</li>
+           	<li><label>Master Type:</label>#= voyage.masterType.value #</li>
+           	<li><label>Offence Ref No.:</label>#= offenceRefNo #</li>
+           	<li><label>Offence Port:</label>#= offencePort.description #</li>
+           	<li><label>Inside Port:</label>#= offenceInsidePort? 'YES':'NO' #</li>
+           	<li><label>Offence Type:</label>#= offenceType.value #</li>
+           	<li><label>Offence Category:</label>#= offenceCategory.value #</li>
+           	<li><label>Offence Date:</label>#= offenceDate #</li>
+           	<li><label>Offence Details:</label>#= offenceDetails #</li>
+           	<li><label>Relevant Law:</label>#= relevantLaw #</li>
+           	<li><label>Inspector Name:</label>#= inspectorName #</li>
+           	<li><label>Exact Locality:</label>#= exactLocality #</li>
+           	<li><label>Offence Status:</label>#= offenceStatus.value #</li>
+           	<li><label>Close Date:</label>#= closeDate!=null?closeDate:'N/A' #</li>
+           	<li><label>Closed By:</label>#= closedBy #</li>
+			<li><label>Close Remarks:</label>#= closeRemarks #</li>
+        </ul>
+   	</div>
+	<div class='finesGrid'></div>
+	<div class='documentsGrid'></div>
+</div>
+</script>
+
+<script id="vessel-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:vessel.vesselId' name='vesselId'/>
+		
+		<div class='k-edit-label'>
+            <label for='vesselName'>Vessel Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='vesselName' name='vesselName' class='k-input k-textbox' 
+            data-bind='value:vessel.vesselName' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            data-required-msg='Vessel Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='vesselRegNo'>Vessel Reg No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='vesselRegNo' name='vesselRegNo' 
+            data-bind='value:vessel.vesselRegNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='50'
+            data-required-msg='Vessel Reg No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='vesselType'>Vessel Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='vesselType' name='vesselType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='vesselTypesDS' data-option-label='-Please Select-'
+            	data-bind='value:vessel.vesselType.variableId' required='required' style='width: 200px;' data-required-msg='Vessel Type is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='registryPort'>Registry Port</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='registryPort' name='registryPort' 
+            	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='allPortsDS' data-option-label='-Please Select-' 
+            	data-bind='value:vessel.registryPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Registry Port is required.'/>
+        </div>
+
+        <div class='k-edit-label'>
+            <label for='registryCountry'>Registry Country</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='registryCountry' name='registryCountry' 
+            	data-role='dropdownlist' data-text-field='name' data-value-field='countryId' data-source='countriesDS' data-option-label='-Please Select-' 
+            	data-bind='value:vessel.registryCountry.countryId' required='required' style='width: 200px;' data-required-msg='Registry Country is required.'/>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='controlType'>Control Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='controlType' name='controlType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='controlTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:vessel.controlType.variableId' required='required' style='width: 200px;' data-required-msg='Control Type is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='propellMethod'>Propel Method</label>
+        </div>
+        <div class='k-edit-field'>
+           <input id='propellMethod' name='propellMethod' 
+           	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='propellMethodsDS' data-option-label='-Please Select-' 
+           	data-bind='value:vessel.propellMethod.variableId' required='required' style='width: 200px;' data-required-msg='Propel Method is required.'/>
+        </div>	
+
+		<div class='k-edit-label'>
+             <label for='grossTonnage'>Gross Tonnage</label>
+         </div>
+         <div class='k-edit-field'>
+             <input id='grossTonnage' name='grossTonnage' 
+             	data-role='numerictextbox' min='0'
+             	data-bind='value:vessel.grossTonnage' required='required' style='width: 200px;' 
+            	data-required-msg='Gross Tonnage is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='netTonnage'>Net Tonnage</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='netTonnage' name='netTonnage' 
+            	data-role='numerictextbox'
+            	data-bind='value:vessel.netTonnage' required='required' style='width: 200px;' 
+            	data-required-msg='Net Tonnage is required.'/>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='ownerName'>Owner Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='ownerName' name='ownerName' class='k-input k-textbox' 
+            data-bind='value:vessel.ownerName' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            data-required-msg='Owner Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='ownerNationality'>Owner Nationality</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='ownerNationality' name='ownerNationality' 
+            	data-role='dropdownlist' data-text-field='name' data-value-field='countryId' data-source='countriesDS' data-option-label='-Please Select-' 
+            	data-bind='value:vessel.ownerNationality.countryId' required='required' style='width: 200px;' data-required-msg='Owner Nationality is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='ownerAddress'>Owner Address</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='ownerAddress' name='ownerAddress' 
+				data-bind='value:vessel.ownerAddress' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Owner Address is required'></textarea>
+        </div>
+		
+        <div class='k-edit-label'>
+            <label for='ownerContacts'>Owner Contacts</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='ownerContacts' name='ownerContacts' 
+				data-bind='value:vessel.ownerContacts' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Owner Contacts is required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="voyage-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='voyage-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.voyageId' name='voyageId'/>
+		
+		<div class='k-edit-label'>
+            <label for='masterName'>Master Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='masterName' name='masterName' class='k-input k-textbox' 
+            data-bind='value:dataItem.masterName' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            data-required-msg='Master Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='masterType'>Master Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='masterType' name='masterType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='masterTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.masterType.variableId' required='required' style='width: 200px;' data-required-msg='Master Type is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='masterNationality'>Master Nationality</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='masterNationality' name='masterNationality' 
+            	data-role='dropdownlist' data-text-field='name' data-value-field='countryId' data-source='countriesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.masterNationality.countryId' required='required' style='width: 200px;' data-required-msg='Master Nationality is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='masterAddress'>Master Address</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='masterAddress' name='masterAddress' 
+				data-bind='value:dataItem.masterAddress' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Master Address is required'></textarea>
+        </div>
+		
+        <div class='k-edit-label'>
+            <label for='masterContacts'>Master Contacts</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='masterContacts' name='masterContacts' 
+				data-bind='value:dataItem.masterContacts' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Master Contacts is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='voyageType'>Voyage Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='voyageType' name='voyageType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='voyageTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.voyageType.variableId' required='required' style='width: 200px;' data-required-msg='Voyage Type is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='cargoDetails'>Cargo Detail</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='cargoDetails' name='cargoDetails' 
+				data-bind='value:dataItem.cargoDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Cargo Detail is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='departureDate'>Departure Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='departureDate' name='departureDate' 
+            	data-role='datepicker' data-bind='value:dataItem.departureDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Departure Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='departurePort'>Departure Port</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='departurePort' name='departurePort' 
+	        	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='namibianPortsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.departurePort.registryPortId' required='required' style='width: 200px;' data-required-msg='Departure Port is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='destinationPort'>Destination Port</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='destinationPort' name='destinationPort' 
+	        	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='allPortsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.destinationPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Destination Port is required.'>
+	    </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="offence-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='offence-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.offenceId' name='offenceId'/>
+		
+		<div class='k-edit-label'>
+            <label for='offenceRefNo'>Offence Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='offenceRefNo' name='offenceRefNo' class='k-input k-textbox' 
+            data-bind='value:dataItem.offenceRefNo' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            data-required-msg='Offence Ref No is required'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='offenceCategory'>Offence Category</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='offenceCategory' name='offenceCategory' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='offenceCategoriesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.offenceCategory.variableId' required='required' style='width: 200px;' data-required-msg='Offence Category is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='offenceType'>Offence Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='offenceType' name='offenceType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='offenceTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.offenceType.variableId' required='required' style='width: 200px;' data-required-msg='Offence Type is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='offenceDate'>Offence Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='offenceDate' name='offenceDate' 
+            	data-role='datepicker' data-bind='value:dataItem.offenceDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Offence Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='offenceDetails'>Offence Detail</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='offenceDetails' name='offenceDetails' 
+				data-bind='value:dataItem.offenceDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Offence Detail is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='offencePort'>Offence Port</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='offencePort' name='offencePort' 
+	        	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='namibianPortsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.offencePort.registryPortId' required='required' style='width: 200px;' data-required-msg='Offence Port is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='offenceInsidePort'>Offence Inside Port</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='offenceInsidePort' name='offenceInsidePort' 
+	        	data-role='dropdownlist' data-source='["YES","NO"]' data-option-label='-Please Select-' 
+	          	data-bind='value:offenceInsidePort' required='required' style='width: 200px;' data-required-msg='Offence Inside Port is required.'>
+	    </div>
+        
+        <div class='k-edit-label'>
+            <label for='relevantLaw'>Relevant Law</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='relevantLaw' name='relevantLaw' 
+				data-bind='value:dataItem.relevantLaw' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Relevant Law is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectorName'>Inspector Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectorName' name='inspectorName' class='k-input k-textbox' 
+            data-bind='value:dataItem.inspectorName' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            data-required-msg='Inspector Name is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='exactLocality'>Exact Locality</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='exactLocality' name='exactLocality' 
+				data-bind='value:dataItem.exactLocality' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Exact Locality is required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="offence-document-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='offence-document-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:document.documentId' name='documentId'/>
+		
+        <div class='k-edit-label'>
+            <label for='documentType'>Document Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='documentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='documentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:document.documentType.variableId' required='required' style='width: 200px;' data-required-msg='Document Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentRefNo'>Document Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentRefNo' name='documentRefNo' 
+            data-bind='value:document.documentRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='50'
+            data-required-msg='Document Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentDate'>Document Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentDate' name='documentDate' 
+            	data-role='datepicker' data-bind='value:document.documentDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Document Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentUrl'>Document Url/Path</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentUrl' name='documentUrl' type='file' style='width: 200px;' 
+				data-required-msg='Document Url/Path is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+<script id="offence-close-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='offence-close-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.offenceId' name='offenceId'/>
+		
+		<div class='k-edit-label'>
+            <label for='offenceStatus'>Offence Status</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='offenceStatus' name='offenceStatus' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='offenceStatusesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.offenceStatus.variableId' required='required' style='width: 200px;' data-required-msg='Offence Status is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='closeRemarks'>Close Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='closeRemarks' name='closeRemarks' 
+				data-bind='value:dataItem.closeRemarks' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Close Remarks are required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="offence-fine-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='offence-fine-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.fineId' name='fineId'/>
+		
+		<div class='k-edit-label'>
+            <label for='fineType'>Fine Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='fineType' name='fineType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='fineTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.fineType.variableId' required='required' style='width: 200px;' data-required-msg='Fine Type is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='fineDetails'>Fine Detail</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='fineDetails' name='fineDetails' 
+				data-bind='value:dataItem.fineDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Fine Detail is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='fineAmount'>Fine Amount</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='fineAmount' name='fineAmount' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:dataItem.fineAmount' required='required' style='width: 200px;' 
+            	data-required-msg='Fine Amount is required.'/>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='fineDueDate'>Fine Due Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='fineDueDate' name='fineDueDate' 
+            	data-role='datepicker' data-bind='value:dataItem.fineDueDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Fine Due Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='fineStatus'>Fine Status</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='fineStatus' name='fineStatus' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='fineStatusesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.fineStatus.variableId' required='required' style='width: 200px;' data-required-msg='Fine Status is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='paymentDate'>Payment Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='paymentDate' name='paymentDate' 
+            	data-role='datepicker' data-bind='value:dataItem.paymentDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='paymentRefNo'>Payment Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='paymentRefNo' name='paymentRefNo' class='k-input k-textbox' 
+            data-bind='value:dataItem.paymentRefNo' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            >
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="vessel-detention-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='vessel-detention-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.detentionId' name='detentionId'/>
+		
+		<div class='k-edit-label'>
+            <label for='detentionDate'>Detention Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='detentionDate' name='detentionDate' 
+            	data-role='datepicker' data-bind='value:dataItem.detentionDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Detention Date is required.'/>
+        </div>
+		
+		<div class='k-edit-label'>
+	    	<label for='detentionPort'>Detention Port</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='detentionPort' name='detentionPort' 
+	        	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='namibianPortsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.detentionPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Detention Port is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='detentionRefNo'>Detention Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='detentionRefNo' name='detentionRefNo' class='k-input k-textbox' 
+            data-bind='value:dataItem.detentionRefNo' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            data-required-msg='Detention Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='detentionDetails'>Detention Detail</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='detentionDetails' name='detentionDetails' 
+				data-bind='value:dataItem.detentionDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Detention Detail is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionDate'>Inspection Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionDate' name='inspectionDate' 
+            	data-role='datepicker' data-bind='value:dataItem.inspectionDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Inspection Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionRefNo'>Inspection Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionRefNo' name='inspectionRefNo' class='k-input k-textbox' 
+            data-bind='value:dataItem.inspectionRefNo' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            >
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectorName'>Inspector Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectorName' name='inspectorName' class='k-input k-textbox' 
+            data-bind='value:dataItem.inspectorName' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            >
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="detention-release-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='detention-release-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.detentionId' name='detentionId'/>
+		
+		<div class='k-edit-label'>
+            <label for='releaseRemarks'>Release Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='releaseRemarks' name='releaseRemarks' 
+				data-bind='value:dataItem.releaseRemarks' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Release Remarks is required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Release Detention</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+		

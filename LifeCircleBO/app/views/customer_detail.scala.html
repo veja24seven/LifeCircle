@@ -1,0 +1,105 @@
+@(personId: Number)
+
+@main("Person Detail","index") {
+	<style scoped>
+		.k-breadcrumbs{
+			margin-left: 10px;
+			margin-bottom: 5px;
+			margin-top: 5px;
+			border-bottom: 2px solid rgb(110, 167, 209);
+		}
+	</style>
+	<script type="text/javascript">
+		var customer = null;
+		$(document).ready(function() {
+			
+	    	$.ajax({
+	    		url : "/lifecircle/admin/load_person/"+@personId,
+	            type : "GET",
+	            contentType : "application/json",
+	            dataType : "json",
+	            data : JSON.stringify({}),
+	            success : function (data){
+	            	customer = data;
+	            	displayPersonCustomerDetail();
+
+	            	
+	            },
+	            error : function (){
+	                alert("Fail to load : Internal Error");
+	            }
+	    	});
+	    });
+		
+		function displayPersonCustomerDetail(){
+			var detailsTemplate = kendo.template($("#customer-personal-detail-template").html());
+			$("#datailDisplay").append(detailsTemplate(customer));
+			
+			appendDetailTableWithExtraData(customer);
+		}
+
+		function appendDetailTableWithExtraData(dataItem){
+			var detailsTemplate = kendo.template($("#extra-customer-detail-template").html());
+			
+			var viewModel = kendo.observable({
+				contacts : dataItem.contacts,
+				documents : dataItem.documents,
+				relations : new kendo.data.DataSource({
+					transport: {read: {dataType: "json",url: "/customer/load_relations/"+dataItem.customerId}
+			        }
+				}),
+				showContacts : true
+			});
+			
+			$("#extraDetailDisplay").append(detailsTemplate);
+			
+			kendo.bind($("#extraDetailDisplay"),viewModel);
+		}
+
+	</script>
+	
+	<div id="datailDisplay" class="grid_12">
+		<h2 class="k-breadcrumbs">Person Detail</h2>
+	</div>
+	
+	<div id="extraDetailDisplay" class="grid_12">
+	
+	</div>
+	
+<script type="text/x-kendo-template" id="customer-personal-detail-template">
+<div>
+	<div class='vessel-details'>
+         <ul>
+         	<li><label>Surname &amp; Name:</label>#= firstname #, #= surname #</li>
+            <li><label>Date of Birth:</label>#= dateOfBirth #</li>
+            <li><label>Identity Type:</label>#= identity[0].identityType.value #</li>
+            <li><label>Identity Number:</label>#= identity[0].identityNumber #</li>
+			<li><label>Nationality:</label>#= nationality.name #</li>
+            <li><label>Gender:</label>#= gender.value #</li>
+         </ul>
+  	</div>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="extra-customer-detail-template">
+<h2 class='k-breadcrumbs' data-bind='visible:showContacts'>Customer Contacts</h2>
+<br/><br/><br/>
+<div id='contactsGrid' data-role='grid'
+	 data-columns='[
+	 	{ field: "contactType.value", title:"Contact Type"},
+        { field: "contactValue", title:"Contact" }
+	 ]'
+	 data-bind='source: contacts, visible: showContacts'>
+</div>
+<h2 class='k-breadcrumbs' data-bind='visible:showDocuments'>Customer Documents</h2>
+<br/><br/><br/>
+<div id='documentsGrid' data-role='grid'
+	 data-columns='[
+	 	{ field: "documentType.value", title:"Document Type"},
+        { field: "documentUrl", title:"URL"},
+        { field: "documentRefNo", title:"Doc Ref No." },
+        { field: "documentDate", title: "Doc Date"}
+	 ]'
+	 data-bind='source: documents, visible: showDocuments'>
+</div>
+}

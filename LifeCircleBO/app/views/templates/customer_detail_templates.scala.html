@@ -1,0 +1,72 @@
+
+<script type="text/x-kendo-template" id="personCustomerDetail">
+<div id='customerPersonDetailDiv'>
+	<table class='detail-table'>
+		<tbody>
+			<tr>
+        	    <th colspan='4'>#= name2 # #= name1 # <em>#= identityNumber #</em></th>
+        	</tr>
+        
+        	<tr>
+            	<td><h4>Identity Type</h4></td>
+				<td>
+               		<label>#= identityType.value #</label>
+            	</td>
+				<td><h4>Date Of Birth</h4></td>
+            	<td>
+                	<label>#= regDate #</label>
+           		</td>
+        	</tr>
+        
+        	<tr>
+				<td><h4>Nationality</h4></td>
+            	<td>
+                	<label>#= nationality.name #</label>
+            	</td>
+				<td><h4>Gender</h4></td>
+            	<td>
+                	<label>#= genderId #</label>
+            	</td>
+        	</tr>
+        
+    	</tbody>
+	</table>
+	
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="companyCustomerDetail">
+<div id='customerCompanyDetailDiv'>
+	<table class='detail-table'>
+		<tbody>
+			<tr>
+        	    <th colspan='4'>#= name2 # #= name1 # <em>#= identityNumber #</em></th>
+        	</tr>
+        
+        	<tr>
+            	<td><h4>Registration No.</h4></td>
+				<td>
+               		<label>#= identityNumber #</label>
+            	</td>
+				<td><h4>Registration Date</h4></td>
+            	<td>
+                	<label>#= regDate #</label>
+           		</td>
+        	</tr>
+        
+        	<tr>
+				<td><h4>Nationality</h4></td>
+            	<td>
+                	<label>#= nationality.name #</label>
+            	</td>
+				<td><h4>Contact Person</h4></td>
+            	<td>
+                	<label>#= contactPerson #</label>
+            	</td>
+        	</tr>
+        
+    	</tbody>
+	</table>
+	
+</div>
+</script>

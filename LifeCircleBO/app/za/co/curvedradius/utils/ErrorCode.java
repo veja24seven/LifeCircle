@@ -5,8 +5,8 @@ package za.co.curvedradius.utils;
  */
 public enum ErrorCode {
     INVALID_LOGIN("LGN_101","Invalid username or password"),
-    INCORRECT_PASSWORD("LGN_102","Incorrect password for a supplied username"),
-    INCORRECT_BRANCH("LGN_103","Incorrect branch for specified user"),
+    INCORRECT_PASSWORD("LGN_102","Incorrect password"),
+    INCORRECT_BRANCH("LGN_103","Incorrect branch"),
     SUCCESS("OK_200","Request Successfully Submitted");
 
     private String code;

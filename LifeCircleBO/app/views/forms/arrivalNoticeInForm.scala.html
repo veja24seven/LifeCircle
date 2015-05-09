@@ -1,0 +1,152 @@
+<script id="arrival-notice-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='arrival-notice-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:notice.arrivalNoticeId' name='arrivalNoticeId'/>
+		
+		<div class='k-edit-label'>
+            <label for='noticeDate'>Notice Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='noticeDate' name='noticeDate' 
+            	data-role='datepicker' data-bind='value:notice.noticeDate' data-format="yyyy-MM-dd"
+            	style='width: 200px;' data-required-msg='Notice Date is required.' required='required'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='arrivalDate'>Arrival Date &amp; Time</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='arrivalDate' name='arrivalDate' 
+            	data-role='datetimepicker' data-bind='value:arrivalDate' data-format="yyyy-MM-dd HH:mm"
+            	required='required' style='width: 200px;' data-required-msg='Arrival Date & Time is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='arrivalPort'>Arrival Port</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='arrivalPort' name='arrivalPort' 
+            	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='namibianPortsDS' data-option-label='-Please Select-' 
+            	data-bind='value:notice.arrivalPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Arrival Port is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='visitDuration'>Visit Duration</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='visitDuration' name='visitDuration' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:notice.visitDuration' required='required' style='width: 200px;' 
+            	data-required-msg='Visit Duration is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='plannedOperation'>Planned Operation</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='plannedOperation' name='plannedOperation' class='k-input k-textbox' 
+            data-bind='value:notice.plannedOperation' maxlength='150'
+            data-required-msg='Planned Operation is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='previousPort'>Previous Port</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='previousPort' name='previousPort' 
+            	data-role='dropdownlist' data-text-field='description' data-value-field='description' data-source='registryPortsDS' data-option-label='-Please Select-' 
+            	data-bind='value:notice.previousPort' required='required' style='width: 200px;' data-required-msg='Previous Port is required.'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='nextPort'>Next Port</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='nextPort' name='nextPort' 
+            	data-role='dropdownlist' data-text-field='description' data-value-field='description' data-source='registryPortsDS' data-option-label='-Please Select-' 
+            	data-bind='value:notice.nextPort' required='required' style='width: 200px;' data-required-msg='Next Port is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='hullConfiguration'>Hull Configuration</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='hullConfiguration' name='hullConfiguration' 
+            	data-role='dropdownlist' data-source='["Single Hull","Single Hull SBT","Double Hull"]' data-option-label='-Please Select-' 
+            	data-bind='value:notice.hullConfiguration' required='required' style='width: 200px;' data-required-msg='Hull Configuration is required.'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='tankCondition'>Tank Condition</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='tankCondition' name='tankCondition' 
+            	data-role='dropdownlist' data-source='["Full","Inerted","Empty"]' data-option-label='-Please Select-' 
+            	data-bind='value:notice.tankCondition' required='required' style='width: 200px;' data-required-msg='Tank Condition is required.'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='ballastCondition'>Ballast Condition</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='ballastCondition' name='ballastCondition' 
+            	data-role='dropdownlist' data-source='["Full","Inerted","Empty"]' data-option-label='-Please Select-' 
+            	data-bind='value:notice.ballastCondition' required='required' style='width: 200px;' data-required-msg='Ballast Condition is required.'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='plannedSurveys'>Planned Surveys</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='plannedSurveys' name='plannedSurveys' 
+				data-bind='value:notice.plannedSurveys' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Planned Surveys is required'></textarea>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='shipMasterName'>Ship Master Name</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='shipMasterName' name='shipMasterName' class='k-input k-textbox' 
+            data-bind='value:notice.shipMasterName' maxlength='150'
+            data-required-msg='Ship Master Name is required'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='shipMasterContacts'>Ship Master Contacts</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='shipMasterContacts' name='shipMasterContacts' 
+				data-bind='value:notice.shipMasterContacts' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Ship Master Contacts is required'></textarea>
+        </div>
+		
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="arrival-notice-status-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='arrival-notice-status-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:notice.arrivalNoticeId' name='arrivalNoticeId'/>
+		
+		<div class='k-edit-label'>
+            <label for='arrivalStatus'>Arrival Status</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='arrivalStatus' name='arrivalStatus' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='arrivalStatusesDS' data-option-label='-Please Select-' 
+            	data-bind='value:notice.arrivalStatus.variableId' required='required' style='width: 200px;' data-required-msg='Arrival Status is required.'>
+        </div>
+		
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Confirm Status</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>

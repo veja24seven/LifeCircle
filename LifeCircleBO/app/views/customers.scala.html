@@ -1,0 +1,57 @@
+@(message: String)
+
+@main("People App","index") {
+    <script src="@routes.Assets.at("javascripts/apps/customer.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/apps/customerEdit.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/form-popup-manager.js")" type="text/javascript"></script>
+    <script>
+    	var currentCustomer = null;
+    	var currentContact = null;
+    	var currentRelation = null;
+    	var currentDoc = null;
+        $(document).ready(function() {
+            init();
+
+            $("#addNewCustomerPersonBtn").click(function(e){
+            	addNewPersonCustomer();
+                e.preventDefault();
+            });
+
+
+            $("#searchCustomersBtn").click(function(e){
+                searchCustomers($("#customerSearchField").val());
+                e.preventDefault();
+            });
+
+            $("#customerSearchField").keydown(function(e){
+                if (e.keyCode==13){
+                	searchCustomers($("#customerSearchField").val());
+                }
+            });
+
+            
+
+        });
+    </script>
+    <!--div class="breadcrumb">
+	    <ul class="crumbs">  
+	        <li class="first"><a href="/" style="z-index:9;"><span></span>HOME</a> &gt; </li>
+	        <li><a href="/persons" style="z-index:7;">PEOPLE</a></li>
+	    </ul>  
+	</div>
+	
+    <h2 class="k-breadcrumbs" style="margin-left: 10px;margin-bottom: 5px;margin-top: 5px;">People Manager</h2-->
+
+    <div id="appDiv" class="grid_12">
+        <div class="demo-section">
+            <h3 style="margin-bottom: 5px;">Manage People</h3>
+            <div id="customersGrid"></div>
+        </div>
+    </div>
+
+    @forms.customerInForm()
+    @forms.customerInEditForm()
+    @templates.customerTemplates()
+
+    
+}

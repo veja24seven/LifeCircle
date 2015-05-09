@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vessel Certificate" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" whenResourceMissingType="Empty" uuid="01d40954-cb5b-4a12-938c-107dfd716895">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="225"/>
+	<parameter name="DATE_OF_REPORT" class="java.lang.String"/>
+	<parameter name="REPORT_PORT" class="java.lang.String"/>
+	<parameter name="CURRENT_PATH" class="java.lang.String"/>
+	<queryString language="json">
+		<![CDATA[]]>
+	</queryString>
+	<field name="vesselName" class="java.lang.String"/>
+	<field name="vesselDate" class="java.lang.String"/>
+	<field name="registryPort" class="java.lang.String"/>
+	<field name="serial" class="java.lang.String"/>
+	<field name="noOfPreviousRegistry" class="java.lang.String"/>
+	<field name="cancellationDate" class="java.lang.String"/>
+	<field name="officialNumber" class="java.lang.String"/>
+	<field name="descriptionOfShip" class="java.lang.String"/>
+	<field name="yearBuilt" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="193" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e2c4ee63-1c26-4bdf-86c3-82b0b2c1b940" x="0" y="51" width="575" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIC OF NAMIBIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44098107-9586-4b46-9f33-1f5b0f140117" x="0" y="72" width="575" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTRY OF WORKS, TRANSPORT AND COMMUNICATION]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="820c01bd-8f27-4cc2-abe5-3076218459b7" x="0" y="92" width="575" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="6f6f9ff8-362e-431d-9061-25204ae042c8" x="0" y="93" width="575" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT OF TRANSPORT : DIRECTORATE MARITIME AFFAIRS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="376f995f-184a-4fb0-b841-c472aa2f34cc" x="0" y="113" width="575" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Merchant shipping Act, 1951 (Act 57 of 1951), as amended]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90689ec7-6f57-482b-9769-9604b39cfe48" x="0" y="133" width="575" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FISHING VESSEL SAFETY CERTIFICATE (Form 3)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7c64844d-b06a-46c6-b593-1ca39f2337db" x="0" y="153" width="575" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(This Certificate shall be supplemented by Record of Equipment (Form 8))]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement uuid="d50628b0-9695-4144-9b65-b0c60d4a3a57" x="0" y="0" width="575" height="51"/>
+				<imageExpression><![CDATA[$P{CURRENT_PATH}+"/public/reports/armsnew.bmp"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="cdb74f24-362d-4aea-a185-f54cd5d3bff6" x="0" y="173" width="575" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Issued under the provisions of the Construction and Equipment Regulations of Fishing Vessels, 2002.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="400">
+			<staticText>
+				<reportElement uuid="018eeae2-31ec-4a26-a597-b9a1e4599fc0" x="1" y="0" width="225" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Particulars of fishing vessel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6cdecb5e-58dd-4102-a989-cf9b16d7dd09" x="1" y="20" width="113" height="20"/>
+				<textElement/>
+				<text><![CDATA[Name of ship]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6adb0de-de35-4165-a2ac-6c42e85ed545" x="114" y="20" width="114" height="20"/>
+				<textElement/>
+				<text><![CDATA[Distintive no. or letters]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50ea8ca5-ead2-481e-9153-44ef622d20ff" x="226" y="20" width="84" height="20"/>
+				<textElement/>
+				<text><![CDATA[Port of Registry]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4d531ee-ec71-4c81-afc3-349ba7227c8d" x="310" y="20" width="56" height="20"/>
+				<textElement>
+					<font size="10" isBold="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Length (L)1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="460e5674-5048-4b41-9415-9978476e0e62" x="366" y="20" width="209" height="20"/>
+				<textElement/>
+				<text><![CDATA[Date of building or major conversion contract]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="35e1cbe1-085f-4a95-b821-38c4281f9230" x="1" y="40" width="113" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="79ae74ce-bfe4-4981-acdc-2aa273107f48" x="114" y="40" width="114" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="90f9975d-2f21-4cfc-a804-79f5371c509b" x="226" y="40" width="84" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d2896a1-6d2b-44a4-9239-f6e5db010c44" x="310" y="40" width="56" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="42d21005-4318-4b01-9a8f-d48ffe2d05d5" x="366" y="40" width="209" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ec4932b3-fa6d-4bc6-8431-b306ca1ce5f6" x="1" y="70" width="309" height="39"/>
+				<textElement/>
+				<text><![CDATA[Date on which keel was laid or fishing vessels was at the similar stage of construction in accordance with paragraph (c)(i) or (iii)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3044c3d-c58e-4b4e-88b7-a9bef96e847f" x="310" y="70" width="265" height="39"/>
+				<textElement/>
+				<text><![CDATA[Date of delivery or completion of major conversion]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="73db5139-947b-4a58-b1b9-4d84861c3449" x="0" y="109" width="310" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7621a3b6-a57d-4148-b171-82e967bc0a42" x="310" y="109" width="265" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2eb134ba-8fdb-44bf-8f32-74d4a463b2cb" x="1" y="139" width="574" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Type of operation and voyage or Area of operation (where applicable insert Port from which operating)]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="387b31d8-9671-438f-8ecd-f015a1710039" x="1" y="159" width="574" height="30"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="65f1fdf6-300e-4c50-a384-5448aa202e22" x="0" y="20" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="5efb6676-03d6-4128-9a46-a45cb64a30bf" x="0" y="40" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="862c6928-c317-4d34-93d5-83859ae2ad4b" x="2" y="70" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0e7ac0a6-c2fd-49f5-9753-3305e4c6370a" x="0" y="108" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="7553632a-903f-4076-a1c2-0f3275489b50" x="0" y="138" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="819fa40d-6d36-47a7-9dba-ca5ddb0ce457" x="0" y="159" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="b85d1c6d-f0bc-4e90-bbcd-1a5f59fa79cf" x="0" y="188" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="85be883e-9900-4ed8-8ce5-c86f27c41993" x="114" y="21" width="1" height="49"/>
+			</line>
+			<line>
+				<reportElement uuid="03eea85f-5b14-4783-9a8a-f8861e6c5eaf" x="225" y="20" width="1" height="49"/>
+			</line>
+			<line>
+				<reportElement uuid="5110ffca-c43b-43ca-bf13-bb411204116e" x="309" y="21" width="1" height="117"/>
+			</line>
+			<line>
+				<reportElement uuid="7fdda4e2-fee7-41f7-bd90-6ea8c47ed119" x="366" y="21" width="1" height="49"/>
+			</line>
+			<line>
+				<reportElement uuid="a7f6c617-a488-4d37-a947-5614f3e0d006" x="574" y="21" width="1" height="167"/>
+			</line>
+			<line>
+				<reportElement uuid="ce4c57a4-8d6f-4a5d-b6f2-64742738ee32" x="1" y="20" width="1" height="167"/>
+			</line>
+			<staticText>
+				<reportElement uuid="4dd455ea-64dd-4da6-962e-99cfdb123958" x="0" y="211" width="225" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[This is to certifiy that]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b39de28-1721-410c-bc4d-b6b7cfcaebcf" x="0" y="231" width="37" height="20"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[1. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8c4dc3bf-48c9-4df2-95bd-3c118dce860a" x="37" y="231" width="539" height="30"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[The above-mentioned fishing vessel has been inspected in accordance with the requirements of the Construction and Equipment Regurations for Fishing Vessels, 2002, Regulation 9.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a1d75ac5-4732-4bf6-a826-be0dd7d7cc79" x="0" y="261" width="37" height="20"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[2. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5bfd6ebf-b1c2-4ba2-9fdc-dde184af1c43" x="37" y="261" width="539" height="20"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[The Survey Showed that:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5b86f04e-e8ed-4aad-b848-401a161b7be8" x="37" y="281" width="15" height="20"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79071f5e-f33a-479e-818a-4db0d1851b76" x="52" y="281" width="524" height="20"/>
+				<textElement/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<line>
+				<reportElement uuid="9a3f3ab8-78b8-483d-bfd3-f0df1a8baf78" x="1" y="49" width="575" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="6265304c-e500-4caf-ae9a-d3e8c1e83253" x="0" y="0" width="173" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Place : "+$F{officerPort}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7dfde635-2008-48d6-81dc-8a5230521c4a" x="172" y="0" width="173" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Date : "+$P{DATE_OF_REPORT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="f81e697e-3d57-4b72-8f05-0441ba359783" x="382" y="20" width="193" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,122 @@
+	<script type="text/x-kendo-template" id="vesselsTemplate">
+        <div class="toolbar">
+            <label for="vesselSearch">Search</label>
+            <input id="vesselSearch" type="text" class="k-search">
+            <a id="searchVesselsBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="surveysTemplate">
+        <div class="toolbar">
+            <a id="surveyAddBtn" class="k-button"><span class="k-icon k-add"></span>Add Survey</a>
+			<a id="surveyEditBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Survey</a>
+			<a id="surveyApproveBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Approve Survey</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="inspectionsTemplate">
+        <div class="toolbar">
+            <a id="inspectionAddBtn" class="k-button"><span class="k-icon k-add"></span>Add Inspection</a>
+			<a id="inspectionEditBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Inspection</a>
+			<a id="inspectionApproveBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Approve Inspection</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="auditsTemplate">
+        <div class="toolbar">
+            <a class="auditAddBtn k-button"><span class="k-icon k-add"></span>Add Survey Audit</a>
+            <a class="auditEditBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Survey Audit</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="certificatesTemplate">
+        <div class="toolbar">
+            <a class="certificateAddBtn k-button"><span class="k-icon k-add"></span>Add Survey Certificate</a>
+			<a class="certificateEditBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Survey Certificate</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="documentsTemplate">
+        <div class="toolbar">
+            <a class="documentAddBtn k-button"><span class="k-icon k-add"></span>Add Survey Document</a>
+            <a class="documentEditBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Survey Document</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="inspectionDeficienciesTemplate">
+        <div class="toolbar">
+            <a class="deficiencyAddBtn k-button"><span class="k-icon k-add"></span>Add Inspection Deficiency</a>
+            <a class="deficiencyEditBtn k-button" style="display:none;"><span class="k-icon k-add"></span>Edit Inspection Deficiency</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="vesselDetailTemplate">
+<div class='vessel-details'>
+     <ul>
+     	<li><label>Owner:</label>#= owner.name1 #, #= owner.identityNumber #</li>
+        <li><label>Vessel Name:</label>#= vesselName #</li>
+        <li><label>Vessel Type:</label>#= vesselType.value #</li>
+        <li><label>Registration No.:</label>#= regNo #</li>
+        <li><label>Registration Date:</label>#= regDate #</li>
+        <li><label>Registration Type:</label>#= regType.value #</li>
+        <li><label>Licence Type:</label>#= licenceType.value #</li>
+        <li><label>Flag State:</label>#= flagState.name #</li>
+        <li><label>Registration Port:</label>#= regPort.description #</li>
+        <li><label>Gross Tonnage:</label>#= grossTonnage #</li>
+        <li><label>Net Tonnage:</label>#= netTonnage #</li>
+        <li><label>Length:</label>#= length #</li>
+        <li><label>Call Sign:</label>#= callSign #</li>
+        <li><label>IMO No.:</label>#= imoNo #</li>
+        <li><label>Year Build:</label>#= yearBuild #</li>
+        <li><label>Operation Type:</label>#= operationType.value #</li>
+        <li><label>Proper Officer:</label>#= properOffice.value #</li>
+        <li><label>Vessel Status:</label>#= vesselStatus.value #</li>
+        <li><label>Status Date:</label>#= statusDate #</li>
+        <li><label>Approval Status:</label>#= approvalStatus.value #</li>
+        <li><label>Approval Date:</label>#= approvalDate #</li>
+     </ul>
+#if(vesselDetail!=null){# 
+	 <ul>
+		<li><label>Width:</label>#= vesselDetail.width #</li>
+		<li><label>Depth:</label>#= vesselDetail.depth #</li>
+		<li><label>Builder Name:</label>#= vesselDetail.builderName #</li>
+		<li><label>Country Build:</label>#= vesselDetail.countryBuild.name #</li>
+	    <li><label>Place Build:</label>#= vesselDetail.placeBuild #</li>
+	    <li><label>Material Type:</label>#= vesselDetail.materialType.value #</li>
+		<li><label>Propel Method:</label>#= vesselDetail.propellMethod.value #</li>
+		<li><label>No. of Decks:</label>#= vesselDetail.noOfDecks #</li>
+	    <li><label>No. of Bulk Heads:</label>#= vesselDetail.noOfBulkHeads #</li>
+	    <li><label>Tonnage Type:</label>#= vesselDetail.tonnageType.value #</li>
+	    <li><label>Bore & Stroke:</label>#= vesselDetail.boreAndStroke #</li>
+	    <li><label>No. of Engines:</label>#= vesselDetail.noOfEngines #</li>
+	    <li><label>Cylinder/Engine:</label>#= vesselDetail.cylinderPerEngine #</li>
+	    <li><label>Drive Type:</label>#= vesselDetail.driveType #</li>
+	    <li><label>Prev Reg No.:</label>#= vesselDetail.prevRegNo #</li>
+	    <li><label>Prev Reg Port:</label>#= vesselDetail.prevRegPort #</li>
+	    <li><label>Prev Cancel Date:</label>#= vesselDetail.prevRegCancelDate #</li>
+	    <li><label>Prev Vessel Name:</label>#= vesselDetail.prevVesselName #</li>
+	    <li><label>Prev Owner Name:</label>#= vesselDetail.prevOwnerName #</li>
+	</ul>
+#}#	
+</div>
+	</script>
+	
+<!-- Grid Datail Templates -->
+<script type="text/x-kendo-template" id="surveyDetailTemplate">
+	<div class='surveyDetailTabstrip'>
+		<ul>
+			<li class='k-state-active'>Survey Audits</li>
+			<li>Survey Certificates</li>
+			<li>Survey Documents</li>
+		</ul>
+		<div>
+			<div class='auditsGrid'></div>
+		</div>
+		<div>
+			<div class='certificatesGrid'></div>
+		</div>
+		<div>
+			<div class='documentsGrid'></div>
+		</div>
+	</div>
+</script>
+
+<script type="text/x-kendo-template" id="inspectionDetailTemplate">
+	<div class='inspectionDeficienciesGrid'></div>
+</script>

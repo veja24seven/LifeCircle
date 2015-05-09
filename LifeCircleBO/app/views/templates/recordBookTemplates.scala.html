@@ -1,0 +1,49 @@
+	<script type="text/x-kendo-template" id="applicationsTemplate">
+        <div class="toolbar">
+            <label for="applicationSearch">Search:</label>
+            <input id="applicationSearchVal" type="text" class="k-search">
+            <a id="applicationSearchBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+			<a id="addApplicationBtn" class="k-button"><span class="k-icon k-add"></span>Add Request Application</a>
+			<a id="editApplicationBtn" class="k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Request Application</a>
+			<a id="approveApplicationBtn" class="k-button" style="display: none;"><span class="k-icon k-edit"></span>Approval</a>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="recordBooksTemplate">
+		<div class="toolbar">
+			<a class="addRecordbookBtn k-button"><span class="k-icon k-add"></span>Add Request Record Book</a>
+			<a class="editRecordbookBtn k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Request Record Book</a>
+		</div>
+	</script>
+	<script type="text/x-kendo-template" id="requestInfosTemplate">
+		<div class="toolbar">
+			<a class="addRequestInfoBtn k-button"><span class="k-icon k-add"></span>Add Request Info</a>
+			<a class="editRequestInfoBtn k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Request Info</a>
+		</div>
+	</script>
+	
+	<script type="text/x-kendo-template" id="serviceRecordsTemplate">
+		<div class="toolbar">
+			<a class="addServiceRecordBtn k-button"><span class="k-icon k-add"></span>Add Request Service Record</a>
+			<a class="editServiceRecordBtn k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Request Service Record</a>
+		</div>
+	</script>		
+	
+    <script type="text/x-kendo-template" id="applicationDetailTemplate">
+		<div class='applicationDetailTabstrip'>
+			<ul>
+				<li class='k-state-active'>Request Record Books</li>
+				<li>Request Informations</li>
+				<li>Request Service Records</li>
+			</ul>
+			<div>
+				<div class='recordbooksGrid'></div>
+			</div>
+			<div>
+				<div class='requestInfosGrid'></div>
+			</div>
+			<div>
+				<div class='serviceRecordsGrid'></div>
+			</div>
+		</div>
+	</script>
+		

@@ -1,0 +1,132 @@
+	<script type="text/x-kendo-template" id="vesselsTemplate">
+        <div class="toolbar">
+            <label for="vesselSearch">Search By</label>
+			<input id="vesselSearchBy" data-role="dropdownlist" 
+			data-source="[{label:'Vessel Name',ref:'vessel'},{label:'Vessel Reg No',ref:'vessel'},{label:'Owner Name',ref:'owner'},{label:'Owner Identity',ref:'owner'}]"
+			data-text-field="label" data-value-field="ref">
+            <input id="vesselSearch" type="text" class="k-search">
+            <a id="searchVesselsBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+			<a id="addNewVesselBtn" class="k-button"><span class="k-icon k-add"></span>Add</a>
+            <a id="editVesselBtn" class="k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit</a>
+			<a id="addVesselDetailBtn" class="k-button" style="display: none;"><span class="k-icon k-add"></span>Add Detail</a>
+			<a id="approvalVesselBtn" class="k-button" style="display: none;"><span class="k-icon k-add"></span>Approval</a>
+           
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="vesselDocsTemplate">
+        <div class="toolbar">
+
+            <a class="addNewDocumentBtn k-button"><span class="k-icon k-add"></span>Add Document</a>
+			<a class="editDocumentBtn k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Document</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="attributesTemplate">
+        <div class="toolbar">
+            <a class="addNewAttributeBtn k-button"><span class="k-icon k-add"></span>Add Info</a>
+			<a class="editAttributeBtn k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Info</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="operatorsTemplate">
+        <div class="toolbar">
+            <a class="addNewOperatorBtn k-button"><span class="k-icon k-add"></span>Add New Operator/Agent</a>
+			<a class="editOperatorBtn k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Operator/Agent</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="certificatesTemplate">
+        <div class="toolbar">
+
+            <a class="addNewCertificateBtn k-button"><span class="k-icon k-add"></span>Add Mandatory Certificate</a>
+			<a class="editCertificateBtn k-button" style="display: none;"><span class="k-icon k-edit"></span>Edit Mandatory Certificate</a>
+        </div>
+    </script>
+    
+    <!-- Grid Datail Templates -->
+<script type="text/x-kendo-template" id="vesselDetailTemplate">
+	<div class='vesselDetailTabstrip'>
+		<ul>
+			<li class='k-state-active'>Vessel Detail</li>
+			<li class='attributesTab'>Additional Info</li>
+			<li class='documentsTab'>Documents</li>
+			<li class='operatorsTab'>Operators</li>
+			<li>Mandatory Certificates</li>
+			<li>Download Certificate</li>
+		</ul>
+		<div>
+			<div class='vessel-details'>
+                 <ul>
+                 	<li><label>Owner:</label>#= owner.name1 #, #= owner.identityNumber #</li>
+                    <li><label>Vessel Name:</label>#= vesselName #</li>
+                    <li><label>Vessel Type:</label>#= vesselType.value #</li>
+                    <li><label>Registration No.:</label>#= regNo #</li>
+                    <li><label>Registration Date:</label>#= regDate #</li>
+                    <li><label>Registration Type:</label>#= regType.value #</li>
+                    <li><label>Licence Type:</label>#= licenceType.value #</li>
+                    <li><label>Flag State:</label>#= flagState.name #</li>
+                    <li><label>Registration Port:</label>#= regPort.description #</li>
+                    <li><label>Gross Tonnage:</label>#= grossTonnage #</li>
+                    <li><label>Net Tonnage:</label>#= netTonnage #</li>
+                    <li><label>Length:</label>#= length #</li>
+                    <li><label>Call Sign:</label>#= callSign #</li>
+                    <li><label>IMO No.:</label>#= imoNo #</li>
+                    <li><label>Year Build:</label>#= yearBuild #</li>
+                    <li><label>Operation Type:</label>#= operationType.value #</li>
+                    <li><label>Proper Officer:</label>#= properOffice.value #</li>
+                    <li><label>Vessel Status:</label>#= vesselStatus.value #</li>
+                    <li><label>Status Date:</label>#= statusDate #</li>
+                    <li><label>Approval Status:</label>#= approvalStatus.value #</li>
+                    <li><label>Approval Date:</label>#= approvalDate #</li>
+                 </ul>
+
+				
+          	</div>
+		</div>
+		<div>
+			<div class='attributesGrid'></div>
+		</div>
+		<div>
+			<div class='documentsGrid'></div>
+		</div>
+		<div>
+			<div class='operatorsGrid'></div>
+		</div>
+		<div>
+			<div class='certificatesGrid'></div>
+		</div>
+		<div>
+			<div>
+				<a href='\\#' target='_blank' class='downloadBtn get-kendoui' style='height:40px;'>Download PDF</a>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/x-kendo-template" id="vesselDetailListViewTemplate">
+<ul>
+	<li><label>Width:</label>#= vesselDetail.width #</li>
+	<li><label>Depth:</label>#= vesselDetail.depth #</li>
+	<li><label>Builder Name:</label>#= vesselDetail.builderName #</li>
+	<li><label>Country Build:</label>#= vesselDetail.countryBuild.name #</li>
+    <li><label>Place Build:</label>#= vesselDetail.placeBuild #</li>
+    <li><label>Material Type:</label>#= vesselDetail.materialType.value #</li>
+	<li><label>Propel Method:</label>#= vesselDetail.propellMethod.value #</li>
+	<li><label>No. of Decks:</label>#= vesselDetail.noOfDecks #</li>
+    <li><label>No. of Bulk Heads:</label>#= vesselDetail.noOfBulkHeads #</li>
+    <li><label>Tonnage Type:</label>#= vesselDetail.tonnageType.value #</li>
+    <li><label>Bore & Stroke:</label>#= vesselDetail.boreAndStroke #</li>
+    <li><label>No. of Engines:</label>#= vesselDetail.noOfEngines #</li>
+    <li><label>Cylinder/Engine:</label>#= vesselDetail.cylinderPerEngine #</li>
+    <li><label>Drive Type:</label>#= vesselDetail.driveType #</li>
+    <li><label>Prev Reg No.:</label>#= vesselDetail.prevRegNo #</li>
+    <li><label>Prev Reg Port:</label>#= vesselDetail.prevRegPort #</li>
+    <li><label>Prev Cancel Date:</label>#= vesselDetail.prevRegCancelDate #</li>
+    <li><label>Prev Vessel Name:</label>#= vesselDetail.prevVesselName #</li>
+    <li><label>Prev Owner Name:</label>#= vesselDetail.prevOwnerName #</li>
+</ul>
+</script>
+
+
+

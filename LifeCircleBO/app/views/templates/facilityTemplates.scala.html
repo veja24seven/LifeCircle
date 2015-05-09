@@ -1,0 +1,46 @@
+<!-- Action Tool Bar Templates -->
+	<script type="text/x-kendo-template" id="facilityTemplate">
+        <div class="toolbar">
+            <label for="facilitySearchField">Search</label>
+            <input id="facilitySearchField" type="text" class="k-search">
+            <a id="searchFacilitiesBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+            <a id="addNewFacilityBtn" class="k-button"><span class="k-icon k-add"></span>Add Facility</a>
+            <a id="editFacilityBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Facility</a>
+            <a id="confirmFacilityBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Confirm</a>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="facilityInspectionsTemplate">
+        <div class="toolbar">
+            <a class="addNewFacilityInspectionBtn k-button"><span class="k-icon k-add"></span>Add Facility Inspection</a>
+            <a class="editFacilityInspectionBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Facility Inspection</a>
+            <a class="confirmFacilityInspectionBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Confirm</a>
+        </div>
+    </script>
+
+	<script type="text/x-kendo-template" id="facilityCertificatesTemplate">
+        <div class="toolbar">
+            <a class="addNewFacilityCertificateBtn k-button"><span class="k-icon k-add"></span>Add Facility Certificate</a>
+            <a class="editFacilityCertificateBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Facility Certificate</a>
+            <a class="confirmFacilityCertificateBtn k-button" style="display:none;"><span class="k-icon k-edit"></span>Confirm</a>
+        </div>
+    </script>
+
+<!-- Grid Datail Templates -->
+<script type="text/x-kendo-template" id="facilityCertificateTemplate">
+	<div class='facilityCertificatesTabstrip'>
+		<ul>
+			<li class='k-state-active'>Facility Inspections</li>
+			<li>Facility Certificates</li>
+		</ul>
+		<div>
+			<div class='facilityInspectionsGrid'></div>
+		</div>
+		<div>
+			<div class='certificatesGrid'></div>
+		</div>
+	</div>
+</script>
+
+
+    

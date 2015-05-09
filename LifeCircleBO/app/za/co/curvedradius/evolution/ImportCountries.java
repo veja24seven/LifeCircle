@@ -20,6 +20,7 @@ public class ImportCountries {
     public static List<Country> exec (){
         List<Country> countries = new ArrayList<Country>();
         //File file = new File("C:\\dev\\play\\DMA\\docs\\iso3166.txt");
+        //File file = new File("/opt/iso3166.txt");
         File file = new File("C:\\Dev\\workspace\\DMA_V2\\docs\\iso3166.txt");
         if (file.exists()){
             try{

@@ -1,0 +1,248 @@
+<script type="text/x-kendo-template" id="waste-facilities-grid-toolbar-template">
+<div class='toolbar'>
+	<label for='searchField'>Search:</label>
+	<input id='searchField' type='text' class='k-search'>
+	<a id='searchBtn' class='k-button'><span class='k-icon k-search'></span>Search</a>
+	<a id='wasteFacilityAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Waste Facility Setup</a>
+	<a id='wasteFacilityEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Waste Facility Setup</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="inspections-grid-toolbar-template">
+<div class='toolbar'>
+	<a id='inspectionAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Inspection Report</a>
+	<a id='inspectionEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Inspection Report</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="waste-receptions-grid-toolbar-template">
+<div class='toolbar'>
+	<a class='receptionAddBtn k-button'><span class='k-icon k-add'></span>Add Waste Reception</a>
+	<a class='receptionEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Waste Reception</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="inspection-deficiencies-grid-toolbar-template">
+<div class='toolbar'>
+	<a class='deficiencyAddBtn k-button'><span class='k-icon k-add'></span>Add Inspection Deficiency</a>
+	<a class='deficiencyEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Inspection Deficiency</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="waste-facilities-grid-detail-template">
+	<div class='wasteReceptionsGrid'></div>
+</script>
+
+<script type="text/x-kendo-template" id="inspections-grid-detail-template">
+	<div class='deficienciesGrid'></div>
+</script>
+
+<!-- FORMS -->
+<script type="text/x-kendo-template" id="waste-facility-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='waste-facility-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.wasteFacilityId' name='wasteFacilityId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='owner'>Owner</label>
+	    </div>
+	    <div class='k-edit-field'>
+            <input id='owner' name='owner' 
+            	data-role='autocomplete' data-text-field='name1' data-source='customerAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:owner' required='required' style='width: 200px;' data-required-msg='Owner is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='wasteFacilityType'>Waste Facility Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='wasteFacilityType' name='wasteFacilityType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='wasteFacilityTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.wasteFacilityType.variableId' required='required' style='width: 200px;' data-required-msg='Waste Facility Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='serviceProviderType'>Service Provider Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='serviceProviderType' name='serviceProviderType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='serviceProviderTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.serviceProviderType.variableId' required='required' style='width: 200px;' data-required-msg='Service Provider Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='wasteFacilityPort'>Waste Facility Port</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='wasteFacilityPort' name='wasteFacilityPort' 
+	        	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='namibianPortsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.wasteFacilityPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Waste Facility Port is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='wasteFacilityDetails'>Waste Facility Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='wasteFacilityDetails' name='wasteFacilityDetails' 
+				data-bind='value:dataItem.wasteFacilityDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Waste Facility Details are required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='facilityLocationDetails'>Facility Location Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='facilityLocationDetails' name='facilityLocationDetails' 
+				data-bind='value:dataItem.facilityLocationDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Facility Location Details are required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="waste-reception-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='waste-reception-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.receptionId' name='receptionId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='wasteCategory'>Waste Category</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='wasteCategory' name='wasteCategory' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='wasteCategoriesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.wasteCategory.variableId' required='required' style='width: 200px;' data-required-msg='Waste Category is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='wasteType'>Waste Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='wasteType' name='wasteType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='wasteTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.wasteType.variableId' required='required' style='width: 200px;' data-required-msg='Waste Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+	    	<label for='wasteReceivable'>Waste Receivable</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='wasteReceivable' name='wasteReceivable' 
+	        	data-role='dropdownlist' data-source='["YES":"NO"]' data-option-label='-Please Select-' 
+	          	data-bind='value:wasteReceivable' required='required' style='width: 200px;' data-required-msg='Waste Receivable is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='capacityVolume'>Capacity Volume(m3)</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='capacityVolume' name='capacityVolume' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:dataItem.capacityVolume' required='required' style='width: 200px;' 
+            	data-required-msg='Capacity Volume is required.'/>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script id="waste-inspection-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='waste-inspection-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:inspection.inspectionId' name='inspectionId'/>
+		
+		
+        <div class='k-edit-label'>
+            <label for='inspectionDate'>Inspection Date &amp; Time</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionDate' name='inspectionDate' 
+            	data-role='datetimepicker' data-bind='value:inspectionDate' data-format="yyyy-MM-dd HH:mm"
+            	required='required' style='width: 200px;' data-required-msg='Inspection Date & Time is required.'/>
+        </div>
+        
+		<div class='k-edit-label'>
+	    	<label for='inspector'>Inspector</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='inspector' name='inspector' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='surveyorsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:inspection.inspector.variableId' required='required' style='width: 200px;' data-required-msg='Inspector is required.'>
+	    </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionStatus'>Inspection Status</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='inspectionStatus' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='inspectionStatusesDS' data-option-label='-Please Select-' 
+            	data-bind='value:inspection.inspectionStatus.variableId' required='required' style='width: 200px;' data-required-msg='Inspection Status is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='completionDate'>Completion Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='completionDate' name='completionDate' 
+            	data-role='datepicker' data-bind='value:inspection.completionDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Completion Date is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+<script id="inspection-deficiency-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='inspection-deficiency-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:inspectionId' name='inspection'/>
+		<input hidden data-bind='value:deficiency.deficiencyId' name='deficiency'/>
+		
+		
+	    <div class='k-edit-label'>
+            <label for='deficiencyDetails'>Deficiency Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='deficiencyDetails' name='deficiencyDetails' 
+				data-bind='value:deficiency.deficiencyDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Deficiency Details is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='actionTaken'>Action Taken</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='actionTaken' name='actionTaken' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='inspectionDeficiencyActionsDS' data-option-label='-Please Select-' 
+            	data-bind='value:deficiency.actionTaken.variableId' required='required' style='width: 200px;' data-required-msg='Action Taken is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='actionRemarks'>Action Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='actionRemarks' name='actionRemarks' 
+				data-bind='value:deficiency.actionRemarks' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Action Remarks is required'></textarea>
+        </div>
+		
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>

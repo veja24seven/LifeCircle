@@ -1,0 +1,326 @@
+
+<div id="addNewSeafarer" style="display: none;width: 410px;height: 300px;">
+    <div class="k-edit-form-container">
+        <form id="addNewSeafarerForm" class="k-edit-form" method="POST" enctype="multipart/form-data" action="/seafarers/create">
+        	<div class="k-edit-label">
+                <label for="person">Name &amp; ID</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="person" name="person" required style="width: 200px;"
+                data-required-msg="Name and Identity number."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="employer">Employer</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="employer" name="employer" required style="width: 200px;"
+                data-required-msg="Employer is required."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="seafarerType">Seafarer Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="seafarerType" name="seafarerType" required style="width: 200px;"
+                data-required-msg="Seafarer Type is required"
+                >
+            </div>
+            
+         	<div class="k-edit-label">
+                <label for="registerDate">Register Date</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="registerDate" name="registerDate" required style="width: 200px;"
+                data-required-msg="Register Date is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="recordbookNo">Record Book No.</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="recordbookNo" name="recordbookNo" class="k-input k-textbox" required maxlength="100"
+                data-required-msg="Record Book No. is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="seafarerStatus">Seafarer Status</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="seafarerStatus" name="seafarerStatus" required style="width: 200px;"
+                data-required-msg="Seafarer Status is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="passportPhoto">Passport Photo</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="passportPhoto" name="passportPhoto" type="file" required
+                accept="image/x-png, image/jpeg;capture=camera" 
+                data-required-msg="Passport Photo is required"
+                title="Capture a Photo">
+            </div>
+            
+            
+            <div class="k-edit-buttons k-state-default">
+            	<button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewSeafarer" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="editSeafarer" style="display: none;width: 410px;height: 280px;">
+    <div class="k-edit-form-container">
+        <form id="editSeafarerForm" class="k-edit-form" method="POST" enctype="multipart/form-data" action="/seafarers/update">
+        	<input hidden id="seafarerId" name="seafarerId">
+        	
+        	<div class="k-edit-label">
+                <label for="employerEdit">Employer</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="employerEdit" name="employer" required style="width: 200px;"
+                data-required-msg="Employer is required."/>
+            </div>
+            <div class="k-edit-label">
+                <label for="seafarerTypeEdit">Seafarer Type</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="seafarerTypeEdit" name="seafarerType" required style="width: 200px;"
+                data-required-msg="Seafarer Type is required"
+                >
+            </div>
+            
+         	<div class="k-edit-label">
+                <label for="registerDateEdit">Register Date</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="registerDateEdit" name="registerDate" required style="width: 200px;"
+                data-required-msg="Register Date is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="recordbookNoEdit">Record Book No.</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="recordbookNoEdit" name="recordbookNo" class="k-input k-textbox" required maxlength="100"
+                data-required-msg="Record Book No. is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="seafarerStatusEdit">Seafarer Status</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="seafarerStatusEdit" name="seafarerStatus" required style="width: 200px;"
+                data-required-msg="Seafarer Status is required"
+                >
+            </div>
+            <div class="k-edit-label">
+                <label for="passportPhotoEdit">Passport Photo</label>
+            </div>
+            <div class="k-edit-field">
+                <input id="passportPhotoEdit" name="passportPhoto" type="file"
+                accept="image/x-png, image/jpeg;capture=camera" 
+                data-required-msg="Passport Photo is required"
+                title="Capture a Photo">
+            </div>
+            
+            
+            <div class="k-edit-buttons k-state-default">
+            	<button class="k-button" type="submit">
+                    <span class="k-icon k-update"></span>
+                    Save
+                </button>
+                <a id="cancelAddNewSeafarerEdit" class="k-button">
+                    <span class="k-icon k-cancel"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script id="seafarer-document-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='seafarer-document-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:document.documentId' name='documentId'/>
+		
+        <div class='k-edit-label'>
+            <label for='documentType'>Document Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='documentType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='documentTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:document.documentType.variableId' required='required' style='width: 200px;' data-required-msg='Document Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentRefNo'>Document Ref No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentRefNo' name='documentRefNo' 
+            data-bind='value:document.documentRefNo'
+            class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-_]+' maxlength='50'
+            data-required-msg='Document Ref No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentDate'>Document Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentDate' name='documentDate' 
+            	data-role='datepicker' data-bind='value:document.documentDate' data-format="yyyy-MM-dd"
+            	required='required' style='width: 200px;' data-required-msg='Document Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='documentUrl'>Document Url/Path</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentUrl' name='documentUrl' type='file' style='width: 200px;' 
+				data-required-msg='Document Url/Path is required.'/>
+        </div>
+        
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>
+
+<script id="seafarer-coc-detail-form-template" type="text/x-kendo-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='seafarer-coc-detail-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:cocDetail.cocId' name='cocId'/>
+		
+        <div class='k-edit-label'>
+            <label for='cocType'>COC Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocType' name='cocType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='cocTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:cocDetail.cocType.variableId' required='required' style='width: 200px;' data-required-msg='COC Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='certificateNo'>Certificate No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='certificateNo' name='certificateNo' class='k-input k-textbox' 
+            data-bind='value:cocDetail.certificateNo' maxlength='150'
+            data-required-msg='Certificate No is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='cocIssueType'>COC Issue Type</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocIssueType' name='cocIssueType' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='cocIssueTypesDS' data-option-label='-Please Select-' 
+            	data-bind='value:cocDetail.cocIssueType.variableId' required='required' style='width: 200px;' data-required-msg='COC Issue Type is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='cocIssueDate'>COC Issue Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocIssueDate' name='cocIssueDate' 
+            	data-role='datepicker' data-bind='value:cocDetail.cocIssueDate' data-format='yyyy-MM-dd' required='required' 
+            	style='width: 200px;' data-required-msg='CC Issue Date is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='cocValidPeriod'>COC Valid Period</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocValidPeriod' name='cocValidPeriod' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:cocDetail.cocValidPeriod' required='required' style='width: 200px;' 
+            	data-required-msg='COC Valid Period is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='cocIssueCountry'>COC Issue Country</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocIssueCountry' name='cocIssueCountry' 
+            	data-role='dropdownlist' data-text-field='name' data-value-field='countryId' data-source='cocIssueCountriesDS' data-option-label='-Please Select-' 
+            	data-bind='value:cocDetail.cocIssueCountry.countryId' required='required' style='width: 200px;' data-required-msg='COC Issue Country is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='cocIssuePlace'>COC Issue Place</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocIssuePlace' name='cocIssuePlace' class='k-input k-textbox' 
+            data-bind='value:cocDetail.cocIssuePlace' maxlength='150' required='required'
+            data-required-msg='COC Issue Place is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='cocIssueAuthority'>COC Issue Authority</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocIssueAuthority' name='cocIssueAuthority' class='k-input k-textbox' 
+            data-bind='value:cocDetail.cocIssueAuthority' maxlength='150' required='required'
+            data-required-msg='COC Issue Authority is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='highestCoc'>Highest COC</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='highestCoc' name='highestCoc' 
+            	data-role='dropdownlist' data-source='["YES","NO"]' data-option-label='-Please Select-' 
+            	data-bind='value:cocDetail.cocType.highestCoc' required='required' style='width: 200px;' data-required-msg='Highest COC is required.'>
+        </div>
+        
+		<div class='k-edit-label'>
+            <label for='cocExamDate'>COC Exam Date</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocExamDate' name='cocExamDate' 
+            	data-role='datepicker' data-bind='value:cocDetail.cocExamDate' data-format='yyyy-MM-dd'
+            	style='width: 200px;'/>
+        </div>
+
+		<div class='k-edit-label'>
+            <label for='cocExamPlace'>COC Exam Place</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocExamPlace' name='cocExamPlace' class='k-input k-textbox' 
+            data-bind='value:cocDetail.cocExamPlace' maxlength='150'
+            >
+        </div>
+
+		<div class='k-edit-label'>
+            <label for='cocConvention'>COC Convention</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocConvention' name='cocConvention' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='value' data-source='cocConventionsDS' data-option-label='-Optional Select-' 
+            	data-bind='value:cocDetail.cocConvention' style='width: 200px;'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='cocRegulation'>COC Regulation</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='cocRegulation' name='cocRegulation' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='value' data-source='cocRegulationsDS' data-option-label='-Optional Select-' 
+            	data-bind='value:cocDetail.cocRegulation' style='width: 200px;'>
+        </div>
+
+		
+        <div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>	
+</script>

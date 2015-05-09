@@ -1,0 +1,334 @@
+<script type="text/x-kendo-template" id="inspections-grid-toolbar-template">
+<div class='toolbar'>
+	<label>Search:</label>
+	<input id='searchBy' data-role='dropdownlist' data-text-field='label' data-value-field='id' data-source='[{label:"Vessel Name",id:"vessel"},{label:"Inspection Date",id:"date"}]' >
+	<input id='searchField' type='text' class='k-search'>
+	<a id='searchBtn' class='k-button'><span class='k-icon k-search'></span>Search</a>
+	<a id='inspectionAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Inspection Sheet</a>
+	<a id='inspectionEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Inspection Sheet</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="sections-grid-toolbar-template">
+<div class='toolbar'>
+	<a id='sectionAddBtn' class='k-button'><span class='k-icon k-add'></span>Add Sheet Section</a>
+	<a id='sectionEditBtn' class='k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Sheet Section</a>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="inspections-grid-detail-template">
+<div class='inspections-grid-detail-tabstrip'>
+	<ul>
+		<li class='k-state-active'>Inspection Sheet Detail</li>
+		<li>Inspection Questions Results</li>
+		<li>Inspection Reports</li>
+	</ul>
+	<div class='notice-details'>
+   		<ul>
+           	<li><label>Vessel Name:</label>#= vessel.vesselName #, #= vessel.regNo #</li>
+           	<li><label>Facility:</label>#= facility.facilityName #, #= facility.regNo #</li>
+        	<li><label>Owner:</label>#= owner.name1 #, #= owner.identityNumber #</li>
+           	<li><label>Entity Type:</label>#= entityType.value #</li>
+           	<li><label>Master Details:</label>#= masterDetails #</li>
+           	<li><label>Inspection Sheet Type:</label>#= inspectionSheetType.value #</li>
+           	<li><label>Inspection Sheet No.:</label>#= inspectionSheetNo #</li>
+           	<li><label>Inspection Date & Time:</label>#= kendo.toString(new Date(inspectionDate),'yyyy-MM-dd HH:mm') #</li>
+           	<li><label>Inspector Name:</label>#= inspector.value #</li>
+           	<li><label>Inspection Port:</label>#= inspectionPort.description #</li>
+           	<li><label>Inspection Status:</label>#= inspectionStatus.value #</li>
+           	<li><label>Completion Date:</label>#= completionDate!=null?completionDate:'Not Complete' #</li>
+        </ul>
+   	</div>
+	<div class='questionResultsGrid'></div>
+	<div class='reportsGrid'></div>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="sections-grid-detail-template">
+<div class='sections-grid-detail-tabstrip'>
+	<ul>
+		<li class='k-state-active'>Sheet Questions</li>
+		<li class='questionOptionsTab' style='display:none;'>Sheet Question Options</li>
+	</ul>
+	
+	<div class='questionsGrid'></div>
+	<div class='optionsGrid'></div>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="question-results-grid-toolbar-template">
+	<a class='questionResultAddBtn k-button'><span class='k-icon k-add'></span>Add Inspection Question Result</a>
+	<a class='questionResultEditBtn k-button' style='display:none;'><span class='k-icon k-delete'></span>Edit Inspection Question Result</a>
+</script>
+
+<script type="text/x-kendo-template" id="inspection-reports-grid-toolbar-template">
+	<a class='reportAddBtn k-button'><span class='k-icon k-add'></span>Add Inspection Report</a>
+	<a class='reportEditBtn k-button' style='display:none;'><span class='k-icon k-edit'></span>Edit Inspection Report</a>
+</script>
+
+<!-- FORMS -->
+<script type="text/x-kendo-template" id="inspection-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='inspection-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.inspectionSheetId' name='inspectionSheetId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='vessel'>Vessel</label>
+	    </div>
+	    <div class='k-edit-field'>
+            <input id='vessel' name='vessel' 
+            	data-role='autocomplete' data-text-field='vesselName' data-source='vesselAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:vessel' required='required' style='width: 250px;' data-required-msg='Vessel is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='facility'>Facility</label>
+	    </div>
+	    <div class='k-edit-field'>
+            <input id='facility' name='facility' 
+            	data-role='autocomplete' data-text-field='facilityName' data-source='facilityAutocompleteDS' data-ignore-case='true'
+            	data-bind='value:facility' required='required' style='width: 250px;' data-required-msg='Facility is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='masterDetails'>Master Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='masterDetails' name='masterDetails' 
+				data-bind='value:dataItem.masterDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Master Details are required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='inspectionSheetType'>Inspection Sheet Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input name='inspectionSheetType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='inspectionSheetTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.inspectionSheetType.variableId' required='required' style='width: 250px;' data-required-msg='Inspection Sheet Type is required.'>
+	    </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionSheetNo'>Inspection Sheet No.</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionSheetNo' name='inspectionSheetNo' 
+            	data-bind='value:dataItem.inspectionSheetNo'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\-]+' maxlength='100'
+            	data-required-msg='Inspection Sheet No. is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='inspectionDate'>Inspection Date &amp; Time</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionDate' name='inspectionDate' 
+            	data-role='datetimepicker' data-bind='value:inspectionDate' data-format="yyyy-MM-dd HH:mm"
+            	required='required' style='width: 200px;' data-required-msg='Inspection Date & Time is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='inspector'>Inspector</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input id='inspector' name='inspector' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='surveyorsDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.inspector.variableId' required='required' style='width: 200px;' data-required-msg='Inspector is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='inspectionPort'>Inspection Port</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='inspectionPort' name='inspectionPort' 
+            	data-role='dropdownlist' data-text-field='description' data-value-field='registryPortId' data-source='inspectionPortsDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.inspectionPort.registryPortId' required='required' style='width: 200px;' data-required-msg='Inspection Port is required.'/>
+        </div>
+	    
+	    <!--<div class='k-edit-label'>
+            <label for='inspectionStatus'>Inspection Status</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='documentType' name='inspectionStatus' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='inspectionStatusesDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.inspectionStatus.variableId' required='required' style='width: 200px;' data-required-msg='Inspection Status is required.'>
+        </div>-->
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="inspection-report-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='inspection-report-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.deficiencyId' name='deficiencyId'>
+		
+		<div class='k-edit-label'>
+            <label for='deficiencyDetails'>Deficiency Details</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='deficiencyDetails' name='deficiencyDetails' 
+				data-bind='value:dataItem.deficiencyDetails' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Deficiency Details is required'></textarea>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='actionTaken'>Action Taken</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='actionTaken' name='actionTaken' 
+            	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='deficiencyActionsDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.actionTaken.variableId' required='required' style='width: 200px;' data-required-msg='Action Taken is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='actionRemarks'>Action Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='actionRemarks' name='actionRemarks' 
+				data-bind='value:dataItem.actionRemarks' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Action Remarks is required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="question-result-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='question-result-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.questionResultId' name='questionResultId'>
+		
+		<div class='k-edit-label'>
+            <label for='question'>Question</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='question' name='question' 
+            	data-role='dropdownlist' data-text-field='questionTitle' data-value-field='questionId' data-source='questionsDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.question.questionId' required='required' style='width: 200px;' data-required-msg='Question is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='option'>Option</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='option' name='option' 
+            	data-role='dropdownlist' data-text-field='optionTitle' data-value-field='optionId' data-source='optionsDS' data-option-label='-Please Select-' 
+            	data-bind='value:dataItem.option.optionId' required='required' style='width: 200px;' data-required-msg='Option is required.'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='option1Value'>Option 1 Value</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='option1Value' name='option1Value' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:dataItem.option1Value' required='required' style='width: 200px;' 
+            	data-required-msg='Option 1 Value is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='option2Value'>Option 2 Value</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='option2Value' name='option2Value' 
+            	data-role='numerictextbox' min='1'
+            	data-bind='value:dataItem.option2Value' required='required' style='width: 200px;' 
+            	data-required-msg='Option 2 Value is required.'/>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='remarksValue'>Remarks</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='remarksValue' name='remarksValue' 
+				data-bind='value:dataItem.remarksValue' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Remarks is required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
+<script type="text/x-kendo-template" id="sheet-section-form-template">
+<div class='k-edit-form-container' style='width: 100%;'>
+	<form id='sheet-section-form' class='k-edit-form' style='width:100%;'>
+		<input hidden data-bind='value:dataItem.questionResultId' name='sheetSectionId'>
+		
+		<div class='k-edit-label'>
+	    	<label for='inspectionSheetType'>Inspection Sheet Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input name='inspectionSheetType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='inspectionSheetTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.inspectionSheetType.variableId' required='required' style='width: 250px;' data-required-msg='Inspection Sheet Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='sheetSectionTitle'>Sheet Section Title</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='sheetSectionTitle' name='sheetSectionTitle' 
+            	data-bind='value:dataItem.sheetSectionTitle'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            	data-required-msg='Sheet Section Title is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+	    	<label for='dataType'>Data Type</label>
+	    </div>
+	    <div class='k-edit-field'>
+	    	<input name='dataType' 
+	        	data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='dataTypesDS' data-option-label='-Please Select-' 
+	          	data-bind='value:dataItem.dataType.variableId' required='required' style='width: 250px;' data-required-msg='Data Type is required.'>
+	    </div>
+	    
+	    <div class='k-edit-label'>
+            <label for='option1Label'>Option 1 Label</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='option1Label' name='option1Label' 
+            	data-bind='value:dataItem.option1Label'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            	data-required-msg='Option 1 Label is required'>
+        </div>
+        
+        <div class='k-edit-label'>
+            <label for='option2Label'>Option 2 Label</label>
+        </div>
+        <div class='k-edit-field'>
+            <input id='option2Label' name='option2Label' 
+            	data-bind='value:dataItem.option2Label'
+            	class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+            	data-required-msg='Option 2 Label is required'>
+        </div>
+		
+		<div class='k-edit-label'>
+            <label for='remarksLabel'>Remarks Label</label>
+        </div>
+        <div class='k-edit-field'>
+            <textarea id='remarksLabel' name='remarksLabel' 
+				data-bind='value:dataItem.remarksLabel' class='k-textbox' rows='4' required  maxlength='500' style='width: 200px;'
+				data-required-msg='Remarks Label is required'></textarea>
+        </div>
+		
+		<div class='k-edit-buttons k-state-default'>
+             <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+             <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+         </div>
+	</form>
+</div>
+</script>
+
