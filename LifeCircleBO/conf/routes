@@ -8,6 +8,7 @@ POST        /login                                              controllers.Appl
 GET         /logout                                             controllers.Application.logout()
 POST        /change_password                                    controllers.Application.changeUserPassword()
 
+GET         /members                                            controllers.Application.membersApp()
 GET         /persons                                            controllers.Application.personsApp()
 GET         /branches                                            controllers.Application.branchesApp()
 GET         /admin                                              controllers.Application.admin()
@@ -19,11 +20,13 @@ GET         /person/display/:personId                          controllers.Appli
 
 # Admin
 GET        /lifecircle/admin/load_persons                       controllers.Admin.loadPersons()
-GET        /lifecircle/admin/load_branches                       controllers.Admin.loadBranches()
+GET        /lifecircle/admin/load_branches                      controllers.Admin.loadBranches()
 GET        /lifecircle/admin/load_person/:personId              controllers.Admin.loadPersonDetail(personId:String)
-POST       /lifecircle/admin/search_persons                     controllers.Admin.searchPersons()
+GET        /lifecircle/admin/search_persons/:criteria           controllers.Admin.searchPersons(criteria:String)
 POST       /lifecircle/admin/create_branch                      controllers.Admin.createBranch()
 POST       /lifecircle/admin/update_branch                      controllers.Admin.updateBranch()
+POST       /lifecircle/admin/create_person                      controllers.Admin.createPerson()
+POST       /lifecircle/admin/update_person                      controllers.Admin.updatePerson()
 
 #Variables App
 GET 		/lifecircle/variables/load_all						controllers.VariablesMan.loadAllVariables()
@@ -43,7 +46,8 @@ POST		/lifecircle/users/toggleActive/:id					controllers.Admin.toggleActiveStatu
 
 #LookUps
 GET         /lifecircle/lookup/load/:category                   controllers.LookUp.load(category:String)
-GET			/lifecircle/lookup/variableCategories		                    controllers.LookUp.variableCategories()
+GET         /lifecircle/lookup/load_countries                   controllers.LookUp.loadCountries()
+GET			/lifecircle/lookup/variableCategories		        controllers.LookUp.variableCategories()
 
 #Mocks
 GET         /mock_user                                          controllers.Mock.mockAdminUser()

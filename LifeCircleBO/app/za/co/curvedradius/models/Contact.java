@@ -11,6 +11,10 @@ import java.io.Serializable;
 @Entity
 @Table(name="contacts")
 public class Contact implements Serializable {
+
+    public static final String MOBILE = "MOBILE";
+    public static final String EMAIL = "EMAIL";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "contact_id", nullable = false, updatable = false, length = 10)

@@ -1,0 +1,190 @@
+<script type="text/x-kendo-template" id="people-grid-toolbar-template">
+    <div id="customerGridTool" class="toolbar">
+        <label for="searchTxtIn">Search:</label>
+        <input id="searchTxtIn" type="text" class="k-search"/>
+        <a id="searchBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+        <a id="addPersonBtn" class="k-button"><span class="k-icon k-add"></span>Add Person</a>
+        <a id="editPersonBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Person</a>
+        <a id="activatePersonBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Activate</a>
+        <a id="deactivatePersonBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>De-Activate</a>
+    </div>
+</script>
+
+<!-- FORMS -->
+<script type="text/x-kendo-template" id="person-form-template">
+    <div class='k-edit-form-container' style='width: 100%;'>
+        <form id='person-form' class='k-edit-form' style='width:100%;'>
+            <input hidden data-bind='value:dataItem.personId' name='personId'>
+
+            <div class='k-edit-label'>
+                <label for='identity'>ID Number</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='identity' name='identity'
+                       data-bind='value:identity.identityNumber'
+                       class='k-input k-textbox' required='required' pattern='[0-9]{13}+' maxlength='13'
+                       data-required-msg='ID Number is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='surname'>Surname</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='surname' name='surname'
+                       data-bind='value:dataItem.surname'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       data-required-msg='Surname is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='firstname'>First Name</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='firstname' name='firstname'
+                       data-bind='value:dataItem.firstname'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       data-required-msg='First Name is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='secondname'>Second Name</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='secondname' name='secondname'
+                       data-bind='value:dataItem.secondname'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       data-required-msg='Second Name is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='thirdname'>Third Name</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='thirdname' name='thirdname'
+                       data-bind='value:dataItem.thirdname'
+                       class='k-input k-textbox' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       data-required-msg='Third Name is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='gender'>Gender</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id="gender" name='gender'
+                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='gendersDS' data-option-label='-Please Select-'
+                       data-bind='value:dataItem.gender.variableId' required='required' style='width: 200px;' data-required-msg='Gender is required.'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='nationality'>Nationality</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id="nationality" name='nationality'
+                       data-role='dropdownlist' data-text-field='name' data-value-field='countryId' data-source='countriesDS' data-option-label='-Please Select-'
+                       data-bind='value:dataItem.nationality.countryId' required='required' style='width: 200px;' data-required-msg='Nationality is required.'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='dateOfBirth'>Date Of Birth</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='dateOfBirth' name='dateOfBirth'
+                       data-role='datepicker' data-bind='value:dataItem.dateOfBirth' data-format="yyyy-MM-dd"
+                       required='required' style='width: 200px;' data-required-msg='Date Of Birth is required.'/>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='streetNumber'>Street Number</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='streetNumber' name='streetNumber'
+                       data-bind='value:address.streetNumber'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                       placeholder="e.g No. 10"
+                       data-required-msg='Branch Street Number is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='streetName'>Street Name</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='streetName' name='streetName'
+                       data-bind='value:address.streetName'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g Long Str"
+                       data-required-msg='Branch Street Name is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='suburb'>Suburb</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='suburb' name='suburb'
+                       data-bind='value:address.suburb'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g City Centre"
+                       data-required-msg='Branch Suburb is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='town'>Town</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='town' name='town'
+                       data-bind='value:address.town'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g Cape Town"
+                       data-required-msg='Branch Town is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='province'>Province</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='province' name='province'
+                       data-bind='value:address.province'
+                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                       placeholder="e.g Western Cape"
+                       data-required-msg='Branch Province is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='postalCode'>Postal Code</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='postalCode' name='postalCode'
+                       data-bind='value:address.postalCode'
+                       class='k-input k-textbox' required='required' pattern='[0-9]{4}' maxlength='4'
+                       placeholder="e.g 4009"
+                       data-required-msg='Branch Postal Code is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='mobile'>Mobile</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='mobile' name='mobile'
+                       data-bind='value:mobile.contactValue'
+                       class='k-input k-textbox' required='required' pattern='[0-9]{10}' maxlength='10'
+                       placeholder="e.g 0820423789"
+                       data-required-msg='Mobile is required'>
+            </div>
+
+            <div class='k-edit-label'>
+                <label for='email'>E-mail</label>
+            </div>
+            <div class='k-edit-field'>
+                <input id='email' name='email' type="email"
+                       data-bind='value:email.contactValue'
+                       class='k-input k-textbox' required='required'
+                       placeholder="e.g person@@email.co.za"
+                       data-required-msg='E-mail is required'>
+            </div>
+
+            <div class='k-edit-buttons k-state-default'>
+                <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+                <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+            </div>
+        </form>
+    </div>
+</script>

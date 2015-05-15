@@ -130,6 +130,9 @@ public class Application extends Controller {
     public static Result branchesApp() { return ok(branches.render(""));}
 
     @HasRights
+    public static Result membersApp() { return ok(members.render(""));}
+
+    @HasRights
     public static Result personDisplay(String personId){
         return ok(customer_detail.render(Integer.parseInt(personId)));
     }

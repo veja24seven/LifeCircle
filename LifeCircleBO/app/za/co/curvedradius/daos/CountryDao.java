@@ -39,7 +39,7 @@ public class CountryDao {
         return country;
     }
 
-    public static Country findById(int countryId){
+    public static Country findById(long countryId){
         return JPA.em().find(Country.class,countryId);
     }
 

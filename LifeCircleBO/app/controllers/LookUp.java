@@ -4,6 +4,7 @@ import play.db.jpa.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import za.co.curvedradius.daos.CountryDao;
 import za.co.curvedradius.daos.VariableDao;
 import za.co.curvedradius.enums.Category;
 
@@ -20,6 +21,11 @@ public class LookUp extends Controller {
                         )
                 )
         );
+    }
+
+    @Transactional
+    public static Result loadCountries(){
+        return ok(Json.toJson(CountryDao.findAll()));
     }
 
     @Transactional
