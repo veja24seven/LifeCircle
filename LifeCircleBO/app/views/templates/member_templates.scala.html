@@ -1,0 +1,398 @@
+<script type="text/x-kendo-template" id="member-grid-toolbar-template">
+    <div id="member-grid-toolbar" class="toolbar">
+        <label for="searchTxtIn">Search:</label>
+        <input id="searchTxtIn" type="text" class="k-search"/>
+        <a id="searchBtn" class="k-button"><span class="k-icon k-search"></span>Search</a>
+        <a id="addMemberBtn" class="k-button"><span class="k-icon k-add"></span>Add Member</a>
+        <a id="editMemberBtn" class="k-button" style="display:none;"><span class="k-icon k-edit"></span>Edit Member</a>
+    </div>
+</script>
+
+<script type="text/x-kendo-template" id="member-form-template">
+    <div id="member-form-content" class='window-content' style='width: 100%;'>
+        <form id="member-form">
+            <ul data-role="panelbar" style="width: 100%">
+                <li class="k-state-active">
+                    <span class="k-link k-state-selected">Scheme Detail</span>
+                    <div class="ui fluid form">
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Scheme</label>
+                                <input id="scheme" name='scheme'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='branchTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.branchType.variableId' required='required' style='width: 200px;' data-required-msg='Branch Type is required.'>
+                            </div>
+                            <div class="field">
+                                <label>Category</label>
+                                <input id="category" name='category'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='branchTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.branchType.variableId' required='required' style='width: 200px;' data-required-msg='Branch Type is required.'>
+                            </div>
+
+                            <div class="field">
+                                <label>Cover Amount</label>
+                                <input id="coverAmount" name='coverAmount'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='branchTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.branchType.variableId' required='required' style='width: 200px;' data-required-msg='Branch Type is required.'>
+                            </div>
+
+                            <div class="field">
+                                <label>Premium</label>
+                                <input id='premium' name='premium'
+                                       data-bind='value:dataItem.member.premium'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                                       data-required-msg='Branch Street Number is required'>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+                <li class="k-state-inactive">
+                    <span class="k-link">Member Details</span>
+                    <div class="ui fluid form">
+                        <div class="four fields">
+                            <div class="field">
+                                <label>ID Number</label>
+                                <input id='identityNumber' name='identityNumber'
+                                       data-bind='value:dataItem.person.identityNumber'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                                       data-required-msg='Branch Street Number is required'>
+                                <div class="ui checkbox">
+                                    <input type="checkbox" id="isPassport">
+                                    <label for="isPassport">Is Passport</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Date Of Birth</label>
+                                <input id='dateOfBirth' name='dateOfBirth'
+                                       data-role='datepicker' data-bind='value:dataItem.dateOfBirth' data-format="yyyy-MM-dd"
+                                       required='required' style='width: 200px;' data-required-msg='Date Of Birth is required.'/>
+                            </div>
+
+                            <div class="field">
+                                <label>Entry Date</label>
+                                <input id='entryDate' name='entryDate'
+                                       data-role='datepicker' data-bind='value:dataItem.dateOfBirth' data-format="yyyy-MM-dd"
+                                       required='required' style='width: 200px;' data-required-msg='Date Of Birth is required.'/>
+                            </div>
+
+                            <div class="field">
+                                <label>Age as of Entry</label>
+                                <input id='ageAsOfEntry' name='ageAsOfEntry'
+                                       data-bind='value:dataItem.ageAsOfEntry'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                                       placeholder="e.g No. 10" value="R100"
+                                       data-required-msg='Branch Street Number is required'>
+                            </div>
+                        </div>
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Home Language</label>
+                                <input id="homeLanguage" name='homeLanguage'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='branchTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.branchType.variableId' required='required' style='width: 200px;' data-required-msg='Branch Type is required.'>
+                            </div>
+                            <div class="field">
+                                <label>Correspondence Language</label>
+                                <input id="correspondenceLanguage" name='correspondenceLanguage'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='branchTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.branchType.variableId' required='required' style='width: 200px;' data-required-msg='Branch Type is required.'>
+                            </div>
+
+                            <div class="field">
+                                <label>Combined Income</label>
+                                <input id="combinedIncome" name='combinedIncome'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='branchTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.branchType.variableId' required='required' style='width: 200px;' data-required-msg='Branch Type is required.'>
+                            </div>
+                            <div class="field">
+                            </div>
+                        </div>
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Title &amp; Last Name</label>
+                                <input id="title" name='title'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='titlesDS' data-option-label='-Select-'
+                                       data-bind='value:dataItem.person.title.variableId' required='required' style='width: 50px;' data-required-msg='Title is required.'>
+
+                                <input id='surname' name='surname'
+                                       data-bind='value:dataItem.person.surname'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Branch Street Number is required'>
+                            </div>
+                            <div class="field">
+                                <label>First Name</label>
+                                <input id='firstname' name='firstname'
+                                       data-bind='value:dataItem.person.firstname'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Second Name is required'>
+                            </div>
+                            <div class="field">
+                                <label>Second Name</label>
+                                <input id='secondname' name='secondname'
+                                       data-bind='value:dataItem.person.secondname'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Second Name is required'>
+                            </div>
+                            <div class="field">
+                                <label>Gender</label>
+                                <input id="gender" name='gender'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='gendersDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.person.gender.variableId' required='required' style='width: 100px;' data-required-msg='Gender is required.'>
+                            </div>
+
+                        </div>
+                        <div class='four fields'>
+                            <div class='field'>
+                                <label>Cellular</label>
+                                <input id='mobile' name='mobile'
+                                       data-bind='value:dataItem.mobile'
+                                       class='k-input k-textbox' required='required' pattern='[0-9]{10}' maxlength='10'
+                                       data-required-msg='Cellular is required'>
+                            </div>
+                            <div class='field'>
+                                <label>Telephone(Home)</label>
+                                <input id='homeTel' name='homeTel'
+                                       data-bind='value:dataItem.homeTel'
+                                       class='k-input k-textbox' pattern='[0-9]{10}' maxlength='10'
+                                       data-required-msg='Telephone(Home) is required'>
+                            </div>
+                            <div class='field'>
+                                <label>Telephone(Fax)</label>
+                                <input id='faxTel' name='faxTel'
+                                       data-bind='value:dataItem.faxTel'
+                                       class='k-input k-textbox' pattern='[0-9]{10}' maxlength='10'
+                                       data-required-msg='Telephone(Fax) is required'>
+                            </div>
+                            <div class="field">
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="k-state-inactive">
+                    <span class="k-link">Addresses</span>
+                    <div class="ui fluid form">
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Street Number &amp; Name</label>
+                                <input id='streetNumber' name='streetNumber'
+                                       data-bind='value:dataItem.residentialAddress.streetNumber'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                                       data-required-msg='Street Number is required'>
+                                <input id='streetName' name='streetName'
+                                       data-bind='value:dataItem.residentialAddress.streetName'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Street Name is required'>
+                            </div>
+                            <div class="field">
+                                <label>Suburb</label>
+                                <input id='residentialSuburb' name='residentialSuburb'
+                                       data-bind='value:dataItem.residentialAddress.suburb'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Suburb is required'>
+                            </div>
+                            <div class="field">
+                                <label>Town</label>
+                                <input id='residentialTown' name='residentialTown'
+                                       data-bind='value:dataItem.residentialAddress.town'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Town is required'>
+                            </div>
+                            <div class="field">
+                                <label>Postal Code</label>
+                                <input id='residentialPostalCode' name='residentialPostalCode'
+                                       data-bind='value:dataItem.residentialAddress.postalCode'
+                                       class='k-input k-textbox' required='required' pattern='[0-9]{4}' maxlength='4'
+                                       data-required-msg='Postal Code is required'>
+                            </div>
+                        </div>
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Postal Box</label>
+                                <input id='postalBox' name='postalBox'
+                                       data-bind='value:dataItem.postalAddress.postalBox'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                                       data-required-msg='Postal Box is required'>
+
+                            </div>
+                            <div class="field">
+                                <label>Suburb</label>
+                                <input id='postalSuburb' name='postalSuburb'
+                                       data-bind='value:dataItem.postalAddress.suburb'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Suburb is required'>
+                            </div>
+                            <div class="field">
+                                <label>Town</label>
+                                <input id='postalTown' name='postalTown'
+                                       data-bind='value:dataItem.postalAddress.town'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Town is required'>
+                            </div>
+                            <div class="field">
+                                <label>Postal Code</label>
+                                <input id='postalPostalCode' name='postalPostalCode'
+                                       data-bind='value:dataItem.postalAddress.postalCode'
+                                       class='k-input k-textbox' required='required' pattern='[0-9]{4}' maxlength='4'
+                                       data-required-msg='Postal Code is required'>
+                            </div>
+                        </div>
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Preferred Address Type</label>
+                                <input id="preferredAddress" name='preferredAddress'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='addressTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.member.preferredAddress.variableId' required='required' style='width: 200px;' data-required-msg='Address Type is required.'>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="k-state-inactive">
+                    <span class="k-link">Employment Information</span>
+                    <div class="ui fluid form">
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Employment Type</label>
+                                <input id="employmentType" name='employmentType'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='employmentTypesDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.employment.employmentType.variableId' required='required' style='width: 200px;' data-required-msg='Employment Type is required.'>
+
+                            </div>
+                            <div class="field">
+                                <label>Employer Name or Company Name</label>
+                                <input id='employerName' name='employerName'
+                                       data-bind='value:dataItem.employment.employerName'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Company Name is required'>
+                            </div>
+                            <div class="field">
+                                <label>Occupation</label>
+                                <input id='occupation' name='occupation'
+                                       data-bind='value:dataItem.employment.occupation'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Occupation is required'>
+                            </div>
+
+                            <div class="field">
+                                <label>Income Band &amp; Frequency</label>
+                                <input id="incomeBand" name='incomeBand'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='incomeBandsDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.employment.incomeBand.variableId' required='required' style='width: 200px;' data-required-msg='Income Band is required.'>
+                                <input id="incomeFreq" name='incomeFreq'
+                                       data-role='dropdownlist' data-text-field='value' data-value-field='variableId' data-source='incomeFreqsDS' data-option-label='-Please Select-'
+                                       data-bind='value:dataItem.employment.incomeFrequency.variableId' required='required' style='width: 200px;' data-required-msg='Income Frequency is required.'>
+                            </div>
+
+                        </div>
+                        <div class="four fields">
+                            <div class="field">
+                                <label>Street Number &amp; Name</label>
+                                <input id='employmentStreetNumber' name='employmentStreetNumber'
+                                       data-bind='value:dataItem.employment.address.streetNumber'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='10'
+                                       data-required-msg='Street Number is required'>
+                                <input id='employmentStreetName' name='employmentStreetName'
+                                       data-bind='value:dataItem.employment.address.streetName'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Street Name is required'>
+                            </div>
+                            <div class="field">
+                                <label>Suburb</label>
+                                <input id='employmentSuburb' name='employmentSuburb'
+                                       data-bind='value:dataItem.employment.address.suburb'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Suburb is required'>
+                            </div>
+                            <div class="field">
+                                <label>Town</label>
+                                <input id='employmentTown' name='employmentTown'
+                                       data-bind='value:dataItem.employment.address.town'
+                                       class='k-input k-textbox' required='required' pattern='[a-zA-Z0-9\- ]+' maxlength='100'
+                                       data-required-msg='Town is required'>
+                            </div>
+                            <div class="field">
+                                <label>Postal Code</label>
+                                <input id='employmentPostalCode' name='employmentPostalCode'
+                                       data-bind='value:dataItem.employment.address.postalCode'
+                                       class='k-input k-textbox' required='required' pattern='[0-9]{4}' maxlength='4'
+                                       data-required-msg='Postal Code is required'>
+                            </div>
+                        </div>
+                        <div class='four fields'>
+
+                            <div class='field'>
+                                <label>Telephone(Work)</label>
+                                <input id='workTel' name='workTel'
+                                       data-bind='value:dataItem.workTel'
+                                       class='k-input k-textbox' pattern='[0-9]{10}' maxlength='10'
+                                       data-required-msg='Telephone(Work) is required'>
+                            </div>
+                            <div class='field'>
+                                <label>Telephone(Fax)</label>
+                                <input id='workFaxTel' name='workFaxTel'
+                                       data-bind='value:dataItem.workFaxTel'
+                                       class='k-input k-textbox' pattern='[0-9]{10}' maxlength='10'
+                                       data-required-msg='Telephone(Fax) is required'>
+                            </div>
+                            <div class="field">
+                            </div>
+                            <div class="field">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="k-state-inactive">
+                    <span class="k-link">Dependants</span>
+                    <div class="ui fluid form">
+                        <div data-role="grid"
+                             data-toolbar="[{name:'create',text:'Add Dependant'}]"
+                             data-pageable="true"
+                             data-columns="[
+                                {title:'Relationship'},
+                                {title:'ID Number'},
+                                {title:'Last Name'},
+                                {title:'First Name'},
+                                {title:'Date Of Birth'},
+                                {title:'Age'}
+                                ]"></div>
+                    </div>
+                </li>
+                <li class="k-state-inactive">
+                    <span class="k-link">Extended Family</span>
+                    <div class="ui fluid form">
+                        <div data-role="grid"
+                             data-toolbar="[{name:'create',text:'Add Extended Family'}]"
+                             data-pageable="true"
+                             data-columns="[
+                                {title:'Relationship'},
+                                {title:'ID Number'},
+                                {title:'Last Name'},
+                                {title:'First Name'},
+                                {title:'Date Of Birth'},
+                                {title:'Age'},
+                                {title:'Cover'},
+                                {title:'Premium'}
+                                ]"></div>
+                    </div>
+                </li>
+            </ul>
+            <div class="ui fluid form">
+                <div class="six fields" style="padding-top: 25px;">
+                    <div class="field"></div>
+                    <div class="field"></div>
+                    <div class="field"></div>
+                    <div class="field"></div>
+                    <div class="field">
+                        <button class='k-button' type='submit'><span class='k-icon k-update'></span>Save</button>
+
+                    </div>
+                    <div class="field" style="padding-left: 1%;">
+                        <a id='cancel-button' class='k-button'><span class='k-icon k-cancel'></span>Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
